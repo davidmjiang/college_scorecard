@@ -21,8 +21,35 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "User updated."
+      redirect_to @user
+    else
+      flash.now[:error] = "User not updated. Error."
+      render :edit
+    end
+  end
+
   def show
     @user = User.find(params[:id])
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    if @user.delete
+      sign_out
+      flash[:success] = "User deleted."
+      redirect_to root_url
+    else
+      flash[:error] = "User not deleted. Error."
+      redirect_to @user
+    end
   end
 
   private

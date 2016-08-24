@@ -1,0 +1,58 @@
+
+<table class="table">
+	<tr>
+		<td>Location</td>
+		<td><%=school.location %></td>
+	</tr>
+
+	<tr>
+		<td>Size</td>
+		<td><%= school.student.size %></td>
+	</tr>
+
+	<tr>
+		<td>Admission Rate</td>
+		<td><%= school.admission.admission_rate_overall %></td>
+	</tr>
+
+	<tr>
+		<td>Avg SAT Score (Math)</td>
+		<td><%= school.admission.sat_scores_midpoint_math %></td>
+	</tr>
+
+	<tr>
+		<td>Avg SAT Score (Math)</td>
+		<td><%= school.admission.sat_scores_midpoint_math %></td>
+	</tr>
+	<tr>
+		<td>Avg SAT Score (Critical Reading)</td>
+		<td><%= school.admission.sat_scores_midpoint_critical_reading %></td>
+	</tr>
+	<tr>
+		<td>Avg SAT Score (Writing)</td>
+		<td><%= school.admission.sat_scores_midpoint_writing %></td>
+	</tr>
+	<tr>
+		<td>Avg SAT Score (Cummulative)</td>
+		<td><%= school.admission.sat_scores_average_overall %></td>
+	</tr>
+
+	<tr>
+		<td>Six Year Completion Rate</td>
+		<td><%= school.completion.six_yr_completion_overall%></td>
+	</tr>
+
+	<tr>
+	
+		<td>Tuition (in state)</td>
+		<td><%= school.cost.tuition_in_state%></td>
+	</tr>
+
+	<tr>
+		<td>Tuition (out of state)</td>
+		<td><%= school.cost.tuition_in_state%></td>
+	</tr>
+
+
+
+</table>

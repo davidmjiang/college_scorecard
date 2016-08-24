@@ -1,8 +1,36 @@
+<%= render partial: "header", locals: {user: @user} %>
+
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <h1><%= @user.username %></h1>
-      <%= link_to "Logout", logout_path, method: :delete %>
+
+    <div class="col-sm-5">
+      <div class="info-box">
+        <h3>Your Schools</h3>
+        <ul>
+        <% @user.schools.each do |school| %>
+          <li><%= school.school_name %></li>
+        <% end %>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h3>Your Reviews</h3>
+        <ul>
+        <% @user.reviews.each do |review| %>
+          <li><%= review.body %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
+
+    <div class="col-sm-7">
+      <div class="info-box">
+        <h3>Recent Activity</h3>
+        
+      </div>
+    </div>
+
   </div>
 </div>
+
+      
