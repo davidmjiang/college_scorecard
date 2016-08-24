@@ -97,7 +97,6 @@ class ScAPI
   end
 
   def get
-    reset_request
     add_fields_to_request
     add_sort_to_request if @sort_opt
     add_page_to_request if @page

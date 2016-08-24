@@ -20,18 +20,19 @@ class School < ActiveRecord::Base
 		"https://maps.googleapis.com/maps/api/staticmap?center=#{root_location_lat},#{root_location_lon}&zoom=10&size=300x300&key=#{Rails.application.secrets.gmaps_static_api_key}"
   end
 
+
 	def location
 		"#{school_city}, #{school_state}"
 	end
 
-	# def popular_subjects 
+	# def popular_subjects
 	# 	attribs = academic.attributes
-	# 	attribs = attribs.delete_if { |k, v| k == "created_at" || 
-	# 														 k == "school_id" || 
+	# 	attribs = attribs.delete_if { |k, v| k == "created_at" ||
+	# 														 k == "school_id" ||
 	# 														 k == "updated_at" ||
 	# 														 k == "id"
 	# 														 v.nil? }
 	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
-	# end 
-end
+	# end
 
+end
