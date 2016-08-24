@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :edit, :update, :destroy :require_current_user
+  before_action :edit, :update, :destroy, :require_current_user
 
   def create
     @user = current_user
@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
       flash[:error] = @review.errors.full_messages.join(', ')
       render :edit
     end
+  end
 
 
   def destroy

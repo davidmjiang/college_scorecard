@@ -37,6 +37,7 @@ FACTOR.times do |i|
     user_id: user.id
     })
 
+  
   school.create_repayment
   school.create_earning
   school.create_cost

@@ -17,7 +17,7 @@ class School < ActiveRecord::Base
 
 
   def get_map_url
-		"https://maps.googleapis.com/maps/api/staticmap?center=#{root_location_lat},#{root_location_lon}&zoom=17&size=300x300&key=#{Rails.application.secrets.gmaps_static_api_key}"
+		"https://maps.googleapis.com/maps/api/staticmap?center=#{root_location_lat},#{root_location_lon}&zoom=10&size=300x300&key=#{Rails.application.secrets.gmaps_static_api_key}"
   end
 
 	def location
