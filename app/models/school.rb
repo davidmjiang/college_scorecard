@@ -8,9 +8,14 @@ class School < ActiveRecord::Base
   has_one :repayment
   has_one :student
 
+  has_many :reviews
+
   has_many :bookmarks
 
   has_many :users, through: :bookmarks
+
+end
+
   
 
 	def location
@@ -28,3 +33,4 @@ class School < ActiveRecord::Base
 	# end 
 
 end
+>>>>>>> 15004d9ddc4e3d745adcbf0ce3d60cde4b0739b1

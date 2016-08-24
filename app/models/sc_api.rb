@@ -39,12 +39,8 @@ class ScAPI
   def get_cat_responses
     categories = ['academics', 'admissions', 'aid', 'completion', 'cost', 'earnings', 'repayment', 'root', 'school', 'student']
     categories.map! do |cat|
-      self.reset_request
-      self.default_options
-      add_type_attributes_as_fields(cat)
-      get
+      get_cat_response(cat)
     end
-    @category_responses = categories
   end
 
   def get_cat_response(category)
@@ -112,6 +108,9 @@ class ScAPI
 
   def reset_request
     @request = BASE_URI + '_fields='
+    @options = {}
+    @fields = []
+    @sort_desc = false
   end
 
 

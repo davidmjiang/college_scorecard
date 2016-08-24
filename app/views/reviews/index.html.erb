@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1> <%= @user if @user %> <%= @school if @school %>'s Reviews </h1>
+
+      <% @reviews.each do |review| %>
+        <h3> <%= review.author %>'s review of <%= review.school %> </h3>
+        <p> <%= review.body %> </p>
+      <% end %>
+    </div>
+  </div>
+</div>
