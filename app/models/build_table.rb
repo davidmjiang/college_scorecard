@@ -11,10 +11,9 @@ class BuildTable
     #
     # :root_location_lat => school["root.location.lat"],
     #                 :root_location_lon => school["root.location.lon"],
-
+    binding.pry
     puts "building schools..."
 
-    binding.pry
     results['school'].each_with_index do |school, index|
       s = School.new(
                       :school_name => school["school.name"],
