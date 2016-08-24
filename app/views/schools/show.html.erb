@@ -1,9 +1,10 @@
-<%= @school.school_name %>
+<h1><%= @school.school_name %></h1>
 add image?
-add google maps?
+<%= image_tag @school.get_map_url %>
+
 <br>
 <a href="<%= @school.school_school_url %>"><%= @school.school_school_url %></a>
-<%= link_to "Bookmark", bookmarks_path, method: :post %>
+<%= link_to "Bookmark", school_bookmarks_path(@school.id), method: :post %>
 
 <%= render "school_table", school: @school %>
 
