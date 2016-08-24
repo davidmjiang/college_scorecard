@@ -42,16 +42,16 @@ class ApplicationController < ActionController::Base
   end 
 
 
-  REGIONS = { 0: "U.S. Service Schools",
-              1: "New England",
-              2: "Midatlantic",
-              3: "Great Lakes",
-              4: "Plains",
-              5: "Southeast",
-              6: "Southwest",
-              7: "Rocky Mountains",
-              8: "Far West",
-              9: "Outlying Areas"
+  REGIONS = { "0": "U.S. Service Schools",
+              "1": "New England",
+              "2": "Midatlantic",
+              "3": "Great Lakes",
+              "4": "Plains",
+              "5": "Southeast",
+              "6": "Southwest",
+              "7": "Rocky Mountains",
+              "8": "Far West",
+              "9": "Outlying Areas"
             }
 
   def region_id_translate(input)
@@ -71,10 +71,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :school_regions
 
-  LOCALES = {13: "City",
-             23: "Suburb",
-             33: "Town",
-             43: "Rural"}
+  LOCALES = {"13": "City",
+             "23": "Suburb",
+             "33": "Town",
+             "43": "Rural"}
 
   def locale_types
     locales = []
@@ -83,5 +83,6 @@ class ApplicationController < ActionController::Base
     end
     locales
   end
+  helper_method :locale_types
 
 end

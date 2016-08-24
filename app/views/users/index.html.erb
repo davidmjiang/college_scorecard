@@ -5,4 +5,13 @@
       <%= link_to "Create New User", new_user_path, class: "btn btn-primary btn-lg" %>
     </div>
   </div>
+ <%= form_tag schools_path, :method => 'get' do %>
+  <%= label_tag "query[name]", "Search by School" %>
+  <%= text_field_tag "query[name]" %>
+  <%= label_tag "query[region]", "Region:"%>
+  <%= select_tag("query[region]", options_for_select(school_regions), :mulitple => true) %>
+  <%= label_tag "query[locale]", "Locale:" %>
+  <%= select_tag("query[locale]", options_for_select(locale_types), :mulitple => true) %>
+  <%= submit_tag "Search" %>
+<% end %>
 </div>

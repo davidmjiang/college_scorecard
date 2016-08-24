@@ -14,7 +14,11 @@ class School < ActiveRecord::Base
 
   has_many :users, through: :bookmarks
 
-
+  searchable do
+    string :school_name
+    integer :school_region_id
+    integer :school_locale
+  end
   
 
 	def location
@@ -31,4 +35,11 @@ class School < ActiveRecord::Base
 	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
 	# end 
 
+  def self.solr_search(queries)
+    search do
+      with :name, '%#{queries[:name]}%' if queries[:name]
+      with :region, queries[:region].to_i if queries[:region]
+      with :locale, queries[:locale].to_i if queries[:locale]
+    end
+  end
 end
