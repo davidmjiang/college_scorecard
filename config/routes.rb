@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   resource :session, :only => [:new, :create, :destroy]
+  resources :schools, only: [:index, :show]
+
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
 
