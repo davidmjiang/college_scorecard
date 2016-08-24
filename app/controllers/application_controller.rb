@@ -40,4 +40,48 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end 
+
+
+  REGIONS = { 0: "U.S. Service Schools",
+              1: "New England",
+              2: "Midatlantic",
+              3: "Great Lakes",
+              4: "Plains",
+              5: "Southeast",
+              6: "Southwest",
+              7: "Rocky Mountains",
+              8: "Far West",
+              9: "Outlying Areas"
+            }
+
+  def region_id_translate(input)
+    if input.is_a? Integer
+      REGIONS[input]
+    else
+      REGIONS.key(input)
+    end
+  end
+
+  def school_regions
+    regions = []
+    REGIONS.each do |k,v|
+      regions << [v,k]
+    end
+    regions
+  end
+  helper_method :school_regions
+
+  LOCALES = {13: "City",
+             23: "Suburb",
+             33: "Town",
+             43: "Rural"}
+
+  def locale_types
+    locales = []
+    LOCALES.each do |k,v|
+      locales << [v,k]
+    end
+    locales
+  end
+
 end
