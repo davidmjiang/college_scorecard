@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824183024) do
+ActiveRecord::Schema.define(version: 20160824203445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 20160824183024) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "school_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bookmarks", ["school_id", "user_id"], name: "index_bookmarks_on_school_id_and_user_id", unique: true, using: :btree
 
   create_table "completions", force: :cascade do |t|
     t.integer  "school_id"
@@ -256,6 +265,17 @@ ActiveRecord::Schema.define(version: 20160824183024) do
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
   end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "school_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reviews", ["school_id"], name: "index_reviews_on_school_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
     t.string   "school_name"
