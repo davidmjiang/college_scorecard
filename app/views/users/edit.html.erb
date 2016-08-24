@@ -2,9 +2,11 @@
   <div class="row">
     <div class="col-sm-12">
       
-      <h1>Create a New User</h1>
+      <h1>Update User</h1>
 
       <%= render partial: "form", locals: {user: @user} %>
+
+      <%= link_to "Delete User", user_path(current_user), method: :delete %>
 
     </div>
   </div>
