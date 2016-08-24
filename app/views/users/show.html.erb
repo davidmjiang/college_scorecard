@@ -4,13 +4,11 @@
   <div class="row">
 
     <div class="col-sm-5">
-      <div class="info-box">
+      <div class="info-box school-list">
         <h3>Your Schools</h3>
-        <ul>
         <% @user.schools.each do |school| %>
-          <li><%= school.school_name %></li>
+          <p><%= link_to school.school_name, school %></p>
         <% end %>
-        </ul>
       </div>
 
       <div class="info-box">

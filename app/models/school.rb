@@ -21,6 +21,10 @@ class School < ActiveRecord::Base
   end
   
 
+  def get_map_url
+		"https://maps.googleapis.com/maps/api/staticmap?center=#{root_location_lat},#{root_location_lon}&zoom=17&size=300x300&key=#{Rails.application.secrets.gmaps_static_api_key}"
+  end
+
 	def location
 		"#{school_city}, #{school_state}"
 	end
@@ -35,6 +39,7 @@ class School < ActiveRecord::Base
 	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
 	# end 
 
+
   def self.solr_search(queries)
     search do
       with :name, '%#{queries[:name]}%' if queries[:name]
@@ -43,3 +48,5 @@ class School < ActiveRecord::Base
     end
   end
 end
+
+

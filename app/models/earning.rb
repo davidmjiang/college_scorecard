@@ -1,3 +1,3 @@
 class Earning < ActiveRecord::Base
-  belongs_to :schools
+  belongs_to :school
 end

@@ -1,2 +1,8 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1> <%= link_to @review.author, user_path(@review.author) %>'s review of <%= link_to @review.school, school_path(@review.school) %> </h1>
+      <p> <%= @review.body %> </p>
+    </div>
+  </div>
+</div>
