@@ -38,6 +38,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (6.0.3)
+    awesome_print (1.7.0)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -73,6 +74,9 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hirb (0.7.3)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -97,6 +101,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    multi_xml (0.5.5)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -181,6 +186,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
@@ -189,6 +195,7 @@ DEPENDENCIES
   delayed_job_active_record
   figaro
   hirb
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   letter_opener
