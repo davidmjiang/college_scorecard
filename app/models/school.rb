@@ -9,7 +9,9 @@ class School < ActiveRecord::Base
   has_one :student
 
   has_many :bookmarks
-  has_many :users_who_bookmarked, through: :bookmarks, source: :users
+
+  has_many :users, through: :bookmarks
+  
 
 	def location
 		"#{school_city}, #{school_state}"

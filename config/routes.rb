@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
 
+  resources :bookmarks, only: [:create, :destroy]
+
 end
