@@ -14,7 +14,7 @@ class School < ActiveRecord::Base
 
   has_many :users, through: :bookmarks
 
-end
+
 
   
 
@@ -31,6 +31,5 @@ end
 	# 														 v.nil? }
 	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
 	# end 
-
 end
->>>>>>> 15004d9ddc4e3d745adcbf0ce3d60cde4b0739b1
+

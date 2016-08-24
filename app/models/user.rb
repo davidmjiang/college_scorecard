@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
 
   has_many :bookmarks
   has_many :schools, through: :bookmarks
+  has_many :reviews
 
 
 end

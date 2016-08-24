@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :schools do 
     resources :reviews
+    resources :bookmarks, only: [:create, :destroy]
   end
 
   resource :session, :only => [:new, :create, :destroy]
@@ -17,7 +18,5 @@ Rails.application.routes.draw do
 
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
-
-  resources :bookmarks, only: [:create, :destroy]
 
 end

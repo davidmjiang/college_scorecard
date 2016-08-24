@@ -4,13 +4,27 @@
   <div class="row">
 
     <div class="col-sm-5">
-      <div class="school-list">
+      <div class="info-box school-list">
         <h3>Your Schools</h3>
-        <ul>
         <% @user.schools.each do |school| %>
-          <li><%= school.school_name %></li>
+          <p><%= link_to school.school_name, school %></p>
+        <% end %>
+      </div>
+
+      <div class="info-box">
+        <h3>Your Reviews</h3>
+        <ul>
+        <% @user.reviews.each do |review| %>
+          <li><%= review.body %></li>
         <% end %>
         </ul>
+      </div>
+    </div>
+
+    <div class="col-sm-7">
+      <div class="info-box">
+        <h3>Recent Activity</h3>
+        
       </div>
     </div>
 
