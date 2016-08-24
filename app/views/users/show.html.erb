@@ -1,8 +1,20 @@
+<%= render partial: "header", locals: {user: @user} %>
+
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <h1><%= @user.username %></h1>
-      <%= link_to "Logout", logout_path, method: :delete %>
+
+    <div class="col-sm-5">
+      <div class="school-list">
+        <h3>Your Schools</h3>
+        <ul>
+        <% @user.schools.each do |school| %>
+          <li><%= school.school_name %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
+
   </div>
 </div>
+
+      
