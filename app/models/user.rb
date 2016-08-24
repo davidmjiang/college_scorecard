@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   has_many :bookmarks
   has_many :schools, through: :bookmarks
-  has_many :reviews
+  has_many :reviews, class_name: "Review", foreign_key: :user_id
 
 
 end
