@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
             :presence => true,
             :uniqueness => true
 
+
+  has_many :reviews
+
+
 end
