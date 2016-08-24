@@ -31,6 +31,5 @@ class School < ActiveRecord::Base
 	# 														 v.nil? }
 	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
 	# end 
-
 end
 
