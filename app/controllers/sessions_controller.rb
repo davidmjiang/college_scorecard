@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
-      flash.notice = "You've successfully signed in"
+      flash[:success] = "You've successfully signed in"
       redirect_to @user
     else
       flash.now[:error] = "We couldn't sign you in"
