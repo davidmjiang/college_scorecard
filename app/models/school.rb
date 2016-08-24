@@ -8,10 +8,17 @@ class School < ActiveRecord::Base
   has_one :repayment
   has_one :student
 
+  has_many :reviews
+
   has_many :bookmarks
 
   has_many :users, through: :bookmarks
-  
+
+
+
+  def get_map_url
+		"https://maps.googleapis.com/maps/api/staticmap?center=#{root_location_lat},#{root_location_lon}&zoom=17&size=300x300&key=#{Rails.application.secrets.gmaps_static_api_key}"
+  end
 
 	def location
 		"#{school_city}, #{school_state}"
@@ -26,5 +33,5 @@ class School < ActiveRecord::Base
 	# 														 v.nil? }
 	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
 	# end 
-
 end
+

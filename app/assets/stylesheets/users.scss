@@ -43,8 +43,18 @@
   font-size: 38px;
 }
 
-.school-list{
+.info-box{
   border: solid black 1px;
   padding: 10px;
   margin: 10px;
+  h3{
+  text-align: center;
+  }
+}
+
+.school-list{
+  p{
+  text-align: center;
+  font-size: 18px;
+  }
 }

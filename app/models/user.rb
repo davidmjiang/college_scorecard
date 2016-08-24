@@ -13,7 +13,12 @@ class User < ActiveRecord::Base
             :presence => true,
             :uniqueness => true
 
+
+  has_many :reviews
+
   has_many :bookmarks
   has_many :schools, through: :bookmarks
+  has_many :reviews
+
 
 end
