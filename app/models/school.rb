@@ -14,23 +14,21 @@ class School < ActiveRecord::Base
 
   has_many :users, through: :bookmarks
 
-end
 
-  
+
 
 	def location
 		"#{school_city}, #{school_state}"
 	end
 
-	# def popular_subjects 
+	# def popular_subjects
 	# 	attribs = academic.attributes
-	# 	attribs = attribs.delete_if { |k, v| k == "created_at" || 
-	# 														 k == "school_id" || 
+	# 	attribs = attribs.delete_if { |k, v| k == "created_at" ||
+	# 														 k == "school_id" ||
 	# 														 k == "updated_at" ||
 	# 														 k == "id"
 	# 														 v.nil? }
 	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
-	# end 
+	# end
 
 end
->>>>>>> 15004d9ddc4e3d745adcbf0ce3d60cde4b0739b1
