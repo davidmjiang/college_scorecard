@@ -29,4 +29,15 @@ module SchoolsHelper
     data["Other"] = 1 - data["White"] - data["Black"] - data["Hispanic"] - data["Asian"] - data["American Indian/Alaska Native"] - data["Hawaiian Pacific Islander"] - data["Unknown"]
     data
   end
+
+  def get_cost_data(school)
+    data = {}    
+    data["0-$30,000"] = school.cost.net_price_private_by_income_level_0_30000
+    data["$30,001-$48,000"] = school.cost.net_price_private_by_income_level_30001_48000
+    data["$30,001-$48,000"] = school.cost.net_price_private_by_income_level_30001_48000
+    data["$48,001-$75,000"] = school.cost.net_price_private_by_income_level_48001_75000
+    data["$75,001-$110,000"] = school.cost.net_price_private_by_income_level_75001_110000
+    data["$110,001+"] = school.cost.net_price_private_by_income_level_110001_plus
+    data
+  end
 end
