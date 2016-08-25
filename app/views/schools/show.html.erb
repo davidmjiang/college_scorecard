@@ -13,8 +13,10 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 
 <div id="exTab2" class="container">	
 <ul class="nav nav-tabs">
-			<li class="active"><a  href="#academics" data-toggle="tab">Overall</a></li>
+			<li class="active"><a  href="#overall" data-toggle="tab">Overall</a></li>
+
 			<li><a href="#academics" data-toggle="tab">Academics</a></li>
+
 			<li><a href="#admissions" data-toggle="tab">Admissions</a></li>
 			<li><a href="#aid" data-toggle="tab">Aid</a></li>
 			<li><a href="#completion" data-toggle="tab">Completion</a></li>
@@ -39,11 +41,11 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 				</div>
 
         <div class="tab-pane" id="aid">
-          <h3>add clearfix to tab-content (see the css)</h3>
+          <%= render "aid", school: @school %>
 				</div>
 
 				 <div class="tab-pane" id="completion">
-          <h3>add clearfix to tab-content (see the css)</h3>
+          <%= render "completion_table", school: @school %>
 				</div>
 
 				 <div class="tab-pane" id="cost">
@@ -62,6 +64,7 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 
 
 				 <div class="tab-pane" id="students">
+
           <%= render "student_table", school: @school %>
 				</div>
 
