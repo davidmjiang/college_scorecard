@@ -4,7 +4,10 @@
 	<%= image_tag @school.get_map_url, class: "img-rounded" %><br>
 
 <br>
-School Site: <a href="http://<%= @school.school_school_url %>" id="school-site-link"><%= @school.school_school_url %></a><br>
+
+<h4><%= link_to "School Website", "http://#{@school.school_school_url}", id: "school-site-link" %>
+</hr><br>
+
 
 <% if signed_in_user? %>
   <% if bookmarked?(@school) %>
@@ -36,6 +39,8 @@ School Site: <a href="http://<%= @school.school_school_url %>" id="school-site-l
 			<div class="tab-content ">
 			  <div class="tab-pane active" id="overall">
           <%= render "school_table", school: @school %>
+          <%= render "charts", school: @school %>
+          <hr></hr>
 				</div>
 
 				<div class="tab-pane" id="academics">
@@ -65,5 +70,4 @@ School Site: <a href="http://<%= @school.school_school_url %>" id="school-site-l
 
 			</div>
   </div>
-<%= render "charts", school: @school %>
-<hr></hr>
+
