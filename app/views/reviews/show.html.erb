@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1> <%= link_to @review.author.name, user_path(@review.author) %>'s review of <%= link_to @review.school, school_path(@review.school) %> </h1>
-      <p> <%= @review.body %> </p>
+      <h1> <%= link_to @review.author.username, user_path(@review.author) %>'s review of <%= link_to @review.school.school_name, school_path(@review.school) %> </h1>
+      <p id="review-show-body"> <%= @review.body %> </p>
+    </div>
+    <div class="col-xs-12">
+      <%= link_to "Edit", edit_school_review_path(@review.school, @review), class: "btn btn-primary" if @review.author == current_user %>
     </div>
   </div>
 </div>
