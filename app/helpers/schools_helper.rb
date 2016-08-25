@@ -4,6 +4,14 @@ module SchoolsHelper
 		attribs = school.aid.attributes.delete_if { |k,v| k == "school_id" || k == "id" || k == "created_at" || k == "updated_at"}
 	end
 
+  def get_aid_keys(school)
+    keys = school.aid.attributes.keys.delete_if {|k| k == "school_id" || k == "id" || k == "created_at" || k == "updated_at"}
+  end
+
+  def get_academic_keys(school)
+    keys = school.aid.attributes.keys.delete_if {|k| k == "school_id" || k == "id" || k == "created_at" || k == "updated_at"}
+  end
+
   def to_percent(value)
     if value.nil?
       "N/A"

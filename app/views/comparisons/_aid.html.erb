@@ -10,22 +10,14 @@
       <% end %>
     </tr>
 
-		<% get_aid_info(schools.first).each do |k, v| %>
+		<% get_aid_keys(schools.first).each do |key| %>
 			<tr>
 
-				<td><%= k.gsub("_", " ").titleize %></td>
+				<td><%= key.gsub("_", " ").titleize %></td>
 
 				<% schools.each do |school| %>
 
-					<% get_aid_info(school).each do |x, y| %>
-
-						<% if y.nil? %>
-							<td>N/A</td>
-						<% else %>
-							<td><%= y %></td>
-						<% end %>
-
-					<% end %>
+					<td><%= school.aid.send("#{key}") %></td>
 
 				<% end %>
 				
