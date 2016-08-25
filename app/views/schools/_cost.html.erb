@@ -21,27 +21,27 @@
   
   <tr>
     <td>$0-30,000</td>
-    <td><%= school.cost.net_price_public_by_income_level_0_30000 || school.cost.net_price_private_by_income_level_0_30000 %></td>
+    <td><%= number_to_currency(school.cost.net_price_public_by_income_level_0_30000, precision:0) || number_to_currency(school.cost.net_price_private_by_income_level_0_30000, precision:0) %></td>
   </tr>
 
   <tr>
     <td>$30,001-$48,000</td>
-    <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+    <td><%= number_to_currency(school.cost. net_price_public_by_income_level_30001_48000, precision:0) || number_to_currency(school.cost.net_price_private_by_income_level_30001_48000, precision:0) %></td>
   </tr>
 
    <tr>
     <td>$48,001-$75,000</td>
-    <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+    <td><%= number_to_currency(school.cost. net_price_public_by_income_level_48001_75000, precision:0) || number_to_currency(school.cost.net_price_private_by_income_level_48001_75000, precision:0) %></td>
   </tr>
 
    <tr>
     <td>$75,001-$110,000</td>
-    <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+    <td><%= number_to_currency(school.cost. net_price_public_by_income_level_75001_110000, precision:0) || number_to_currency(school.cost.net_price_private_by_income_level_75001_110000, precision:0) %></td>
   </tr>
 
    <tr>
     <td>$110,001+</td>
-    <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+    <td><%= number_to_currency(school.cost. net_price_public_by_income_level_110001_plus, precision:0) || number_to_currency(school.cost.net_price_private_by_income_level_110001_plus, precision:0) %></td>
   </tr>
 
   
