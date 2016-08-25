@@ -2,7 +2,8 @@ class BookmarksController < ApplicationController
 
   def create
     @school = School.find(params[:school_id])
-    if current_user.schools << @school
+    @bookmark = Bookmark.new(user_id: current_user.id, school_id: @school.id)
+    if @bookmark.save
       flash[:success] = "School added to your schools."
       redirect_to @school
     else

@@ -5,13 +5,18 @@
 
 <br>
 School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_school_url %></a><br>
-<%= if bookmarked?(@school) %>
-  <%= link_to "Bookmark", school_bookmarks_path(@school.id), method: :post %><br>
-<% else %>
-  <%= link_to "Unbookmark", school_bookmark_path(@school.id, find_user_bookmark(@school)) %>
-<% end %>
+
+<% if signed_in_user? %>
+  <% if bookmarked?(@school) %>
+     <%= button_to "Unbookmark", school_bookmark_path(@school.id, find_user_bookmark(@school).id), method: :delete %>
+  <% else %>
+   <%= button_to "Bookmark", school_bookmarks_path(@school.id), method: :post %>
+  <% end %>
+<% end %><br>
+
 <%= link_to "See School Reviews" %>
 
+<%= pie_chart School.student %>
 
 
 
