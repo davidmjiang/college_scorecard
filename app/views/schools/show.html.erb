@@ -52,24 +52,13 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
           <%= render "aid", school: @school %>
 				</div>
 
-				 <div class="tab-pane" id="completion">
-          <%= render "completion_table", school: @school %>
-				</div>
-
 				 <div class="tab-pane" id="cost">
           <%= render "cost", school: @school %>
 				</div>
 
-
-				 <div class="tab-pane" id="earnings">
-          <h3>add clearfix to tab-content (see the css)</h3>
-				</div>
-
-
 				<div class="tab-pane" id="repayment">
           <%= render "repayment", school: @school %>
 				</div>
-
 
 				 <div class="tab-pane" id="students">
           <%= render "student_table", school: @school %>
