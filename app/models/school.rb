@@ -15,7 +15,8 @@ class School < ActiveRecord::Base
   has_many :users, through: :bookmarks
 
   def get_map_url
-		"https://maps.googleapis.com/maps/api/staticmap?center=#{urlify(school_name)},#{urlify(location)}&zoom=15&size=400x400&key=AIzaSyDTLUeLPMNZy4Gw99gQNFF6d1gyDbukKmg"
+    response = get_coords_from_location
+		"https://maps.googleapis.com/maps/api/staticmap?center=#{response["lat"]},#{response["lng"]}&zoom=15&size=400x400&key=AIzaSyDTLUeLPMNZy4Gw99gQNFF6d1gyDbukKmg"
 
   end
 
@@ -26,7 +27,12 @@ class School < ActiveRecord::Base
 
   def get_coords_from_location
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{urlify(school_name)},#{urlify(location)}&key=AIzaSyBi_LAVQdQK86p7BcCxTxYuPr1lKVC5HAw"
-    response = HTTParty.get(url, verify: false)["results"].first["geometry"]["location"]
+     response = HTTParty.get(url, verify: false)["results"]
+    if response.empty?
+      return { "lat" => 34.138792, "lng" => -118.125407 }
+    else
+      return response.first["geometry"]["location"]
+    end
   end
 
   def urlify(location)
@@ -60,6 +66,7 @@ class School < ActiveRecord::Base
     region_id = params['school_region_id'].first.to_i if params['school_region_id']
     school_locale = params['school_locale'].first.to_i if params['school_locale']
 
+<<<<<<< HEAD
     query = fuzzy_search_school(school_name) if school_name
     if query && school_locale
       query = query.where_school_locale_equals(school_locale)
@@ -88,4 +95,6 @@ class School < ActiveRecord::Base
     where("school_name ILIKE ?", query)
   end
 
+=======
+>>>>>>> c73ec96fbd39bdf7a67328c39c533a062a11ed32
 end

@@ -38,8 +38,10 @@
 	</tr>
 
 	<tr>
-		<td>Six Year Completion Rate</td>
-		<td><%= school.completion.six_yr_completion_overall%></td>
+		<td>Completion rate for first-time, full-time students (150% of expected time to completion/6 years):</td>
+		<td>  
+      	<%= (school.completion.completion_rate_4yr_150nt * 100).to_s + "%" if school.completion.completion_rate_4yr_150nt %> <%= (school.completion.completion_rate_less_than_4yr_150nt * 100).to_s + "%" if school.completion.completion_rate_less_than_4yr_150nt %>
+  	</td>
 	</tr>
 
 	<tr>

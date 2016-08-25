@@ -2,7 +2,15 @@
 
 <div class="container">
   <div class="row">
+    <!-- sidebar -->
+  <div class="col-sm-4">
+    <div class="info-box fixed">
+      <h3>Application Timeline</h3>
+      <%= render partial: 'users/application_timeline' %>
+    </div>
+  </div>
 
+  <div class="col-sm-8">
     <div class="col-sm-12">
       <div class="info-box school-list">
         <h3>Your Schools</h3>
@@ -28,9 +36,11 @@
       <div class="info-box">
         <h3>Compare Your Schools</h3>
         <h5>Choose up to 5 of your schools for in-depth comparison:</h5>
-        <form action="/comparisons" method="get">
-          <%= collection_select(@user, :schools, @user.schools, :id, :school_name) %>
-        </form>
+        <%= form_tag comparisons_path, :method => 'get' do %>
+          <%= label_tag "schools", "Select Schools To Compare:"%>
+          <%= select_tag("schools", options_for_select(@user.schools), multiple: true) %>
+          <%= submit_tag "See Comparison" %>
+        <% end %>
       </div>
     </div>
 
@@ -52,12 +62,6 @@
       </div>
     </div>
 
-    <div class="col-sm-6">
-      <div class="info-box">
-        <h3>Application Timeline</h3>
-        <%= render partial: 'users/application_timeline' %>
-      </div>
-    </div>
-
+  </div>
   </div>
 </div>

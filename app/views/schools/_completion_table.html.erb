@@ -1,4 +1,8 @@
-<table class="table table-hover table-condensed">
+
+<!-- NOTE: This partial no longer in use -->
+
+
+<table class="table table-hover">
   <tbody>
     <tr>
       <th>
@@ -7,11 +11,7 @@
         <div class="container"><h1> <%= school.school_name %> Completions Statistics </h1>
 
 
-          <h4>
-            Completion rate for first-time, full-time students (150% of expected time to completion/6 years): 
-            <span id="completion-rate"><%= (@stats.completion_rate_4yr_150nt * 100).to_s + "%" if @stats.completion_rate_4yr_150nt %> <%= (@stats.completion_rate_less_than_4yr_150nt * 100).to_s + "%" if @stats.completion_rate_less_than_4yr_150nt %>
-            </span>
-          </h4>
+
 
 
         </div>
