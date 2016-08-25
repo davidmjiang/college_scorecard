@@ -40,7 +40,7 @@
 }
 
 .title-name{
-  font-size: 20px;
+  font-size: 48px;
 }
 
 .info-box{
@@ -70,4 +70,12 @@
   text-align: center;
   font-size: 18px;
   }
+}
+
+html{
+  background: url("university.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
 }

@@ -1,3 +1,11 @@
+<h2>Comparison for:</h2>
+<ul>
+<% @schools.each do |school| %>
+  <p><%= school.school_name %></p>
+<% end %>
+</ul>
+
+
 <div id="exTab2" class="container"> 
 <ul class="nav nav-tabs">
       <li class="active"><a  href="#overall" data-toggle="tab">Overall</a></li>
@@ -6,9 +14,9 @@
 
       <li><a href="#admissions" data-toggle="tab">Admissions</a></li>
       <li><a href="#aid" data-toggle="tab">Aid</a></li>
-      <li><a href="#completion" data-toggle="tab">Completion</a></li>
+      <!--<li><li><a href="#completion" data-toggle="tab">Completion</a></li>-->
       <li><a href="#cost" data-toggle="tab">Cost</a></li>
-      <li><a href="#earnings" data-toggle="tab">Earnings</a></li>
+      <!--<li><a href="#earnings" data-toggle="tab">Earnings</a></li>-->
       <li><a href="#repayment" data-toggle="tab">Repayment</a></li>
       <li><a href="#students" data-toggle="tab">Students</a></li>
 
@@ -20,7 +28,7 @@
         </div>
 
         <div class="tab-pane" id="academics">
-          <%# render "academics", schools: @schools %>
+          <%= render "academics", schools: @schools %>
         </div>
 
         <div class="tab-pane" id="admissions">
@@ -32,7 +40,7 @@
         </div>
 
          <div class="tab-pane" id="completion">
-          <%= render "completion_table", schools: @schools %>
+          <% render "completion_table", schools: @schools %>
         </div>
 
          <div class="tab-pane" id="cost">
@@ -40,9 +48,9 @@
         </div>
 
 
-         <div class="tab-pane" id="earnings">
+         <!--<div class="tab-pane" id="earnings">
           <h3>add clearfix to tab-content (see the css)</h3>
-        </div>
+        </div> -->
 
 
         <div class="tab-pane" id="repayment">

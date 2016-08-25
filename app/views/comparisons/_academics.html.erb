@@ -1,15 +1,26 @@
-<h1>Academics</h1>
+<h1>Percentage of Students By Major</h1>
 
-<table class="table table-striped">
-	<tr>
-		<th>Subject</th>
-		<th>Percent of Total</th>
-	</tr>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Attribute</th>
+      <% schools.each do |school| %>
+        <th><%= link_to school.school_name, school_path(school) %></th>
+      <% end %>
+    </tr>
 
-	<% school.popular_subjects.each do |subject, percent| %>
-		<tr>
-			<td><%= subject_name(subject) %></td>
-			<td><%= to_percent(percent) %></td>
-		</tr>
-	<% end %>
-</table>
+		<% get_academic_keys(schools.first).each do |key| %>
+			<tr>
+
+				<td><%= key.gsub("program_percentage_", "").gsub("_", " ").titleize %></td>
+
+				<% schools.each do |school| %>
+
+					<td><%= to_percent(school.academic.send("#{key}")) %></td>
+
+				<% end %>
+				
+			</tr>
+		<% end %>
+	</table>
+</div>
