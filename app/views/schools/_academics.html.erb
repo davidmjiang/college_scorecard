@@ -1,19 +1,19 @@
 <h1>Academics</h1>
 
-<h3>Most Popular Subjects</h3>
+<h3>Popular Subjects</h3>
 
-<table class="table">
+<table class="table table-striped">
 	<tr>
 
 		<th>Subject</th>
 		<th>Percent of Total</th>
 
-
 	</tr>
 	<% school.popular_subjects.each do |subject, percent| %>
 		<tr>
-			<td><%= subject %></td>
-			<td><%= percent %></td>
+
+			<td><%= subject_name(subject) %></td>
+			<td><%= to_percent(percent) %></td>
 
 		</tr>
 	<% end %>

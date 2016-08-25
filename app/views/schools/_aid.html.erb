@@ -1,0 +1,25 @@
+<h1>Aid</h1>
+
+
+<table class="table">
+	<tr>
+
+		<th>Subject</th>
+		<th>Percent of Total</th>
+
+
+	</tr>
+	<% get_aid_info(school).each do |k, v| %>
+		<tr>
+
+			<td><%= k.gsub("_", " ").titleize %></td>
+
+			<% if v.nil? %>
+				<td>N/A</td>
+			<% else %>
+				<td><%= v %></td>
+			<% end %>
+			
+		</tr>
+	<% end %>
+</table>

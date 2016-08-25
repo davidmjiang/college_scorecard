@@ -1,3 +1,13 @@
 // Place all the styles related to the schools controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#completion_tabs td + td {
+  font-weight: lighter;
+}
+
+#completion-rate {
+  color: #FF1493;
+  font-weight: bold;
+  font-size: 1.33em;
+}
