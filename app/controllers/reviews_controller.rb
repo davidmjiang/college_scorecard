@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :edit, :update, :destroy, :require_current_user
+
 
   def create
     @user = current_user
@@ -21,10 +21,10 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find(params[:id])
+    @review = current_user.reviews.find(params[:id])
     @school = @review.school
     if @review.update(whitelisted_params)
-      flash[:sucess] = "Changes have been made to reflect your wavering opinion."
+      flash[:success] = "Changes have been made to reflect your wavering opinion."
       redirect_to school_review_path(@school, @review)
     else  
       flash[:error] = @review.errors.full_messages.join(', ')
@@ -60,6 +60,6 @@ class ReviewsController < ApplicationController
   private
 
   def whitelisted_params
-    params.require(:review).permit(:body, :school_id, :user_id, :id)
+    params.require(:review).permit(:body)
   end
 end

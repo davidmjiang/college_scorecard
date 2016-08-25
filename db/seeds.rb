@@ -37,7 +37,6 @@ FACTOR.times do |i|
     user_id: user.id
     })
 
-  
   school.create_repayment
   school.create_earning
   school.create_cost
@@ -48,6 +47,3 @@ FACTOR.times do |i|
   school.create_student
 
 end
-
-# note: review.school = school is not working
-# note: review.author = user is not working

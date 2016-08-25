@@ -15,7 +15,7 @@
         <h3>Your Reviews</h3>
         <ul>
         <% @user.reviews.each do |review| %>
-          <li><%= review.body %></li>
+          <li> <span><%= link_to review.school.school_name, school_path(review.school) %></span> | <%= review.body %> </li>
         <% end %>
         </ul>
       </div>
