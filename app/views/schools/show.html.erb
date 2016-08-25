@@ -35,7 +35,7 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 				</div>
 
 				<div class="tab-pane" id="admissions">
-          <h3>Notice the gap between the content and tab after applying a background color</h3>
+          <%= render "admission_table", school: @school %>
 				</div>
 
         <div class="tab-pane" id="aid">
@@ -62,7 +62,7 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 
 
 				 <div class="tab-pane" id="students">
-          <h3>add clearfix to tab-content (see the css)</h3>
+          <%= render "student_table", school: @school %>
 				</div>
 
 	
