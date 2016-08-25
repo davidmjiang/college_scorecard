@@ -1,22 +1,22 @@
-<h1>Academics</h1>
+<h1>Percentage of Students By Academic Program</h1>
 
 <div class="table-responsive">
   <table class="table table-striped table-hover">
     <tr>
-      <th>Attribute</th>
+      <th>Program</th>
       <% schools.each do |school| %>
-        <th><%= school.school_name %></th>
+        <th><%= link_to school.school_name, school_path(school) %></th>
       <% end %>
     </tr>
 
-		<% get_aid_keys(schools.first).each do |key| %>
+		<% get_academic_keys(schools.first).each do |key| %>
 			<tr>
 
-				<td><%= key.gsub("_", " ").titleize %></td>
+				<td><%= key.gsub("program_percentage_", "").gsub("_", " ").titleize %></td>
 
 				<% schools.each do |school| %>
 
-					<td><%= school.aid.send("#{key}") %></td>
+					<td><%= to_percent(school.academic.send("#{key}")) %></td>
 
 				<% end %>
 				

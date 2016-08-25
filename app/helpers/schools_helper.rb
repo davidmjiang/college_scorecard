@@ -9,7 +9,7 @@ module SchoolsHelper
   end
 
   def get_academic_keys(school)
-    keys = school.aid.attributes.keys.delete_if {|k| k == "school_id" || k == "id" || k == "created_at" || k == "updated_at"}
+    keys = school.academic.attributes.keys.delete_if {|k| k == "school_id" || k == "id" || k == "created_at" || k == "updated_at"}
   end
 
   def to_percent(value)
@@ -69,6 +69,8 @@ module SchoolsHelper
   def get_sat_data(school)
     data = {}
     data["Critical Reading"] = school.admission.sat_scores_midpoint_critical_reading
+    
+    data["Critical Reading"] = Admission.average(:sat_scores_midpoint_critical_reading)
 
     data["Math"] = school.admission.sat_scores_midpoint_math
     data["Writing"] = school.admission.sat_scores_midpoint_writing

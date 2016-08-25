@@ -24,7 +24,7 @@
                   <tr>
                     <th>Attribute</th>
                     <% schools.each do |school| %>
-                      <th><%= school.school_name %></th>
+                      <th><%= link_to school.school_name, school_path(school) %></th>
                     <% end %>
                   </tr>
 
