@@ -26,7 +26,19 @@ class School < ActiveRecord::Base
 		"https://maps.googleapis.com/maps/api/staticmap?center=#{urlify(school_name)},#{urlify(location)}&zoom=15&size=300x300&key=AIzaSyDTLUeLPMNZy4Gw99gQNFF6d1gyDbukKmg"
   end
 
+  def get_street_view
+    response = get_coords_from_location
+    "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=#{response["lat"]},#{response["lng"]}&fov=90&heading=235&pitch=10&key=AIzaSyDzAzsvsSRGmqNCzBALyd8ISPylRAn5-mg"
+  end
 
+  def get_coords_from_location
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{urlify(school_name)},#{urlify(location)}&key=#{Rails.application.secrets.gmaps_geocoding_api_key}"
+     response = HTTParty.get(url, verify: false)["results"].first["geometry"]["location"]
+  end
+
+  def urlify(location)
+    location.gsub(" ", "+")
+  end
 	def location
 		"#{school_city}, #{school_state}"
 	end
@@ -40,8 +52,17 @@ class School < ActiveRecord::Base
 	def popular_subjects
 		attribs = academic.attributes
 		attribs = attribs.delete_if { |k, v| k == "created_at" || k == "school_id" || k == "updated_at" || k == "id" }
-		attribs.sort_by { |subject, percent| percent }.reverse[0..4].to_h
+  	attribs = attribs.sort_by { |subject, percent| percent }.reverse[0..4].to_h
+   attrib_keys = attribs.map do |k, v|
+      k.gsub("program_percentage_", "")
+      k.gsub("_", " ")
+      k.titleize
+
+    end
+
+    attrib_keys.zip(attribs.values).to_h
 	end
+
 
 
 end

@@ -1,5 +1,6 @@
 <h1><%= @school.school_name %></h1>
-add image?
+<%= image_tag @school.get_street_view %><br>
+
 <%= image_tag @school.get_map_url %><br>
 
 <br>
@@ -14,7 +15,7 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 <div id="exTab2" class="container">	
 <ul class="nav nav-tabs">
 			<li class="active"><a  href="#academics" data-toggle="tab">Overall</a></li>
-			<li><a href="#academics" data-toggle="tab">Admissions</a></li>
+			<li><a href="#academics" data-toggle="tab">Academics</a></li>
 			<li><a href="#admissions" data-toggle="tab">Admissions</a></li>
 			<li><a href="#aid" data-toggle="tab">Aid</a></li>
 			<li><a href="#completion" data-toggle="tab">Completion</a></li>
