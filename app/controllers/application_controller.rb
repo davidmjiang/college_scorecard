@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
   helper_method :bookmarked?
 
   def find_user_bookmark(school)
-    Bookmark.find(user_id: current_user.id, school_id: school.id)
+    Bookmark.where(user_id: current_user.id, school_id: school.id).first
   end
   helper_method :find_user_bookmark
 
