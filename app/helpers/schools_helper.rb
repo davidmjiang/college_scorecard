@@ -8,12 +8,20 @@ module SchoolsHelper
     if value.nil?
       "N/A"
     else
-      "#{(value*100).round(2)}%"
+      "#{(value*100).round(1)}%"
     end
   end
 
   def subject_name(subject)
     subject.split(" ")[2..-1].join(" ")
+  end
+
+  def float_to_int(f)
+    if f
+      f.to_i
+    else
+      ""
+    end
   end
 
 

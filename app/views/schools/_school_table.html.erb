@@ -3,11 +3,6 @@
 <table class="table table-striped">
 
 	<tr>
-		<th>Subject</th>
-		<th>Value</th>
-	</tr>
-
-	<tr>
 		<td>Location</td>
 		<td><%=school.location %></td>
 	</tr>
@@ -24,19 +19,19 @@
 
 	<tr>
 		<td>Avg SAT Score (Math)</td>
-		<td><%= school.admission.sat_scores_midpoint_math %></td>
+		<td><%= float_to_int(school.admission.sat_scores_midpoint_math) %></td>
 	</tr>
 	<tr>
 		<td>Avg SAT Score (Critical Reading)</td>
-		<td><%= school.admission.sat_scores_midpoint_critical_reading %></td>
+		<td><%= float_to_int(school.admission.sat_scores_midpoint_critical_reading) %></td>
 	</tr>
 	<tr>
 		<td>Avg SAT Score (Writing)</td>
-		<td><%= school.admission.sat_scores_midpoint_writing %></td>
+		<td><%= float_to_int(school.admission.sat_scores_midpoint_writing) %></td>
 	</tr>
 	<tr>
 		<td>Avg SAT Score (Cumulative)</td>
-		<td><%= school.admission.sat_scores_average_overall %></td>
+		<td><%= float_to_int(school.admission.sat_scores_average_overall) %></td>
 	</tr>
 
 	<tr>
@@ -51,12 +46,12 @@
 	
 
 		<td>Tuition (in state)</td>
-		<td><%= school.cost.tuition_in_state%></td>
+		<td><%= number_to_currency(school.cost.tuition_in_state, precision: 0)%></td>
 	</tr>
 
 	<tr>
 		<td>Tuition (out of state)</td>
-		<td><%= school.cost.tuition_in_state%></td>
+		<td><%= number_to_currency(school.cost.tuition_in_state, precision:0)%></td>
 	</tr>
 
 

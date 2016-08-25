@@ -3,69 +3,69 @@
 <div class="container">
   <div class="row">
     <!-- sidebar -->
-  <div class="col-sm-4">
-    <div class="info-box fixed">
-      <h3>Application Timeline</h3>
-      <%= render partial: 'users/application_timeline' %>
+    <div class="col-sm-4">
+      <div class="info-box fixed">
+        <h3>Application Timeline</h3>
+        <%= render partial: 'users/application_timeline' %>
+      </div>
     </div>
-  </div>
 
-  <div class="col-sm-8">
-    <div class="col-sm-12">
-      <div class="info-box school-list">
-        <h3>Your Schools</h3>
-        <div class="table-responsive">
-          <table class="table table-striped table-hover table-condensed"
-            <tr>
-              <th>School</th>
-              <th>Essay Written?</th>
-              <th>Letters of Recommendation Written?</th>
-              <th>Application Sent?</th>
-              <th></th>
-              <th></th>
-            </tr>
-            <% @user.schools.each do |school| %>
-              <%= render partial: "checklist", locals: {school: school, bookmark: Bookmark.where("user_id = ? AND school_id = ?", @user.id, school.id).first} %>
-            <% end %>
-          </table>
+    <div class="col-sm-8">
+      <div class="col-sm-12">
+        <div class="info-box school-list">
+          <h3>Your Schools</h3>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover table-condensed"
+              <tr>
+                <th>School</th>
+                <th>Essay Written?</th>
+                <th>Letters of Recommendation Written?</th>
+                <th>Application Sent?</th>
+                <th></th>
+                <th></th>
+              </tr>
+              <% @user.schools.each do |school| %>
+                <%= render partial: "checklist", locals: {school: school, bookmark: Bookmark.where("user_id = ? AND school_id = ?", @user.id, school.id).first} %>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+          <li class="active"><a  href="#compare" data-toggle="tab">Compare</a></li>
+          <li><a href="#reviews" data-toggle="tab">Your Reviews</a></li>
+        </ul>
+
+        <div class="tab-content ">
+          <div class="tab-pane active" id="compare">
+            <div class="info-box">
+              <h3>Compare Your Schools</h3>
+              <h5>Choose up to 5 of your schools for in-depth comparison:</h5>
+              <%= form_tag comparisons_path, :method => 'get' do %>
+                <%= label_tag "schools", "Select Schools To Compare:"%>
+                <%= select_tag("schools", options_for_select(bookmarked_schools(@user.schools)), multiple: true) %>
+                <%= submit_tag "See Comparison" %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="tab-pane" id="reviews">
+            <div class="info-box">
+              <h3>Your Reviews</h3>
+              <ul>
+              <% @user.reviews.each do |review| %>
+                <li> <span><%= link_to review.school.school_name, school_path(review.school) %></span> | <%= review.body %> </li>
+              <% end %>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="col-sm-8 col-sm-offset-2">
-      <div class="info-box">
-        <h3>Compare Your Schools</h3>
-        <h5>Choose up to 5 of your schools for in-depth comparison:</h5>
-        <%= form_tag comparisons_path, :method => 'get' do %>
-          <%= label_tag "schools", "Select Schools To Compare:"%>
-          <%= select_tag("schools", options_for_select(bookmarked_schools(@user.schools)), multiple: true) %>
-          <%= submit_tag "See Comparison" %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="col-sm-6">
-      <div class="info-box">
-        <h3>Your Reviews</h3>
-        <ul>
-        <% @user.reviews.each do |review| %>
-          <li> <span><%= link_to review.school.school_name, school_review_path(review.school, review) %></span> | <%= review.body[0..21] %><%= "..." if review.body.size > 21 %> </li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-
-    <div class="col-sm-6">
-      <div class="info-box">
-        <h3>Recent Activity</h3>
-
-      </div>
-    </div>
-
-  </div>
   </div>
 </div>
-
 
 <%= timeline [
   ["Register For SAT", "2016-09-01", "2016-10-31"],
@@ -77,6 +77,6 @@
   ["Send transcripts to schools where you are applying.", "2016-10-31", "2016-12-31"],
   ["Submit the CSS profile.", "2016-11-30", "2016-12-31"],
   ["Complete the FAFSA", "2016-12-15", "2017-01-31"],
-  ["Compare award letters", "2016-12-15", "2017-02-20"],
-  ["Get Acceptances!", "2017-02-15", "2017-04-30"],
+  ["Compare award letters.", "2016-12-15", "2017-02-20"],
+  ["Get Acceptances!", "2017-02-15", "2017-04-30"]
 ] , height: "1000px" %>
