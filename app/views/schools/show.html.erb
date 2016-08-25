@@ -5,6 +5,7 @@
 
 <br>
 School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_school_url %></a><br>
+
 <% if signed_in_user? %>
   <% if bookmarked?(@school) %>
      <%= button_to "Unbookmark", school_bookmark_path(@school.id, find_user_bookmark(@school).id), method: :delete %>
@@ -12,12 +13,13 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
    <%= button_to "Bookmark", school_bookmarks_path(@school.id), method: :post %>
   <% end %>
 <% end %><br>
+
 <%= link_to "See School Reviews" %>
 
 
 
 
-<div id="exTab2" class="container">	
+<div id="exTab2" class="container">
 <ul class="nav nav-tabs">
 			<li class="active"><a  href="#overall" data-toggle="tab">Overall</a></li>
 
@@ -60,10 +62,8 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
           <%= render "student_table", school: @school %>
 				</div>
 
-	
+
 			</div>
   </div>
 
 <hr></hr>
-
-	
