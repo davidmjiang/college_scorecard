@@ -65,15 +65,7 @@ class School < ActiveRecord::Base
 	end
 
 
-  # def self.search(queries)
-  #   results = self.where("")
-  #   if queries
-  #     queries.each do |col, term|
-  #       results = results.where("#{col} LIKE ?", "%#{term}%") if term.present?
-  #     end
-  #   end
-  #   results
-  # end
+
 
 
 

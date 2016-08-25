@@ -16,3 +16,5 @@
 //= require_tree .
 //= require twitter/typeahead
 //= require twitter/typeahead.min
+//= require Chart.bundle
+//= require chartkick
