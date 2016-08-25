@@ -4,7 +4,7 @@
 	<%= image_tag @school.get_map_url, class: "img-rounded" %><br>
 
 <br>
-School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_school_url %></a><br>
+School Site: <a href="http://<%= @school.school_school_url %>"><%= @school.school_school_url %></a><br>
 
 <% if signed_in_user? %>
   <% if bookmarked?(@school) %>
