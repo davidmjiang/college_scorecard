@@ -15,11 +15,6 @@ class School < ActiveRecord::Base
   has_many :users, through: :bookmarks
 
 
-  searchable do
-    text :school_name
-    integer :school_region_id
-    integer :school_locale
-  end
 
   def get_map_url
 		"https://maps.googleapis.com/maps/api/staticmap?center=#{urlify(school_name)},#{urlify(location)}&zoom=15&size=400x400&key=AIzaSyDTLUeLPMNZy4Gw99gQNFF6d1gyDbukKmg"
@@ -69,41 +64,6 @@ class School < ActiveRecord::Base
 
     attrib_keys.zip(attribs.values).to_h
 	end
-
-
-
-
-
-
-
-# Index search
-
-def self.index_search(query_params)
-  query = School.search do
-    fulltext "#{query_params[:school_name]}*"
-    any_of do
-      if query_params[:school_region_id]
-        query_params[:school_region_id].each do |region_id|
-          if query_params[:school_locale]
-            query_params[:school_locale].each do |locale|
-              all_of do
-                with(:school_region_id, region_id.to_i)
-                with(:school_locale, (locale.to_i - 2..locale.to_i))
-              end
-            end
-          else
-            with(:school_region_id, region_id.to_i)
-          end
-        end
-      elsif query_params[:school_locale]
-        query_params[:school_locale].each do |locale|
-          with(:school_locale, (locale.to_i - 2..locale.to_i))
-        end
-      end
-    end
-  end
-  query
-end
 
 
 end

@@ -21,7 +21,6 @@ gem 'figaro'
 gem 'paperclip'
 gem 'httparty'
 gem 'awesome_print'
-gem 'sunspot_rails'
 gem 'chartkick'
 gem 'faker'
 gem 'simple_form'
@@ -61,7 +60,6 @@ group :development do
   gem 'pry'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'sunspot_solr'
 end
 
 group :production do
