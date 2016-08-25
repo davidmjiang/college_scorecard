@@ -85,4 +85,15 @@ class ApplicationController < ActionController::Base
   end
   helper_method :locale_types
 
+
+  def bookmarked?(school)
+    Bookmark.exists?({user_id: current_user.id, school_id: school.id})
+  end
+  helper_method :bookmarked?
+
+  def find_user_bookmark(school)
+    Bookmark.find(user_id: current_user.id, school_id: school.id)
+  end
+  helper_method :find_user_bookmark
+
 end
