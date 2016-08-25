@@ -42,16 +42,16 @@ class ApplicationController < ActionController::Base
   end 
 
 
-  REGIONS = { "0": "U.S. Service Schools",
-              "1": "New England",
-              "2": "Midatlantic",
-              "3": "Great Lakes",
-              "4": "Plains",
-              "5": "Southeast",
-              "6": "Southwest",
-              "7": "Rocky Mountains",
-              "8": "Far West",
-              "9": "Outlying Areas"
+  REGIONS = { "U.S. Service Schools": 0,
+              "New England": 1,
+              "Midatlantic": 2,
+              "Great Lakes": 3,
+              "Plains": 4,
+              "Southeast": 5,
+              "Southwest": 6,
+              "Rocky Mountains": 7,
+              "Far West": 8,
+              "Outlying Areas": 9
             }
 
   def region_id_translate(input)
@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
   def school_regions
     regions = []
     REGIONS.each do |k,v|
-      regions << [v,k]
+      regions << [k,v]
     end
     regions
   end

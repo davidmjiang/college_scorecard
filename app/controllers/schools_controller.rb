@@ -5,6 +5,7 @@ class SchoolsController < ApplicationController
 	def index
 	  @query = School.search do
 	  	fulltext "#{query_params[:school_name]}*"
+	  	with(:school_region_id, query_params[:school_region_id].to_i) if query_params[:school_region_id]
 	  end
 		@schools = @query.results # TODO: add something to filter by search
 	end
@@ -23,6 +24,10 @@ class SchoolsController < ApplicationController
 	private
 
 	def query_params
-		params.permit(:utf8, :commit, :query => [:school_name, :school_region_id, :school_locale])[:query]
+		params.permit(:utf8, :commit, :query => [:school_name, :school_region_id => [], :school_locale => []])[:query]
+	end
+
+	def region_numbers(regions)
+		regions.map{|i| i.to_i }
 	end
 end
