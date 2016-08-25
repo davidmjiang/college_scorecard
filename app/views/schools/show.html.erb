@@ -4,17 +4,20 @@
 	<%= image_tag @school.get_map_url, class: "img-rounded" %><br>
 
 <br>
-School Site: <a href="http://<%= @school.school_school_url %>"><%= @school.school_school_url %></a><br>
+
+<h4><%= link_to "School Website", "http://#{@school.school_school_url}", id: "school-site-link" %>
+</hr><br>
+
 
 <% if signed_in_user? %>
   <% if bookmarked?(@school) %>
-     <%= button_to "Unbookmark", school_bookmark_path(@school.id, find_user_bookmark(@school).id), method: :delete %>
+     <%= button_to "Unbookmark", school_bookmark_path(@school.id, find_user_bookmark(@school).id), method: :delete, class: "btn btn-success", id: "bookmark-button" %>
   <% else %>
-   <%= button_to "Bookmark", school_bookmarks_path(@school.id), method: :post %>
+   <%= button_to "Bookmark", school_bookmarks_path(@school.id), method: :post, class: "btn btn-success", id: "bookmark-button" %>
   <% end %>
 <% end %><br>
 
-<%= link_to "See School Reviews" %>
+<%= link_to "See School Reviews", school_reviews_path(@school.id), class: "btn btn-primary", id: "see-reviews-button" %>
 
 
 <div id="exTab2" class="container">
@@ -36,6 +39,8 @@ School Site: <a href="http://<%= @school.school_school_url %>"><%= @school.schoo
 			<div class="tab-content ">
 			  <div class="tab-pane active" id="overall">
           <%= render "school_table", school: @school %>
+          <%= render "charts", school: @school %>
+          <hr></hr>
 				</div>
 
 				<div class="tab-pane" id="academics">
@@ -65,5 +70,4 @@ School Site: <a href="http://<%= @school.school_school_url %>"><%= @school.schoo
 
 			</div>
   </div>
-<%= render "charts", school: @school %>
-<hr></hr>
+

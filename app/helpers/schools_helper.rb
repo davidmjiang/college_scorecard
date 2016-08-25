@@ -16,12 +16,20 @@ module SchoolsHelper
     if value.nil?
       "N/A"
     else
-      "#{(value*100).round(2)}%"
+      "#{(value*100).round(1)}%"
     end
   end
 
   def subject_name(subject)
     subject.split(" ")[2..-1].join(" ")
+  end
+
+  def float_to_int(f)
+    if f
+      f.to_i
+    else
+      ""
+    end
   end
 
 
@@ -39,13 +47,31 @@ module SchoolsHelper
   end
 
   def get_cost_data(school)
-    data = {}    
-    data["0-$30,000"] = school.cost.net_price_private_by_income_level_0_30000
-    data["$30,001-$48,000"] = school.cost.net_price_private_by_income_level_30001_48000
-    data["$30,001-$48,000"] = school.cost.net_price_private_by_income_level_30001_48000
-    data["$48,001-$75,000"] = school.cost.net_price_private_by_income_level_48001_75000
-    data["$75,001-$110,000"] = school.cost.net_price_private_by_income_level_75001_110000
-    data["$110,001+"] = school.cost.net_price_private_by_income_level_110001_plus
+    data = {}   
+    if school.cost.net_price_private_by_income_level_0_30000
+      data["0-$30,000"] = school.cost.net_price_private_by_income_level_0_30000
+      data["$30,001-$48,000"] = school.cost.net_price_private_by_income_level_30001_48000
+      data["$30,001-$48,000"] = school.cost.net_price_private_by_income_level_30001_48000
+      data["$48,001-$75,000"] = school.cost.net_price_private_by_income_level_48001_75000
+      data["$75,001-$110,000"] = school.cost.net_price_private_by_income_level_75001_110000
+      data["$110,001+"] = school.cost.net_price_private_by_income_level_110001_plus
+    elsif school.cost.net_price_public_by_income_level_0_30000
+      data["0-$30,000"] = school.cost.net_price_public_by_income_level_0_30000
+      data["$30,001-$48,000"] = school.cost.net_price_public_by_income_level_30001_48000
+      data["$30,001-$48,000"] = school.cost.net_price_public_by_income_level_30001_48000
+      data["$48,001-$75,000"] = school.cost.net_price_public_by_income_level_48001_75000
+      data["$75,001-$110,000"] = school.cost.net_price_public_by_income_level_75001_110000
+      data["$110,001+"] = school.cost.net_price_public_by_income_level_110001_plus
+    end
     data
+  end
+
+
+  def get_median_debt_data(school)
+    data = []
+
+    data << [15000, school.aid.median_debt_income_0_30000]
+    data << [50000, school.aid.median_debt_income_30001_75000]
+    data << [75000, school.aid.median_debt_income_greater_than_75000]
   end
 end
