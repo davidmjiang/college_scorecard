@@ -1,6 +1,6 @@
 class ScAPI
   attr_accessor :sort_desc
-  attr_reader :response, :request, :ATTRIBUTES
+  attr_reader :response, :request, :ATTRIBUTES, :fields
   include HTTParty
   BASE_URI = 'https://api.data.gov/ed/collegescorecard/v1/schools.json?'
   def initialize
@@ -21,13 +21,25 @@ class ScAPI
     attributes = read_attributes
     attributes.split(',').map do |attr|
       prefix = attr.split('.')[0]
-      attr = '2013.' + attr unless prefix == 'school' || prefix == 'root'
+      if prefix == 'school' || prefix == 'root'
+        attr
+      else
+        attr = '2013.' + attr
+      end
     end.compact
   end
 
   def get_type_attributes(type)
-    get_attributes.delete_if do |attr|
-      attr.split('.')[1] != type
+    if type == 'school' || type == 'root'
+      get_attributes.delete_if do |attr|
+        parts = attr.split('.')
+        parts[0] != type
+      end
+    else
+      get_attributes.delete_if do |attr|
+        parts = attr.split('.')
+        parts[1] != type
+      end
     end
   end
 
@@ -61,8 +73,8 @@ class ScAPI
     @request += '&api_key=fXi2CD8bCMCZAVOI7nx0PgTVv766uCpyH6TvM4eN'
   end
 
-  def run_get
-    get
+  def run_party_get
+    @response = HTTParty.get(@request)
   end
 
   def get_cat_response(category)
@@ -70,6 +82,12 @@ class ScAPI
     default_options
     add_type_attributes_as_fields(category)
     get
+  end
+
+  def add_fields_to_request
+    @fields.each do |f|
+      @request += f + ',' if f
+    end
   end
 
   # 2013, sorted by school pop., first 200 results
@@ -119,12 +137,6 @@ class ScAPI
 
   def add_field(field)
     @fields << field
-  end
-
-  def add_fields_to_request
-    @fields.each do |f|
-      @request += f + ',' if f
-    end
   end
 
   def reset_request
