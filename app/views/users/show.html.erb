@@ -24,6 +24,16 @@
       </div>
     </div>
 
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="info-box">
+        <h3>Compare Your Schools</h3>
+        <h5>Choose up to 5 of your schools for in-depth comparison:</h5>
+        <form action="/comparisons" method="get">
+          <%= collection_select(@user, :schools, @user.schools, :id, :school_name) %>
+        </form>
+      </div>
+    </div>
+
     <div class="col-sm-6">
       <div class="info-box">
         <h3>Your Reviews</h3>
