@@ -2,7 +2,15 @@
 
 <div class="container">
   <div class="row">
+    <!-- sidebar -->
+  <div class="col-sm-4">
+    <div class="info-box fixed">
+      <h3>Application Timeline</h3>
+      <%= render partial: 'users/application_timeline' %>
+    </div>
+  </div>
 
+  <div class="col-sm-8">
     <div class="col-sm-12">
       <div class="info-box school-list">
         <h3>Your Schools</h3>
@@ -50,18 +58,25 @@
     <div class="col-sm-6">
       <div class="info-box">
         <h3>Recent Activity</h3>
-        
-      </div>
-    </div>
 
-    <div class="col-sm-6">
-      <div class="info-box">
-        <h3>Application Timeline</h3>
-        <%= render partial: 'users/application_timeline' %>
       </div>
     </div>
 
   </div>
+  </div>
 </div>
 
-      
+
+<%= timeline [
+  ["Register For SAT", "2016-09-01", "2016-10-31"],
+  ["Prepare and/or revise application essays", "2016-09-01", "2016-10-31"],
+  ["Ask for letters of recommendation", "2016-09-01", "2016-10-31"],
+  ["Submit early decision or early action applications, if desired", "2016-10-15", "2016-11-31"],
+  ["Submit regular decision applications", "2016-10-31", "2016-12-31"],
+  ["Send your SAT and/or ACT scores to schools where you are applying.", "2016-10-31", "2016-11-30"],
+  ["Send transcripts to schools where you are applying.", "2016-10-31", "2016-12-31"],
+  ["Submit the CSS profile.", "2016-11-30", "2016-12-31"],
+  ["Complete the FAFSA", "2016-12-15", "2017-01-31"],
+  ["Compare award letters.", "2016-12-15", "2017-02-20"],
+  ["Compare award letters.", "2017-02-15", "2017-04-30"],
+] , height: "1000px" %>
