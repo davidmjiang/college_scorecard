@@ -3,7 +3,10 @@ class SchoolsController < ApplicationController
 	skip_before_action :require_login 
 
 	def index
-		@schools = School.solr_search(query_params) # TODO: add something to filter by search
+	  @query = School.search do
+	  	fulltext "#{query_params[:school_name]}*"
+	  end
+		@schools = @query.results # TODO: add something to filter by search
 	end
 
 	def show
@@ -20,6 +23,6 @@ class SchoolsController < ApplicationController
 	private
 
 	def query_params
-		params.permit(:query => [:name, :region, :locale])[:query]
+		params.permit(:utf8, :commit, :query => [:school_name, :school_region_id, :school_locale])[:query]
 	end
 end

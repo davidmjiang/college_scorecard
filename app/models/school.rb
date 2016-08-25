@@ -14,12 +14,12 @@ class School < ActiveRecord::Base
 
   has_many :users, through: :bookmarks
 
+
   searchable do
-    string :school_name
-    integer :school_region_id
-    integer :school_locale
+    text :school_name
+    #integer :school_region_id
+    #integer :school_locale
   end
-  
 
   def get_map_url
 		"https://maps.googleapis.com/maps/api/staticmap?center=#{root_location_lat},#{root_location_lon}&zoom=17&size=300x300&key=#{Rails.application.secrets.gmaps_static_api_key}"
@@ -40,13 +40,16 @@ class School < ActiveRecord::Base
 	# end 
 
 
-  def self.solr_search(queries)
-    search do
-      with :name, '%#{queries[:name]}%' if queries[:name]
-      with :region, queries[:region].to_i if queries[:region]
-      with :locale, queries[:locale].to_i if queries[:locale]
-    end
-  end
+  # def self.search(queries)
+  #   results = self.where("")
+  #   if queries
+  #     queries.each do |col, term|
+  #       results = results.where("#{col} LIKE ?", "%#{term}%") if term.present?
+  #     end
+  #   end
+  #   results
+  # end
+  
 end
 
 
