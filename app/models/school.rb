@@ -50,7 +50,6 @@ class School < ActiveRecord::Base
 	end
 
 
-
 	def popular_subjects
 		attribs = academic.attributes
 		attribs = attribs.delete_if { |k, v| k == "created_at" || k == "school_id" || k == "updated_at" || k == "id" }
@@ -66,6 +65,47 @@ class School < ActiveRecord::Base
 	end
 
 
+  # def self.search(queries)
+  #   results = self.where("")
+  #   if queries
+  #     queries.each do |col, term|
+  #       results = results.where("#{col} LIKE ?", "%#{term}%") if term.present?
+  #     end
+  #   end
+  #   results
+  # end
+
+
+
+
+# Index search
+
+def self.index_search(query_params)
+  query = School.search do
+    fulltext "#{query_params[:school_name]}*"
+    any_of do
+      if query_params[:school_region_id]
+        query_params[:school_region_id].each do |region_id|
+          if query_params[:school_locale]
+            query_params[:school_locale].each do |locale|
+              all_of do
+                with(:school_region_id, region_id.to_i)
+                with(:school_locale, (locale.to_i - 2..locale.to_i))
+              end
+            end
+          else
+            with(:school_region_id, region_id.to_i)
+          end
+        end
+      elsif query_params[:school_locale]
+        query_params[:school_locale].each do |locale|
+          with(:school_locale, (locale.to_i - 2..locale.to_i))
+        end
+      end
+    end
+  end
+  query
+end
 
 
 end
