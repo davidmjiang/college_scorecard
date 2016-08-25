@@ -14,8 +14,6 @@ class School < ActiveRecord::Base
 
   has_many :users, through: :bookmarks
 
-
-
   def get_map_url
     response = get_coords_from_location
 		"https://maps.googleapis.com/maps/api/staticmap?center=#{response["lat"]},#{response["lng"]}&zoom=15&size=400x400&key=AIzaSyDTLUeLPMNZy4Gw99gQNFF6d1gyDbukKmg"
@@ -30,7 +28,6 @@ class School < ActiveRecord::Base
   def get_coords_from_location
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{urlify(school_name)},#{urlify(location)}&key=AIzaSyBi_LAVQdQK86p7BcCxTxYuPr1lKVC5HAw"
      response = HTTParty.get(url, verify: false)["results"]
-
     if response.empty?
       return { "lat" => 34.138792, "lng" => -118.125407 }
     else
@@ -43,28 +40,66 @@ class School < ActiveRecord::Base
   end
 
 	def location
-		"#{school_city}, #{school_state}"
+   "#{school_city}, #{school_state}"
 	end
 
 
 	def urlify(location)
-		location.gsub(" ", "+")
+   location.gsub(" ", "+")
 	end
 
 
 	def popular_subjects
-		attribs = academic.attributes
-		attribs = attribs.delete_if { |k, v| k == "created_at" || k == "school_id" || k == "updated_at" || k == "id" }
-  	attribs = attribs.sort_by { |subject, percent| percent }.reverse[0..9].to_h
+   attribs = academic.attributes
+   attribs = attribs.delete_if { |k, v| k == "created_at" || k == "school_id" || k == "updated_at" || k == "id" }
+   attribs = attribs.sort_by { |subject, percent| percent }.reverse[0..9].to_h
    attrib_keys = attribs.map do |k, v|
-      k.gsub("program_percentage_", "")
-      k.gsub("_", " ")
-      k.titleize
-
-    end
-
-    attrib_keys.zip(attribs.values).to_h
+     k.gsub("program_percentage_", "")
+     k.gsub("_", " ")
+     k.titleize
+   end
+   attrib_keys.zip(attribs.values).to_h
 	end
 
-z
+  def self.index_search(params)
+    if params['school_name']
+      school_name = params['school_name']
+    end
+    if params['school_region_id']
+      region_ids = params['school_region_id'].map(&:to_i)
+    end
+    if params['school_locale']
+      school_locales = params['school_locale'].map(&:to_i)
+      school_locales.map { |l| [l, l-1, l-2]}.flatten
+    end
+
+    query = fuzzy_search_school(school_name) if school_name
+    if query && school_locales
+      query = query.where_school_locale_equals(school_locales)
+    elsif school_locales
+      query = where_school_locale_equals(school_locales)
+    end
+    if query && region_ids
+      query = query.where_region_id_equals(region_ids)
+    elsif region_ids
+      query = where_region_id_equals(region_id)
+    end
+    query
+  end
+
+  # i, i-1, i-2
+  # User.where('name ilike any ( array[?] )',['%thomas%','%james%','%martin%'])
+
+  def self.where_school_locale_equals(school_locale)
+    where('school_locale= any (array[?] )', school_locale)
+  end
+
+  def self.where_region_id_equals(region_ids)
+    where('school_region_id= any (array[?] )', region_ids)
+  end
+
+  def self.fuzzy_search_school(query)
+    query = '%' + query + '%'
+    where("school_name ILIKE ?", query)
+  end
 end

@@ -1,5 +1,12 @@
+<h1>General Overview</h1>
 
-<table class="table">
+<table class="table table-striped">
+
+	<tr>
+		<th>Subject</th>
+		<th>Value</th>
+	</tr>
+
 	<tr>
 		<td>Location</td>
 		<td><%=school.location %></td>
@@ -12,12 +19,7 @@
 
 	<tr>
 		<td>Admission Rate</td>
-		<td><%= school.admission.admission_rate_overall %></td>
-	</tr>
-
-	<tr>
-		<td>Avg SAT Score (Math)</td>
-		<td><%= school.admission.sat_scores_midpoint_math %></td>
+		<td><%= to_percent(school.admission.admission_rate_overall) %></td>
 	</tr>
 
 	<tr>
@@ -33,17 +35,21 @@
 		<td><%= school.admission.sat_scores_midpoint_writing %></td>
 	</tr>
 	<tr>
-		<td>Avg SAT Score (Cummulative)</td>
+		<td>Avg SAT Score (Cumulative)</td>
 		<td><%= school.admission.sat_scores_average_overall %></td>
 	</tr>
 
 	<tr>
-		<td>Six Year Completion Rate</td>
-		<td><%= school.completion.six_yr_completion_overall%></td>
+
+		<td>Completion rate for first-time, full-time students (150% of expected time to completion/6 years):</td>
+		<td>  
+      	<%= (school.completion.completion_rate_4yr_150nt * 100).to_s + "%" if school.completion.completion_rate_4yr_150nt %> <%= (school.completion.completion_rate_less_than_4yr_150nt * 100).to_s + "%" if school.completion.completion_rate_less_than_4yr_150nt %>
+  	</td>
 	</tr>
 
 	<tr>
 	
+
 		<td>Tuition (in state)</td>
 		<td><%= school.cost.tuition_in_state%></td>
 	</tr>

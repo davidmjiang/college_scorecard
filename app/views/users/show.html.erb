@@ -2,7 +2,15 @@
 
 <div class="container">
   <div class="row">
+    <!-- sidebar -->
+  <div class="col-sm-4">
+    <div class="info-box fixed">
+      <h3>Application Timeline</h3>
+      <%= render partial: 'users/application_timeline' %>
+    </div>
+  </div>
 
+  <div class="col-sm-8">
     <div class="col-sm-12">
       <div class="info-box school-list">
         <h3>Your Schools</h3>
@@ -50,18 +58,10 @@
     <div class="col-sm-6">
       <div class="info-box">
         <h3>Recent Activity</h3>
-        
-      </div>
-    </div>
 
-    <div class="col-sm-6">
-      <div class="info-box">
-        <h3>Application Timeline</h3>
-        <%= render partial: 'users/application_timeline' %>
       </div>
     </div>
 
   </div>
+  </div>
 </div>
-
-      
