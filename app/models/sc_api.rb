@@ -3,6 +3,7 @@ class ScAPI
   attr_reader :response, :request, :ATTRIBUTES, :fields
   include HTTParty
   BASE_URI = 'https://api.data.gov/ed/collegescorecard/v1/schools.json?'
+  API_KEY = '&api_key=fXi2CD8bCMCZAVOI7nx0PgTVv766uCpyH6TvM4eN'
   def initialize
     reset_request
     @fields = []
@@ -16,7 +17,17 @@ class ScAPI
     add_sort_to_request if @sort_opt
     add_page_to_request if @page
     add_per_page_to_request if @per_page
-    @request += '&api_key=fXi2CD8bCMCZAVOI7nx0PgTVv766uCpyH6TvM4eN'
+    @request += API_KEY
+  end
+
+  def get_school_info_by_name(name)
+    @request = 'https://api.data.gov/ed/collegescorecard/v1/schools?school.name='
+    name.split(' ').each_with_index do |p,i|
+      @request += '%20' if i > 0
+      @request += p
+    end
+    @request += API_KEY
+    run_party_get
   end
 
   def add_sort_to_request
@@ -33,7 +44,7 @@ class ScAPI
   end
 
   def reset_request
-    @request = BASE_URI + '_fields='
+    @request = BASE_URI + 'school.ownership=1,2&_fields='
     @fields = []
     @sort_desc = false
   end
@@ -105,9 +116,10 @@ class ScAPI
     end
   end
 
-  def setup_cat_response(category)
+  def setup_cat_response(category, page)
     reset_request
-    default_options
+    default_options(page)
+    add_school_name_as_field
     add_type_attributes_as_fields(category)
     add_fields_to_request
     add_sort_to_request if @sort_opt
@@ -116,17 +128,27 @@ class ScAPI
     @request += '&api_key=fXi2CD8bCMCZAVOI7nx0PgTVv766uCpyH6TvM4eN'
   end
 
+  def add_school_name_as_field
+    add_field('school.name')
+  end
+
   def run_party_get
     @response = HTTParty.get(@request)
   end
 
   def get_cat_response(category, page)
     page = page.to_s
-    reset_request
-    default_options(page)
-    add_type_attributes_as_fields(category)
-    get
+    setup_cat_response(category, page)
+    run_party_get
   end
+
+  # def get_cat_response(category, page)
+  #   page = page.to_s
+  #   reset_request
+  #   default_options(page)
+  #   add_type_attributes_as_fields(category)
+  #   get
+  # end
 
   def add_fields_to_request
     @fields.each do |f|
@@ -137,7 +159,7 @@ class ScAPI
   # 2013, sorted by school pop., first 200 results
   def default_options(page)
     @sort_desc = true
-    add_sort_option('2013.student.size')
+    add_sort_option('2013.admissions.sat_scores.25th_percentile.math')
     add_page_option(page)
     add_per_page_option('100')
   end
