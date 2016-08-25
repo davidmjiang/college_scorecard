@@ -5,6 +5,7 @@
 
 <br>
 School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_school_url %></a><br>
+
 <% if signed_in_user? %>
   <% if bookmarked?(@school) %>
      <%= button_to "Unbookmark", school_bookmark_path(@school.id, find_user_bookmark(@school).id), method: :delete %>
@@ -12,12 +13,13 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
    <%= button_to "Bookmark", school_bookmarks_path(@school.id), method: :post %>
   <% end %>
 <% end %><br>
+
 <%= link_to "See School Reviews" %>
 
 
 
 
-<div id="exTab2" class="container">	
+<div id="exTab2" class="container">
 <ul class="nav nav-tabs">
 			<li class="active"><a  href="#overall" data-toggle="tab">Overall</a></li>
 
@@ -25,9 +27,7 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 
 			<li><a href="#admissions" data-toggle="tab">Admissions</a></li>
 			<li><a href="#aid" data-toggle="tab">Aid</a></li>
-			<li><a href="#completion" data-toggle="tab">Completion</a></li>
 			<li><a href="#cost" data-toggle="tab">Cost</a></li>
-			<li><a href="#earnings" data-toggle="tab">Earnings</a></li>
 			<li><a href="#repayment" data-toggle="tab">Repayment</a></li>
 			<li><a href="#students" data-toggle="tab">Students</a></li>
 
@@ -50,33 +50,20 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
           <%= render "aid", school: @school %>
 				</div>
 
-				 <div class="tab-pane" id="completion">
-          <%= render "completion_table", school: @school %>
-				</div>
-
 				 <div class="tab-pane" id="cost">
           <%= render "cost", school: @school %>
 				</div>
-
-
-				 <div class="tab-pane" id="earnings">
-          <h3>add clearfix to tab-content (see the css)</h3>
-				</div>
-
 
 				<div class="tab-pane" id="repayment">
           <%= render "repayment", school: @school %>
 				</div>
 
-
 				 <div class="tab-pane" id="students">
           <%= render "student_table", school: @school %>
 				</div>
 
-	
+
 			</div>
   </div>
 
 <hr></hr>
-
-	
