@@ -1,12 +1,12 @@
 class School < ActiveRecord::Base
-  has_one :academic
-  has_one :admission
-  has_one :aid
-  has_one :completion
-  has_one :cost
-  has_one :earning
-  has_one :repayment
-  has_one :student
+  has_one :academic, dependent: :destroy
+  has_one :admission, dependent: :destroy
+  has_one :aid, dependent: :destroy
+  has_one :completion, dependent: :destroy
+  has_one :cost, dependent: :destroy
+  has_one :earning, dependent: :destroy
+  has_one :repayment, dependent: :destroy
+  has_one :student, dependent: :destroy
 
   has_many :reviews
 

@@ -1,19 +1,17 @@
 class BuildTable
   def self.build_table()
+    School.destroy_all
     s = ScAPI.new
     results = {}
-    categories = ['academics', 'admissions', 'aid', 'completion', 'cost', 'earnings', 'repayment', 'school', 'student']
+    categories = ['academics', 'admissions', 'aid', 'completion', 'cost', 'earnings', 'repayment', 'school', 'root', 'student']
     categories.each do |cat|
       results[cat] = s.get_cat_response(cat)
     end
 
-
-    puts "building schools..."
-
     results['school']['results'].each_with_index do |school, index|
       s = School.new(
-                      # :root_location_lat => school["root.location.lat"],
-                      # :root_location_lon => school["root.location.lon"],
+                      # :root_location_lat => results['root']['results'][index]["root.location.lat"],
+                      # :root_location_lon => results['root']['results'][index]["root.location.lon"],
                       :school_name => school["school.name"],
                       :school_city => school["school.city"],
                       :school_state => school["school.state"],
@@ -24,9 +22,13 @@ class BuildTable
                       :school_locale => school["school.locale"],
                       :school_ownership => school["school.ownership"],
                       :school_under_investigation => school["school.under_investigation"]
+
                   )
       s.save
-      puts "school #{school["school.name"]} created"
+
+
+
+
 
       s.create_academic(:program_percentage_agriculture =>
                         results['academics']['results'][index]["2013.academics.program_percentage.agriculture"],
