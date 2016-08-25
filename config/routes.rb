@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resource :comparisions, :only => [:index]
 
   get "login" => "sessions#new"
-  delete "logout" => "sessions#destroy"
+  get "logout" => "sessions#destroy"
 
 
 end
