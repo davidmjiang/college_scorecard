@@ -1,11 +1,11 @@
 <h1><%= @school.school_name %></h1>
 add image?
-<%= image_tag @school.get_map_url %>
-
+<%= image_tag @school.get_map_url %><br>
+<%= pie_chart School.group(:school_region_id).count %><br>
 <br>
-<a href="<%= @school.school_school_url %>"><%= @school.school_school_url %></a>
-<%= link_to "Bookmark", school_bookmarks_path(@school.id), method: :post %>
-
+School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_school_url %></a><br>
+<%= link_to "Bookmark", school_bookmarks_path(@school.id), method: :post %><br>
+<%= link_to "See School Reviews" %>
 <%= render "school_table", school: @school %>
 
 
