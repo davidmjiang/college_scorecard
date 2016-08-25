@@ -2,7 +2,8 @@ class SchoolsController < ApplicationController
   skip_before_action :require_login
 
   def index
-
+    @query = School.index_search(query_params)
+    @schools = @query # TODO: add something to filter by search
   end
 
   def show
