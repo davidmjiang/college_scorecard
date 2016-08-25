@@ -50,11 +50,22 @@ module SchoolsHelper
     data
   end
 
+  def get_sat_data(school)
+    data = {}
+    data["Critical Reading"] = school.admission.sat_scores_midpoint_critical_reading
+
+    data["Math"] = school.admission.sat_scores_midpoint_math
+    data["Writing"] = school.admission.sat_scores_midpoint_writing
+    data
+  end
+
 
   def get_median_debt_data(school)
     data = []
 
-    data << [15000, school.aid.median_debt_income_0_30000]
+    data << [10000, school.aid.median_debt_income_0_30000 / 3]
+    data << [20000, school.aid.median_debt_income_0_30000 / 3 * 2]
+    data << [30000, school.aid.median_debt_income_0_30000 ]
     data << [50000, school.aid.median_debt_income_30001_75000]
     data << [75000, school.aid.median_debt_income_greater_than_75000]
   end
