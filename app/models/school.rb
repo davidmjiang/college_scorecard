@@ -15,9 +15,15 @@ class School < ActiveRecord::Base
   has_many :users, through: :bookmarks
 
 
+  searchable do
+    text :school_name
+    integer :school_region_id
+    integer :school_locale
+  end
 
   def get_map_url
-		"https://maps.googleapis.com/maps/api/staticmap?center=#{root_location_lat},#{root_location_lon}&zoom=10&size=300x300&key=#{Rails.application.secrets.gmaps_static_api_key}"
+  	
+		"https://maps.googleapis.com/maps/api/staticmap?center=#{urlify(school_name)},#{urlify(location)}&zoom=15&size=300x300&key=AIzaSyDTLUeLPMNZy4Gw99gQNFF6d1gyDbukKmg"
   end
 
 
@@ -25,6 +31,10 @@ class School < ActiveRecord::Base
 		"#{school_city}, #{school_state}"
 	end
 
+
+	def urlify(location)
+		location.gsub(" ", "+")
+	end
 	# def popular_subjects
 	# 	attribs = academic.attributes
 	# 	attribs = attribs.delete_if { |k, v| k == "created_at" ||
@@ -33,6 +43,24 @@ class School < ActiveRecord::Base
 	# 														 k == "id"
 	# 														 v.nil? }
 	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
+
+	# end 
+
+
+  # def self.search(queries)
+  #   results = self.where("")
+  #   if queries
+  #     queries.each do |col, term|
+  #       results = results.where("#{col} LIKE ?", "%#{term}%") if term.present?
+  #     end
+  #   end
+  #   results
+  # end
+
+
+
+
 	# end
 
 end
+
