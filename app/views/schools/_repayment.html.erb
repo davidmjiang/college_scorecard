@@ -1,0 +1,39 @@
+<% @stats = school.repayment %>
+
+<h1>Student Loan Repayment Statistics</h1>
+<table class="table table-hover">
+  <tbody>
+    <tr>
+      <td>  One-year repayment rate for completers  </td>
+      <td><%= @stats.one_yr_repayment_completers %> </td>
+    </tr>
+    <tr>
+      <td> Three-year repayment rate for completers   </td>
+      <td><%= @stats.three_yr_repayment_completers %> </td>
+    </tr>
+    <tr>
+      <td> Three-year repayment rate by family income ($0-30,000)   </td>
+      <td><%= @stats.three_yr_repayment_income_0_30000 %> </td>
+    </tr>
+    <tr>
+      <td>  Three-year repayment rate by family income ($30,000-75,000)  </td>
+      <td><%= @stats.three_yr_repayment_income_30000_75000 %> </td>
+    </tr>
+    <tr>
+      <td>  Three-year repayment rate by family income ($75,000+)  </td>
+      <td><%= @stats.three_yr_repayment_income_greater_than_75000 %> </td>
+    </tr>
+    <tr>
+      <td>   Number of students in the 5-year repayment rate of Pell students cohort </td>
+      <td><%= @stats.five_yr_repayment_pell_grant %> </td>
+    </tr>
+    <tr>
+      <td>  Number of students in the 7-year repayment rate cohort  </td>
+      <td><%= @stats.seven_yr_repayment_overall %> </td>
+    </tr>
+    <tr>
+      <td>  Number of students in the 7-year repayment rate of completers cohort  </td>
+      <td><%= @stats.seven_yr_repayment_completers %> </td>
+    </tr>
+  </tbody>
+</table>
