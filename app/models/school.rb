@@ -66,5 +66,5 @@ class School < ActiveRecord::Base
     attrib_keys.zip(attribs.values).to_h
 	end
 
-
+z
 end
