@@ -120,9 +120,10 @@ class ScAPI
     @response = HTTParty.get(@request)
   end
 
-  def get_cat_response(category)
+  def get_cat_response(category, page)
+    page = page.to_s
     reset_request
-    default_options
+    default_options(page)
     add_type_attributes_as_fields(category)
     get
   end
@@ -134,10 +135,10 @@ class ScAPI
   end
 
   # 2013, sorted by school pop., first 200 results
-  def default_options
+  def default_options(page)
     @sort_desc = true
     add_sort_option('2013.student.size')
-    add_page_option('0')
+    add_page_option(page)
     add_per_page_option('100')
   end
 
