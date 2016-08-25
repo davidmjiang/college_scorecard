@@ -19,6 +19,11 @@ class School < ActiveRecord::Base
     text :school_name
     integer :school_region_id
     integer :school_locale
+    float :admission do
+      float :sat_scores_midpoint_critical_reading
+      float :sat_scores_midpoint_math
+      float :sat_scores_midpoint_writing
+    end
   end
 
   def get_map_url
@@ -95,6 +100,7 @@ def self.index_search(query_params)
             end
           else
             with(:school_region_id, region_id.to_i)
+            with(:sat_scores_midpoint_math).less_than(600)
           end
         end
       elsif query_params[:school_locale]
