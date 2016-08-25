@@ -17,7 +17,8 @@ class School < ActiveRecord::Base
 
 
   def get_map_url
-		"https://maps.googleapis.com/maps/api/staticmap?center=#{root_location_lat},#{root_location_lon}&zoom=10&size=300x300&key=#{Rails.application.secrets.gmaps_static_api_key}"
+  	
+		"https://maps.googleapis.com/maps/api/staticmap?center=#{urlify(school_name)},#{urlify(location)}&zoom=15&size=300x300&key=AIzaSyDTLUeLPMNZy4Gw99gQNFF6d1gyDbukKmg"
   end
 
 
@@ -25,6 +26,10 @@ class School < ActiveRecord::Base
 		"#{school_city}, #{school_state}"
 	end
 
+
+	def urlify(location)
+		location.gsub(" ", "+")
+	end
 	# def popular_subjects
 	# 	attribs = academic.attributes
 	# 	attribs = attribs.delete_if { |k, v| k == "created_at" ||
