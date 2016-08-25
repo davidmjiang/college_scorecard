@@ -62,39 +62,44 @@ class School < ActiveRecord::Base
 	end
 
   def self.index_search(params)
-    school_name = params['school_name'] if params['school_name']
-    region_id = params['school_region_id'].first.to_i if params['school_region_id']
-    school_locale = params['school_locale'].first.to_i if params['school_locale']
-
-<<<<<<< HEAD
-    query = fuzzy_search_school(school_name) if school_name
-    if query && school_locale
-      query = query.where_school_locale_equals(school_locale)
-    elsif school_locale
-      query = where_school_locale_equals(school_locale)
+    if params['school_name']
+      school_name = params['school_name']
+    end
+    if params['school_region_id']
+      region_ids = params['school_region_id'].map(&:to_i)
+    end
+    if params['school_locale']
+      school_locales = params['school_locale'].map(&:to_i)
+      school_locales.map { |l| [l, l-1, l-2]}.flatten
     end
 
-    if query && region_id
-      query = query.where_region_id_equals(region_id)
-    elsif region_id
+    query = fuzzy_search_school(school_name) if school_name
+    if query && school_locales
+      query = query.where_school_locale_equals(school_locales)
+    elsif school_locales
+      query = where_school_locale_equals(school_locales)
+    end
+    if query && region_ids
+      query = query.where_region_id_equals(region_ids)
+    elsif region_ids
       query = where_region_id_equals(region_id)
     end
     query
   end
 
+  # i, i-1, i-2
+  # User.where('name ilike any ( array[?] )',['%thomas%','%james%','%martin%'])
+
   def self.where_school_locale_equals(school_locale)
-    where('school_locale=?', school_locale)
+    where('school_locale= any (array[?] )', school_locale)
   end
 
-  def self.where_region_id_equals(region_id)
-    where('school_region_id=?', region_id)
+  def self.where_region_id_equals(region_ids)
+    where('school_region_id= any (array[?] )', region_ids)
   end
 
   def self.fuzzy_search_school(query)
     query = '%' + query + '%'
     where("school_name ILIKE ?", query)
   end
-
-=======
->>>>>>> c73ec96fbd39bdf7a67328c39c533a062a11ed32
 end
