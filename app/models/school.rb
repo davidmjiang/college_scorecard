@@ -22,7 +22,7 @@ class School < ActiveRecord::Base
   end
 
   def get_map_url
-  	
+
 		"https://maps.googleapis.com/maps/api/staticmap?center=#{urlify(school_name)},#{urlify(location)}&zoom=15&size=300x300&key=AIzaSyDTLUeLPMNZy4Gw99gQNFF6d1gyDbukKmg"
   end
 
@@ -44,7 +44,7 @@ class School < ActiveRecord::Base
 	# 														 v.nil? }
 	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
 
-	# end 
+	# end
 
 
   # def self.search(queries)
@@ -63,4 +63,3 @@ class School < ActiveRecord::Base
 	# end
 
 end
-
