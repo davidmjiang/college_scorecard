@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       flash[:success] = "User created."
       redirect_to @user
     else
-      flash.now[:error] = "User not created. Error."
+      flash.now[:danger] = "User not created. Error."
       render :new
     end
   end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       flash[:success] = "User updated."
       redirect_to @user
     else
-      flash.now[:error] = "User not updated. Error."
+      flash.now[:danger] = "User not updated. Error."
       render :edit
     end
   end
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
       flash[:success] = "User deleted."
       redirect_to root_url
     else
-      flash[:error] = "User not deleted. Error."
+      flash[:danger] = "User not deleted. Error."
       redirect_to @user
     end
   end

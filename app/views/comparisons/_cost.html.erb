@@ -1,45 +1,72 @@
-<h1>Net Price by Income Level</h1>
+<h3>Tuition</h3>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Tuition</th>
+      <% schools.each do |school| %>
+        <th><%= link_to school.school_name, school_path(school) %></th>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>Tuition In State</td>
+      <% schools.each do |school| %>
+        <td><%= number_to_currency(school.cost.tuition_in_state, precision:0) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>Tuition Out of State</td>
+      <% schools.each do |school| %>
+        <td><%= number_to_currency(school.cost.tuition_out_of_state, precision:0) %></td>
+      <% end %>
+    </tr>
+
+  </table>
+</div>
+
+<h3>Net Price by Income Level</h3>
 <div class="table-responsive">
   <table class="table table-striped table-hover">
     <tr>
       <th>Family Income Level</th>
       <% schools.each do |school| %>
-        <th><%= school.school_name %></th>
+        <th><%= link_to school.school_name, school_path(school) %></th>
       <% end %>
     </tr>
   
     <tr>
       <td>$0-30,000</td>
       <% schools.each do |school| %>
-        <td><%= school.cost.net_price_public_by_income_level_0_30000 || school.cost.net_price_private_by_income_level_0_30000 %></td>
+        <td><%= number_to_currency(school.cost.net_price_public_by_income_level_0_30000, precision:0) || number_to_currency(school.cost.net_price_private_by_income_level_0_30000, precision:0) %></td>
       <% end %>
     </tr>
 
     <tr>
       <td>$30,001-$48,000</td>
       <% schools.each do |school| %>
-        <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+        <td><%= number_to_currency(school.cost. net_price_public_by_income_level_30001_48000, precision:0) || number_to_currency(school.cost.net_price_private_by_income_level_30001_48000, precision:0) %></td>
       <% end %>
     </tr>
 
      <tr>
       <td>$48,001-$75,000</td>
       <% schools.each do |school| %>
-        <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+        <td><%= number_to_currency(school.cost. net_price_public_by_income_level_48001_75000, precision:0) || number_to_currency(school.cost.net_price_private_by_income_level_48001_75000, precision:0) %></td>
       <% end %>
     </tr>
 
      <tr>
       <td>$75,001-$110,000</td>
       <% schools.each do |school| %>
-        <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+        <td><%= number_to_currency(school.cost. net_price_public_by_income_level_75001_110000, precision:0) || number_to_currency(school.cost.net_price_private_by_income_level_75001_110000, precision:0) %></td>
       <% end %>
     </tr>
 
      <tr>
       <td>$110,001+</td>
       <% schools.each do |school| %>
-        <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+        <td><%= number_to_currency(school.cost. net_price_public_by_income_level_110001_plus, precision:0) || number_to_currency(school.cost.net_price_private_by_income_level_110001_plus, precision:0) %></td>
       <% end %>
     </tr>
 
