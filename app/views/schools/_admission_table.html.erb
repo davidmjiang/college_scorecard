@@ -1,8 +1,10 @@
+<h1>Admissions</h1>
+
 <table class="table table-striped">
   
   <tr>
     <td>Overall Admission Rate</td>
-    <td><%= school.admission.admission_rate_overall %></td>
+    <td><%= to_percent(school.admission.admission_rate_overall) %></td>
   </tr>
 
   <tr>

@@ -8,4 +8,8 @@ module SchoolsHelper
     end
   end
 
+  def subject_name(subject)
+    subject.split(" ")[2..-1].join(" ")
+  end
+
 end
