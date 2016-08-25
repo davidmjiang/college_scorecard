@@ -75,6 +75,15 @@ module SchoolsHelper
     data
   end
 
+  def get_act_data(school)
+    data = {}
+    data["Cummulative"] = school.admission.act_scores_midpoint_cumulative
+    data["Math"] = school.admission.act_scores_midpoint_math
+    data["Writing"] = school.admission.act_scores_midpoint_writing
+    data["English"] = school.admission.act_scores_midpoint_english
+    data
+  end
+
 
   def get_median_debt_data(school)
     data = []
