@@ -1,9 +1,9 @@
-<h1>Percentage of Students By Major</h1>
+<h1>Percentage of Students By Academic Program</h1>
 
 <div class="table-responsive">
   <table class="table table-striped table-hover">
     <tr>
-      <th>Attribute</th>
+      <th>Program</th>
       <% schools.each do |school| %>
         <th><%= link_to school.school_name, school_path(school) %></th>
       <% end %>
