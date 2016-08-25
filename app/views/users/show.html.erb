@@ -38,7 +38,7 @@
         <h5>Choose up to 5 of your schools for in-depth comparison:</h5>
         <%= form_tag comparisons_path, :method => 'get' do %>
           <%= label_tag "schools", "Select Schools To Compare:"%>
-          <%= select_tag("schools", options_for_select(@user.schools), multiple: true) %>
+          <%= select_tag("schools", options_for_select(bookmarked_schools(@user.schools)), multiple: true) %>
           <%= submit_tag "See Comparison" %>
         <% end %>
       </div>
@@ -49,7 +49,7 @@
         <h3>Your Reviews</h3>
         <ul>
         <% @user.reviews.each do |review| %>
-          <li> <span><%= link_to review.school.school_name, school_path(review.school) %></span> | <%= review.body %> </li>
+          <li> <span><%= link_to review.school.school_name, school_review_path(review.school, review) %></span> | <%= review.body[0..21] %><%= "..." if review.body.size > 21 %> </li>
         <% end %>
         </ul>
       </div>

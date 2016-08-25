@@ -14,7 +14,7 @@ School Site: <a href="http://<%= @school.school_school_url %>"><%= @school.schoo
   <% end %>
 <% end %><br>
 
-<%= link_to "See School Reviews" %>
+<%= link_to "See School Reviews", school_reviews_path(@school.id) %>
 
 
 <div id="exTab2" class="container">
