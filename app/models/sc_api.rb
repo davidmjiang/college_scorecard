@@ -3,6 +3,7 @@ class ScAPI
   attr_reader :response, :request, :ATTRIBUTES, :fields
   include HTTParty
   BASE_URI = 'https://api.data.gov/ed/collegescorecard/v1/schools.json?'
+  API_KEY = '&api_key=fXi2CD8bCMCZAVOI7nx0PgTVv766uCpyH6TvM4eN'
   def initialize
     reset_request
     @fields = []
@@ -16,7 +17,17 @@ class ScAPI
     add_sort_to_request if @sort_opt
     add_page_to_request if @page
     add_per_page_to_request if @per_page
-    @request += '&api_key=fXi2CD8bCMCZAVOI7nx0PgTVv766uCpyH6TvM4eN'
+    @request += API_KEY
+  end
+
+  def get_school_info_by_name(name)
+    @request = 'https://api.data.gov/ed/collegescorecard/v1/schools?school.name='
+    name.split(' ').each_with_index do |p,i|
+      @request += '%20' if i > 0
+      @request += p
+    end
+    @request += API_KEY
+    run_party_get
   end
 
   def add_sort_to_request
