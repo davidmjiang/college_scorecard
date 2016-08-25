@@ -33,7 +33,13 @@ class School < ActiveRecord::Base
 
   def get_coords_from_location
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{urlify(school_name)},#{urlify(location)}&key=AIzaSyBi_LAVQdQK86p7BcCxTxYuPr1lKVC5HAw"
-     response = HTTParty.get(url, verify: false)["results"].first["geometry"]["location"]
+     response = HTTParty.get(url, verify: false)["results"]
+
+    if response.empty?
+      return { "lat" => 34.138792, "lng" => -118.125407 }
+    else
+      return response.first["geometry"]["location"]
+    end
   end
 
   def urlify(location)
