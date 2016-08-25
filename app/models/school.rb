@@ -22,8 +22,7 @@ class School < ActiveRecord::Base
   end
 
   def get_map_url
-  	
-		"https://maps.googleapis.com/maps/api/staticmap?center=#{urlify(school_name)},#{urlify(location)}&zoom=15&size=300x300&key=AIzaSyDTLUeLPMNZy4Gw99gQNFF6d1gyDbukKmg"
+		"https://maps.googleapis.com/maps/api/staticmap?center=#{urlify(school_name)},#{urlify(location)}&zoom=15&size=400x400&key=AIzaSyDTLUeLPMNZy4Gw99gQNFF6d1gyDbukKmg"
   end
 
   def get_street_view
@@ -32,13 +31,14 @@ class School < ActiveRecord::Base
   end
 
   def get_coords_from_location
-    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{urlify(school_name)},#{urlify(location)}&key=#{Rails.application.secrets.gmaps_geocoding_api_key}"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{urlify(school_name)},#{urlify(location)}&key=AIzaSyBi_LAVQdQK86p7BcCxTxYuPr1lKVC5HAw"
      response = HTTParty.get(url, verify: false)["results"].first["geometry"]["location"]
   end
 
   def urlify(location)
     location.gsub(" ", "+")
   end
+
 	def location
 		"#{school_city}, #{school_state}"
 	end
