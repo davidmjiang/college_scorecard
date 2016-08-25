@@ -1,0 +1,63 @@
+<table class="table table-striped">
+  
+  <tr>
+    <td>Student Body Size</td>
+    <td><%= school.student.size %></td>
+  </tr>
+
+  <tr>
+    <td>White</td>
+    <td><%= to_percent(school.student.demographics_race_ethnicity_white) %></td>
+  </tr>
+
+  <tr>
+    <td>African American</td>
+    <td><%= to_percent(school.student.demographics_race_ethnicity_black) %></td>
+  </tr>
+
+  <tr>
+    <td>Hispanic</td>
+    <td><%= to_percent(school.student.demographics_race_ethnicity_hispanic) %></td>
+  </tr>
+
+  <tr>
+    <td>Asian</td>
+    <td><%= to_percent(school.student.demographics_race_ethnicity_asian) %></td>
+  </tr>
+
+  <tr>
+    <td>American Indian and Alaska Native</td>
+    <td><%= to_percent(school.student.demographics_race_ethnicity_aian) %></td>
+  </tr>
+
+  <tr>
+    <td>Asian Pacific Islander</td>
+    <td><%= to_percent(school.student.demographics_race_ethnicity_asian_pacific_islander) %></td>
+  </tr>
+
+  <tr>
+    <td>First Time Full Time</td>
+    <td><%= to_percent(school.student.share_first_time_full_time) %></td>
+  </tr>
+
+  <tr>
+    <td>Older than 25</td>
+    <td><%= to_percent(school.student.share_25_older) %></td>
+  </tr>
+
+  <tr>
+    <td>First Generation</td>
+    <td><%= to_percent(school.student.share_firstgeneration) %></td>
+  </tr>
+
+  <tr>
+    <td>Independent Students</td>
+    <td><%= to_percent(school.student.share_independent_students) %></td>
+  </tr>
+
+  <tr>
+    <td>Family Income Overall</td>
+    <td><%= school.student.family_income_overall %></td>
+  </tr>
+
+</table>
