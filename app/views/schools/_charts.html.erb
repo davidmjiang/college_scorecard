@@ -3,12 +3,19 @@
 	<h3>Ethnicity Demographics</h3>
   <%= pie_chart(get_demographic_data(@school),  height: "400px") %>
 </div>
+
+<div class="chart">
+	<h3>Midpoint SAT Scores</h3>
+	<%= get_sat_data(@school) %>
+  <%= bar_chart get_sat_data(@school) %>
+</div>
+
 <hr>
 <div class="chart">
 	<h3>Average Cost Per Year By Income</h3>
   <%= column_chart get_cost_data(@school) %>
 </div>
-
+<hr>
 <div class="chart">
 	<h3>Median Debt By Income</h3>
   <%= line_chart get_median_debt_data(@school) %>
