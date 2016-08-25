@@ -1,0 +1,9 @@
+<%= simple_form_for [school, bookmark] do |bookmark_fields| %>
+<tr>
+  <td><%= link_to school.school_name, school %></td>
+  <td><%= bookmark_fields.input :essay, label: false %></td>
+  <td><%= bookmark_fields.input :letters, label: false %></td>
+  <td><%= bookmark_fields.input :application, label: false %></td>
+  <td><%= bookmark_fields.submit "Update Status", class:"btn btn-primary" %>
+</tr>
+  <% end %>

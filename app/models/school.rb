@@ -57,9 +57,4 @@ class School < ActiveRecord::Base
   #   results
   # end
 
-
-
-
-	# end
-
 end

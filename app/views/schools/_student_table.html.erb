@@ -1,0 +1,63 @@
+<table class="table-striped">
+  
+  <tr>
+    <td>Student Body Size</td>
+    <td><%= school.student.size %></td>
+  </tr>
+
+  <tr>
+    <td>White</td>
+    <td><%= (school.student.demographics_race_ethnicity_white*100).round(2) %>%</td>
+  </tr>
+
+  <tr>
+    <td>African American</td>
+    <td><%= (school.student.demographics_race_ethnicity_black*100).round(2) %>%</td>
+  </tr>
+
+  <tr>
+    <td>Hispanic</td>
+    <td><%= (school.student.demographics_race_ethnicity_hispanic*100).round(2) %>%</td>
+  </tr>
+
+  <tr>
+    <td>Asian</td>
+    <td><%= (school.student.demographics_race_ethnicity_asian*100).round(2) %>%</td>
+  </tr>
+
+  <tr>
+    <td>American Indian and Alaska Native</td>
+    <td><%= (school.student.demographics_race_ethnicity_aian*100).round(2) %>%</td>
+  </tr>
+
+  <tr>
+    <td>Asian Pacific Islander</td>
+    <td><%= (school.student.demographics_race_ethnicity_asian_pacific_islander*100).round(2) %>%</td>
+  </tr>
+
+  <tr>
+    <td>First Time Full Time</td>
+    <td><%= (school.student.share_first_time_full_time*100).round(2) %>%</td>
+  </tr>
+
+  <tr>
+    <td>Older than 25</td>
+    <td><%= (school.student.share_25_older*100).round(2) %>%</td>
+  </tr>
+
+  <tr>
+    <td>First Generation</td>
+    <td><%= (school.student.share_firstgeneration*100).round(2) %>%</td>
+  </tr>
+
+  <tr>
+    <td>Independent Students</td>
+    <td><%= (school.student.share_independent_students*100).round(2) %>%</td>
+  </tr>
+
+  <tr>
+    <td>Family Income Overall</td>
+    <td><%= (school.student.family_income_overall %></td>
+  </tr>
+
+</table>

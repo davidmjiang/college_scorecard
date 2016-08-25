@@ -3,12 +3,23 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-sm-5">
+    <div class="col-sm-8">
       <div class="info-box school-list">
         <h3>Your Schools</h3>
-        <% @user.schools.each do |school| %>
-          <p><%= link_to school.school_name, school %></p>
-        <% end %>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-condensed"
+            <tr>
+              <th>School</th>
+              <th>Essay Written?</th>
+              <th>Letters of Recommendation Written?</th>
+              <th>Application Sent?</th>
+              <th></th>
+            </tr>
+            <% @user.schools.each do |school| %>
+              <%= render partial: "checklist", locals: {school: school, bookmark: Bookmark.where("user_id = ? AND school_id = ?", @user.id, school.id).first} %>
+            <% end %>
+          </table>
+        </div>
       </div>
 
       <div class="info-box">
@@ -21,7 +32,7 @@
       </div>
     </div>
 
-    <div class="col-sm-7">
+    <div class="col-sm-4">
       <div class="info-box">
         <h3>Recent Activity</h3>
         
