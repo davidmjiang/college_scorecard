@@ -70,16 +70,12 @@ class School < ActiveRecord::Base
 	end
 
 
-
-
-
-
-
 # Index search
 
 def self.index_search(query_params)
   query = School.search do
     fulltext "#{query_params[:school_name]}*"
+    with(:admission, :sat_scores_midpoint_math).less_than(600)
     any_of do
       if query_params[:school_region_id]
         query_params[:school_region_id].each do |region_id|
@@ -92,7 +88,6 @@ def self.index_search(query_params)
             end
           else
             with(:school_region_id, region_id.to_i)
-            with(:sat_scores_midpoint_math).less_than(600)
           end
         end
       elsif query_params[:school_locale]
