@@ -2,9 +2,9 @@
   <%= label_tag "query[school_name]", "Search by School" %>
   <%= text_field_tag "query[school_name]" %>
   <%= label_tag "query[school_region_id]", "Region:"%>
-  <%= select_tag("query[school_region_id]", options_for_select(school_regions), :include_blank => true) %>
+  <%= select_tag("query[school_region_id]", options_for_select(school_regions), multiple: true) %>
   <%= label_tag "query[school_locale]", "Locale:" %>
-  <%= select_tag("query[school_locale]", options_for_select(locale_types), :include_blank => true) %>
+  <%= select_tag("query[school_locale]", options_for_select(locale_types), multiple: true) %>
   <%= submit_tag "Search" %>
 <% end %>
 
