@@ -16,9 +16,6 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 
 <%= link_to "See School Reviews" %>
 
-<%= pie_chart School.student %>
-
-
 
 <div id="exTab2" class="container">	
 <ul class="nav nav-tabs">
@@ -79,7 +76,7 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 	
 			</div>
   </div>
-
+<%= render "charts", school: @school %>
 <hr></hr>
 
 	

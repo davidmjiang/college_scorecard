@@ -16,4 +16,17 @@ module SchoolsHelper
     subject.split(" ")[2..-1].join(" ")
   end
 
+
+  def get_demographic_data(school)
+    data = {}
+    data["White"] = school.student.demographics_race_ethnicity_white
+    data["Black"] = school.student.demographics_race_ethnicity_black
+    data["Hispanic"] = school.student.demographics_race_ethnicity_hispanic
+    data["Asian"] = school.student.demographics_race_ethnicity_asian
+    data["American Indian/Alaska Native"] = school.student.demographics_race_ethnicity_aian
+    data["Hawaiian Pacific Islander"] = school.student.demographics_race_ethnicity_nhpi
+    data["Unknown"] = school.student.demographics_race_ethnicity_unknown
+    data["Other"] = 1 - data["White"] - data["Black"] - data["Hispanic"] - data["Asian"] - data["American Indian/Alaska Native"] - data["Hawaiian Pacific Islander"] - data["Unknown"]
+    data
+  end
 end
