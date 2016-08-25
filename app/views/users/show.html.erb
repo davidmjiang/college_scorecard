@@ -36,7 +36,6 @@
         <ul class="nav nav-tabs">
           <li class="active"><a  href="#compare" data-toggle="tab">Compare</a></li>
           <li><a href="#reviews" data-toggle="tab">Your Reviews</a></li>
-          <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
         </ul>
 
         <div class="tab-content ">
@@ -62,10 +61,13 @@
               </ul>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-          <div class="tab-pane" id="timeline">
-            <div class="info-box">
-              <%= timeline [
+<%= timeline [
   ["Register For SAT", "2016-09-01", "2016-10-31"],
   ["Prepare and/or revise application essays", "2016-09-01", "2016-10-31"],
   ["Ask for letters of recommendation", "2016-09-01", "2016-10-31"],
@@ -77,12 +79,4 @@
   ["Complete the FAFSA", "2016-12-15", "2017-01-31"],
   ["Compare award letters.", "2016-12-15", "2017-02-20"],
   ["Get Acceptances!", "2017-02-15", "2017-04-30"]
-] , height: "500px", width: "600px" %>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+] , height: "1000px" %>
