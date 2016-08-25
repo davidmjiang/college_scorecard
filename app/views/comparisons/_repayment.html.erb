@@ -2,9 +2,9 @@
 <div class="table-responsive">
   <table class="table table-striped table-hover">
     <tr>
-      <th>Attribute</th>
+      <th></th>
       <% schools.each do |school| %>
-        <th><%= school.school_name %></th>
+        <th><%= link_to school.school_name, school_path(school) %></th>
       <% end %>
     </tr>
 

@@ -4,7 +4,7 @@
 		<tr>
 			<th></th>
 			<% schools.each do |school| %>
-				<th><%= school.school_name %></th>
+				<th><%= link_to school.school_name, school_path(school) %></th>
 			<% end %>
 		</tr>
 		<tr>
@@ -78,14 +78,14 @@
 		
 			<td>Tuition (in state)</td>
 			<% schools.each do |school| %>
-				<td><%= school.cost.tuition_in_state%></td>
+				<td><%= number_to_currency(school.cost.tuition_in_state, precision: 0)%></td>
 			<% end %>
 		</tr>
 
 		<tr>
 			<td>Tuition (out of state)</td>
 			<% schools.each do |school| %>
-				<td><%= school.cost.tuition_in_state%></td>
+				<td><%= number_to_currency(school.cost.tuition_in_state, precision:0)%></td>
 			<% end %>
 		</tr>
 
