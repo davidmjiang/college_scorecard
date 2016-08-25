@@ -3,11 +3,16 @@ class BuildTable
     School.destroy_all
     s = ScAPI.new
     results = {}
-    categories = ['academics', 'admissions', 'aid', 'completion', 'cost', 'earnings', 'repayment', 'school', 'root', 'student']
-    categories.each do |cat|
-      results[cat] = s.get_cat_response(cat)
+    categories = ['academics', 'admissions', 'aid', 'completion', 'cost', 'earnings', 'repayment', 'school', 'student']
+    5.times do |i|
+      categories.each do |cat|
+        if results[cat]
+          results[cat]['results'] += s.get_cat_response(cat, i)['results']
+        else
+          results[cat] = s.get_cat_response(cat, i)
+        end
+      end
     end
-
     results['school']['results'].each_with_index do |school, index|
       s = School.new(
                       # :root_location_lat => results['root']['results'][index]["root.location.lat"],
