@@ -1,0 +1,11 @@
+<%= form_tag schools_path, :method => 'get' do %>
+  <%= label_tag "query[school_name]", "Search by School" %>
+  <%= text_field_tag "query[school_name]" %>
+  <%= label_tag "query[school_region_id]", "Region:"%>
+  <%= select_tag("query[school_region_id]", options_for_select(school_regions), :include_blank => true) %>
+  <%= label_tag "query[school_locale]", "Locale:" %>
+  <%= select_tag("query[school_locale]", options_for_select(locale_types), :include_blank => true) %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<!-- Choosing a region will send its region_id to the params, which will go into the solr search. Choosing a locale will send 13 for city, 23 for suburb, 33 for town and 43 for rural. This will require some tranlating in the solr search since I've narrowed down the 12 categories into 4-->
