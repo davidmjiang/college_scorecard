@@ -24,6 +24,7 @@ gem 'awesome_print'
 gem 'sunspot_rails'
 gem 'chartkick'
 gem 'faker'
+gem 'simple_form'
 gem 'twitter-typeahead-rails'
 gem 'progress_bar'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
