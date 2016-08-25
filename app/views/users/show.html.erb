@@ -49,7 +49,7 @@
         <h3>Your Reviews</h3>
         <ul>
         <% @user.reviews.each do |review| %>
-          <li> <span><%= link_to review.school.school_name, school_review_path(review.school, review) %></span> | <%= review.body[0..60] %><%= "..." if review.body.size > 60 %> </li>
+          <li> <span><%= link_to review.school.school_name, school_review_path(review.school, review) %></span> | <%= review.body[0..21] %><%= "..." if review.body.size > 21 %> </li>
         <% end %>
         </ul>
       </div>
