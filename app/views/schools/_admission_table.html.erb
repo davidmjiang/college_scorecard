@@ -1,0 +1,55 @@
+<table class="table-striped">
+  
+  <tr>
+    <td>Overall Admission Rate</td>
+    <td><%= school.admission.admission_rate_overall %></td>
+  </tr>
+
+  <tr>
+    <td>SAT - Average Overall</td>
+    <td><%= school.admission.sat_scores_average_overall %></td>
+  </tr>
+
+  <tr>
+    <td>SAT - Critical Reading (25th - 75th Percentile)</td>
+    <td><%= school.admission.sat_scores_25th_percentile_critical_reading %> - 
+    <%= school.admission.sat_scores_75th_percentile_critical_reading %></td>
+  </tr>
+
+  <tr>
+    <td>SAT - Math (25th - 75th Percentile)</td>
+    <td><%= school.admission.sat_scores_25th_percentile_math %> - 
+    <%= school.admission.sat_scores_75th_percentile_math %></td>
+  </tr>
+
+  <tr>
+    <td>SAT - Writing (25th - 75th Percentile)</td>
+    <td><%= school.admission.sat_scores_25th_percentile_writing %> - 
+    <%= school.admission.sat_scores_75th_percentile_writing %></td>
+  </tr>
+
+  <tr>
+    <td>ACT - Cumulative (25th - 75th Percentile)</td>
+    <td><%= school.admission.act_scores_25th_percentile_cumulative %> - 
+    <%= school.admission.act_scores_75th_percentile_cumulative %></td>
+  </tr>
+
+  <tr>
+    <td>ACT - English (25th - 75th Percentile)</td>
+    <td>%= school.admission.act_scores_25th_percentile_english %> - 
+    <%= school.admission.act_scores_75th_percentile_english %></td>
+  </tr>
+
+  <tr>
+    <td>ACT - Math (25th - 75th Percentile)</td>
+    <td>%= school.admission.act_scores_25th_percentile_math %> - 
+    <%= school.admission.act_scores_75th_percentile_math %></td>
+  </tr>
+
+  <tr>
+    <td>ACT - Writing (25th - 75th Percentile)</td>
+    <td>%= school.admission.act_scores_25th_percentile_writing %> - 
+    <%= school.admission.act_scores_75th_percentile_writing %></td>
+  </tr>
+
+</table>
