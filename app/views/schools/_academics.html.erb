@@ -12,8 +12,8 @@
 	</tr>
 	<% school.popular_subjects.each do |subject, percent| %>
 		<tr>
-			<td><%= subject %></td>
-			<td><%= percent %></td>
+			<td><%= subject[19..-1] %></td>
+			<td><%= "#{percent*100}"[0..3] + "%" %></td>
 
 		</tr>
 	<% end %>

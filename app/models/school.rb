@@ -48,7 +48,7 @@ class School < ActiveRecord::Base
 	def urlify(location)
 		location.gsub(" ", "+")
 	end
-<<<<<<< HEAD
+
 
 
 	def popular_subjects
@@ -65,29 +65,7 @@ class School < ActiveRecord::Base
     attrib_keys.zip(attribs.values).to_h
 	end
 
-=======
-	# def popular_subjects
-	# 	attribs = academic.attributes
-	# 	attribs = attribs.delete_if { |k, v| k == "created_at" ||
-	# 														 k == "school_id" ||
-	# 														 k == "updated_at" ||
-	# 														 k == "id"
-	# 														 v.nil? }
-	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
 
-	# end
-
-
-  # def self.search(queries)
-  #   results = self.where("")
-  #   if queries
-  #     queries.each do |col, term|
-  #       results = results.where("#{col} LIKE ?", "%#{term}%") if term.present?
-  #     end
-  #   end
-  #   results
-  # end
->>>>>>> b1e9477a8b5bdf22bc3431ea0deaed2eaf3f061e
 
 
 end
