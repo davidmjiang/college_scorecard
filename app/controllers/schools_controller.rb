@@ -18,7 +18,7 @@ class SchoolsController < ApplicationController
               with(:school_region_id, region_id.to_i)
             end
           end
-        else
+        elsif query_params[:school_locale]
           query_params[:school_locale].each do |locale|
             with(:school_locale, (locale.to_i - 2..locale.to_i))
           end
