@@ -1,8 +1,13 @@
-<div class="container front-page">
+<div class="jumbotron">
+
   <div class="row">
     <div class="col-sm-12">
-      <h1>Welcome to College Scorecard Thing</h1>
-      <%= link_to "Create New User", new_user_path, class: "btn btn-primary btn-lg" %>
+      <h1>Welcome to College Score Card</h1>
+      <br>
+      <h3>Find A School!</h3>
+      <% unless current_user %>
+      	<%= link_to "Create New User", new_user_path, class: "btn btn-primary btn-lg" %>
+      <% end %>
     </div>
   </div>
   <%= render "search_bar" %>
