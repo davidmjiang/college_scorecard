@@ -1,0 +1,120 @@
+<table class="table table-hover table-condensed">
+  <tbody>
+    <tr>
+      <th>
+
+        <% @stats = school.completion %>
+        <div class="container"><h1> <%= school.school_name %> Completions Statistics </h1>
+
+
+          <h4>
+            Completion rate for first-time, full-time students (150% of expected time to completion/6 years): 
+            <span id="completion-rate"><%= (@stats.completion_rate_4yr_150nt * 100).to_s + "%" if @stats.completion_rate_4yr_150nt %> <%= (@stats.completion_rate_less_than_4yr_150nt * 100).to_s + "%" if @stats.completion_rate_less_than_4yr_150nt %>
+            </span>
+          </h4>
+
+
+        </div>
+
+        <div id="completion_tabs" class="container"> 
+
+          <ul class="nav nav-tabs">
+            <li class="active"><a  href="#two_year" data-toggle="tab">Two-Year Completion Stats</a></li>
+            <li><a href="#four_year" data-toggle="tab">Four-Year Completion Stats</a></li>
+            <!--  <li><a href="#six_year" data-toggle="tab">Six-Year Completion Stats</a></li>
+            <li><a href="#overall_six_year" data-toggle="tab">Overall Completion Stats</a></li>-->
+          </ul>
+
+          <div class="tab-content ">
+            <div class="tab-pane active" id="two_year">
+              <table class="table table-hover">
+                <tbody>
+
+                  <tr>
+                    <td> Percent withdrawn from original institution within 2 years </td>
+                    <td> <%= @stats.title_iv_withdrawn_by_2yrs || "N/A" %> </td>
+                  </tr>
+                  <tr>
+                    <td> Percent still enrolled at original institution within 2 years </td>
+                    <td> <%= @stats.title_iv_still_enrolled_by_2yrs || "N/A" %> </td>
+                  </tr>
+                  <tr>
+                    <td> Percent of low-income (less than $30,000 in nominal family income) students who were still enrolled at original institution within 2 years </td>
+                    <td> <%= @stats.title_iv_low_inc_still_enrolled_by_2yrs || "N/A" %> </td>
+                  </tr>
+                  <tr>
+                    <td> Percent of middle-income (between $30,000 and $75,000 in nominal family income) students who were still enrolled at original institution within 2 years </td>
+                    <td> <%= @stats.title_iv_mid_inc_still_enrolled_by_2yrs || "N/A" %> </td>
+                  </tr>
+                  <tr>
+                    <td> Percent of high-income (above $75,000 in nominal family income) students who were still enrolled at original institution within 2 years </td>
+                    <td> <%= @stats.title_iv_high_inc_still_enrolled_by_2yrs || "N/A" %> </td>
+                  </tr>
+                  <tr>
+                    <td> Percent of independent students withdrawn from original institution within 2 years </td>
+                    <td> <%= @stats.title_iv_independ_withdrawn_by_2yrs || "N/A" %> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="tab-pane" id="four_year">
+             <table class="table table-hover">
+              <tbody>
+                <tr>
+                  <td>   Percent completed within 4 years at original institution   </td>
+                  <td> <%= @stats.title_iv_completed_by_4yrs || "N/A" %> </td>
+                </tr>
+                <tr>
+                  <td>   Percent still enrolled at original institution within 4 years   </td>
+                  <td> <%= @stats.title_iv_still_enrolled_by_4yrs || "N/A" %> </td>
+                </tr>
+                <tr>
+                  <td>   Percent of students who received a federal loan at the institution and who died within 4 years at original institution   </td>
+                  <td> <%= @stats.title_iv_loan_recip_died_by_4yrs || "N/A" %> </td>
+                </tr>
+                <tr>
+                  <td>  Percent of students who never received a federal loan at the institution and who completed in 4 years at original institution    </td>
+                  <td> <%= @stats.title_iv_no_loan_completed_by_4yrs || "N/A" %> </td>
+                </tr>
+                <tr>
+                  <td>   Percent of students who never received a federal loan at the institution and withdrew from original institution within 4 years   </td>
+                  <td> <%= @stats.title_iv_no_loan_withdrawn_by_4yrs || "N/A" %> </td>
+                </tr>
+                <tr>
+                  <td>   Percent of first-generation students who died within 4 years at original institution   </td>
+                  <td> <%= @stats.title_iv_first_gen_died_by_4yrs || "N/A" %> </td>
+                </tr>
+                <tr>
+                  <td>   Percent of first-generation students who completed within 4 years at original institution   </td>
+                  <td> <%= @stats.title_iv_first_gen_completed_by_4yrs || "N/A" %> </td>
+                </tr>
+                <tr>
+                  <td>   Percent of first-generation students withdrawn from original institution within 4 years   </td>
+                  <td> <%= @stats.title_iv_first_gen_withdrawn_by_4yrs || "N/A" %> </td>
+                </tr>
+                <tr>
+                  <td>   Percent of first-generation students who were still enrolled at original institution within 4 years   </td>
+                  <td> <%= @stats.title_iv_first_gen_still_enrolled_by_4yrs || "N/A" %> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 
+          <div class="tab-pane" id="six_year">
+
+          </div>
+
+          <div class="tab-pane" id="overall_six_year">
+
+          </div>
+           -->
+
+        </div>
+
+      </div>
+    </th>
+  </tr>
+</tbody>
+</table>
