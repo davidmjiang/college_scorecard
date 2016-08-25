@@ -4,11 +4,54 @@ class ScAPI
   include HTTParty
   BASE_URI = 'https://api.data.gov/ed/collegescorecard/v1/schools.json?'
   def initialize
-    @options = {}
     reset_request
     @fields = []
     @sort_desc = false
     @request = ''
+  end
+
+  def update_request
+    @request = BASE_URI + '_fields='
+    add_fields_to_request if @fields.any?
+    add_sort_to_request if @sort_opt
+    add_page_to_request if @page
+    add_per_page_to_request if @per_page
+    @request += '&api_key=fXi2CD8bCMCZAVOI7nx0PgTVv766uCpyH6TvM4eN'
+  end
+
+  def add_sort_to_request
+    @request += '&_sort=' + @sort_opt
+    @request += ':desc' if @sort_desc == true
+  end
+
+  def add_sort_option(val)
+    @sort_opt = val
+  end
+
+  def add_field(field)
+    @fields << field
+  end
+
+  def reset_request
+    @request = BASE_URI + '_fields='
+    @fields = []
+    @sort_desc = false
+  end
+
+  def add_page_option(num)
+    @page = "&_page=#{num}"
+  end
+
+  def add_per_page_option(num)
+    @per_page = "&_per_page=#{num}"
+  end
+
+  def add_page_to_request
+    @request += @page
+  end
+
+  def add_per_page_to_request
+    @request += @per_page
   end
 
   def read_attributes
@@ -77,9 +120,10 @@ class ScAPI
     @response = HTTParty.get(@request)
   end
 
-  def get_cat_response(category)
+  def get_cat_response(category, page)
+    page = page.to_s
     reset_request
-    default_options
+    default_options(page)
     add_type_attributes_as_fields(category)
     get
   end
@@ -91,27 +135,11 @@ class ScAPI
   end
 
   # 2013, sorted by school pop., first 200 results
-  def default_options
+  def default_options(page)
     @sort_desc = true
     add_sort_option('2013.student.size')
-    add_page_option('0')
+    add_page_option(page)
     add_per_page_option('100')
-  end
-
-  def add_page_option(num)
-    @page = "&_page=#{num}"
-  end
-
-  def add_per_page_option(num)
-    @per_page = "&_per_page=#{num}"
-  end
-
-  def add_page_to_request
-    @request += @page
-  end
-
-  def add_per_page_to_request
-    @request += @per_page
   end
 
   def get
@@ -121,29 +149,6 @@ class ScAPI
     add_per_page_to_request if @per_page
     @request += '&api_key=fXi2CD8bCMCZAVOI7nx0PgTVv766uCpyH6TvM4eN'
     @response = HTTParty.get(@request)
-  end
-
-  def add_sort_to_request
-    @request += '&_sort=' + @sort_opt
-    @request += ':desc' if @sort_desc == true
-  end
-
-  def add_sort_option(val)
-    @sort_opt = val
-  end
-
-  def add_options()
-  end
-
-  def add_field(field)
-    @fields << field
-  end
-
-  def reset_request
-    @request = BASE_URI + '_fields='
-    @options = {}
-    @fields = []
-    @sort_desc = false
   end
 
 end
