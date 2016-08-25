@@ -4,8 +4,9 @@ class SchoolsController < ApplicationController
 
 	def index
 	  @query = School.search do
-	  	fulltext "#{query_params[:school_name]}*"
 	  	with(:school_region_id, query_params[:school_region_id].to_i) if query_params[:school_region_id]
+	  	fulltext "#{query_params[:school_name]}*"
+	  	
 	  end
 		@schools = @query.results # TODO: add something to filter by search
 	end
