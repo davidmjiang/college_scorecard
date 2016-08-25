@@ -34,7 +34,5 @@ FACTOR.times do |i|
     user_id: user.id
     })
 
-end
 
-# note: review.school = school is not working
-# note: review.author = user is not working
+end
