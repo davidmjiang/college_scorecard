@@ -9,7 +9,7 @@ module SchoolsHelper
   end
 
   def get_academic_keys(school)
-    keys = school.aid.attributes.keys.delete_if {|k| k == "school_id" || k == "id" || k == "created_at" || k == "updated_at"}
+    keys = school.academic.attributes.keys.delete_if {|k| k == "school_id" || k == "id" || k == "created_at" || k == "updated_at"}
   end
 
   def to_percent(value)
