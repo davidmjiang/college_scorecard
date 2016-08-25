@@ -53,6 +53,11 @@
   h5{
   text-align: center;
   }
+  .comparison-box{
+    form{
+      text-align: center;
+    }
+  }
 }
 
 .nav-logout{
@@ -73,9 +78,9 @@
 }
 
 html{
-  background: url("university.jpg") no-repeat center center fixed; 
+  background: image-url("university.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; 
+  background-size: cover;
 }

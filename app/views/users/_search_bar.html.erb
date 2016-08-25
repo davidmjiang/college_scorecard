@@ -1,9 +1,24 @@
 <%= form_tag schools_path, :method => 'get' do %>
+<br>
   <%= label_tag "query[school_name]", "Search by School" %>
   <%= text_field_tag "query[school_name]" %>
+<br>
   <%= label_tag "query[school_region_id]", "Region:"%>
   <%= select_tag("query[school_region_id]", options_for_select(school_regions), multiple: true) %>
+  <br>
   <%= label_tag "query[school_locale]", "Locale:" %>
   <%= select_tag("query[school_locale]", options_for_select(locale_types), multiple: true) %>
+  <br>
+  <%= label_tag "Sort By:"%>
+  <%= select_tag :sort, options_for_select([['Cost In State', 'cost_in_state'],
+                                            ['Cost Out of State', 'cost_out_state'],
+                                            ['Size', 'size'],
+                                            ['Selectivity', 'selectivity'],
+                                            ['SAT Scores', 'sat_score']]) %>
+  <%= label_tag "Ascending:"%>
+  <%= radio_button_tag 'order', 'ASC'%>
+  <%= label_tag "Descending:"%>
+  <%= radio_button_tag 'order', 'DESC' %>
+  <br>
   <%= submit_tag "Search" %>
 <% end %>
