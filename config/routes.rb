@@ -15,10 +15,10 @@ Rails.application.routes.draw do
 
   resource :session, :only => [:new, :create, :destroy]
   resources :schools, only: [:index, :show]
-  resource :comparisions, :only => [:index]
+  resources :comparisons, :only => [:index]
 
   get "login" => "sessions#new"
-  delete "logout" => "sessions#destroy"
+  get "logout" => "sessions#destroy"
 
 
 end
