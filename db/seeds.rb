@@ -5,6 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+School.destroy_all
+User.destroy_all
+Review.destroy_all
 
 FACTOR = 100
 
@@ -34,5 +37,13 @@ FACTOR.times do |i|
     user_id: user.id
     })
 
+  school.create_repayment
+  school.create_earning
+  school.create_cost
+  school.create_completion
+  school.create_aid
+  school.create_admission
+  school.create_academic
+  school.create_student
 
 end

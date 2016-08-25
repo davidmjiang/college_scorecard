@@ -1,12 +1,12 @@
 class School < ActiveRecord::Base
-  has_one :academic
-  has_one :admission
-  has_one :aid
-  has_one :completion
-  has_one :cost
-  has_one :earning
-  has_one :repayment
-  has_one :student
+  has_one :academic, dependent: :destroy
+  has_one :admission, dependent: :destroy
+  has_one :aid, dependent: :destroy
+  has_one :completion, dependent: :destroy
+  has_one :cost, dependent: :destroy
+  has_one :earning, dependent: :destroy
+  has_one :repayment, dependent: :destroy
+  has_one :student, dependent: :destroy
 
   has_many :reviews
 
@@ -17,21 +17,22 @@ class School < ActiveRecord::Base
 
 
   def get_map_url
-		"https://maps.googleapis.com/maps/api/staticmap?center=#{root_location_lat},#{root_location_lon}&zoom=17&size=300x300&key=#{Rails.application.secrets.gmaps_static_api_key}"
+		"https://maps.googleapis.com/maps/api/staticmap?center=#{root_location_lat},#{root_location_lon}&zoom=10&size=300x300&key=#{Rails.application.secrets.gmaps_static_api_key}"
   end
+
 
 	def location
 		"#{school_city}, #{school_state}"
 	end
 
-	# def popular_subjects 
+	# def popular_subjects
 	# 	attribs = academic.attributes
-	# 	attribs = attribs.delete_if { |k, v| k == "created_at" || 
-	# 														 k == "school_id" || 
+	# 	attribs = attribs.delete_if { |k, v| k == "created_at" ||
+	# 														 k == "school_id" ||
 	# 														 k == "updated_at" ||
 	# 														 k == "id"
 	# 														 v.nil? }
 	# 	attribs.sort_by { |subject, percent| percent }.keys[0..3]
-	# end 
-end
+	# end
 
+end
