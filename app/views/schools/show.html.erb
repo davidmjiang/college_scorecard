@@ -14,7 +14,7 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 <div id="exTab2" class="container">	
 <ul class="nav nav-tabs">
 			<li class="active"><a  href="#academics" data-toggle="tab">Overall</a></li>
-			<li><a href="#academics" data-toggle="tab">Admissions</a></li>
+			<li><a href="#academics" data-toggle="tab">Academics</a></li>
 			<li><a href="#admissions" data-toggle="tab">Admissions</a></li>
 			<li><a href="#aid" data-toggle="tab">Aid</a></li>
 			<li><a href="#completion" data-toggle="tab">Completion</a></li>
@@ -35,7 +35,7 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 				</div>
 
 				<div class="tab-pane" id="admissions">
-          <h3>Notice the gap between the content and tab after applying a background color</h3>
+          <%= render "admission_table", school: @school %>
 				</div>
 
         <div class="tab-pane" id="aid">
@@ -62,7 +62,7 @@ School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_schoo
 
 
 				 <div class="tab-pane" id="students">
-          <h3>add clearfix to tab-content (see the css)</h3>
+          <%= render "student_table", school: @school %>
 				</div>
 
 	
