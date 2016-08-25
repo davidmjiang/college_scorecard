@@ -1,0 +1,15 @@
+<h1>Academics</h1>
+
+<table class="table table-striped">
+	<tr>
+		<th>Subject</th>
+		<th>Percent of Total</th>
+	</tr>
+
+	<% school.popular_subjects.each do |subject, percent| %>
+		<tr>
+			<td><%= subject_name(subject) %></td>
+			<td><%= to_percent(percent) %></td>
+		</tr>
+	<% end %>
+</table>

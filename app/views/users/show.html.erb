@@ -38,7 +38,7 @@
         <h5>Choose up to 5 of your schools for in-depth comparison:</h5>
         <%= form_tag comparisons_path, :method => 'get' do %>
           <%= label_tag "schools", "Select Schools To Compare:"%>
-          <%= select_tag("schools", options_for_select(@user.schools), multiple: true) %>
+          <%= select_tag("schools", options_for_select(bookmarked_schools(@user.schools)), multiple: true) %>
           <%= submit_tag "See Comparison" %>
         <% end %>
       </div>
@@ -49,7 +49,7 @@
         <h3>Your Reviews</h3>
         <ul>
         <% @user.reviews.each do |review| %>
-          <li> <span><%= link_to review.school.school_name, school_path(review.school) %></span> | <%= review.body %> </li>
+          <li> <span><%= link_to review.school.school_name, school_review_path(review.school, review) %></span> | <%= review.body[0..21] %><%= "..." if review.body.size > 21 %> </li>
         <% end %>
         </ul>
       </div>
@@ -65,3 +65,18 @@
   </div>
   </div>
 </div>
+
+
+<%= timeline [
+  ["Register For SAT", "2016-09-01", "2016-10-31"],
+  ["Prepare and/or revise application essays", "2016-09-01", "2016-10-31"],
+  ["Ask for letters of recommendation", "2016-09-01", "2016-10-31"],
+  ["Submit early decision or early action applications, if desired", "2016-10-15", "2016-11-31"],
+  ["Submit regular decision applications", "2016-10-31", "2016-12-31"],
+  ["Send your SAT and/or ACT scores to schools where you are applying.", "2016-10-31", "2016-11-30"],
+  ["Send transcripts to schools where you are applying.", "2016-10-31", "2016-12-31"],
+  ["Submit the CSS profile.", "2016-11-30", "2016-12-31"],
+  ["Complete the FAFSA", "2016-12-15", "2017-01-31"],
+  ["Compare award letters", "2016-12-15", "2017-02-20"],
+  ["Get Acceptances!", "2017-02-15", "2017-04-30"],
+] , height: "1000px" %>

@@ -1,12 +1,32 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1> <%= @user if @user %> <%= @school if @school %>'s Reviews </h1>
-
-      <% @reviews.each do |review| %>
-        <h3> <%= review.author %>'s review of <%= review.school %> </h3>
-        <p> <%= review.body %> </p>
+      <% if @user %>
+        <h1> <%= @user.username %>'s Reviews </h1>
+      <% elsif @school %>
+        <h1> Reviews of <%= @school.school_name %> </h1>
       <% end %>
+
+      <% if @reviews.empty? && @school %>
+        <p> There are no reviews for this school yet. </p>
+      <% elsif @reviews.empty? && @user %>
+        <p>This user has not yet written any reviews.</p>
+      <% else %>
+        <% @reviews.each do |review| %>
+          <% if @school %>
+            <h3> <%= link_to review.author.username, user_path(review.author) %>'s review of <%= review.school.school_name %> </h3>
+            <p> <%= review.body %> </p>
+          <% elsif @user %>
+            <h3> <%= review.author.username %>'s review of <%= link_to review.school.school_name, school_path(review.school) %> </h3>
+            <p> <%= review.body %> </p>
+          <% end %>
+          <p><span class="review-posted-date"> <%= review.created_at.to_formatted_s(:long_ordinal) %></span></p>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-8" id="review-index-new-review-form">
+      <%= render partial: 'shared/new_or_edit_review', locals: { school: @school, review: @review } if @school && signed_in_user? %>
+    </div>
     </div>
   </div>
 </div>

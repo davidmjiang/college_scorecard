@@ -2,9 +2,9 @@ class ReviewsController < ApplicationController
 
 
   def create
-    @user = current_user
-    @review = Review.new(whitelisted_params)
+    @review = current_user.reviews.new(whitelisted_params)
     @school = School.find(params[:school_id])
+    @review.school = @school
     if @review.save 
       flash[:success] = "Thank you for sharing your opinion."
       redirect_to school_review_path(@school, @review)
@@ -48,6 +48,7 @@ class ReviewsController < ApplicationController
     elsif params[:school_id]
       @school = School.find(params[:school_id])
       @reviews = @school.reviews
+      @review = Review.new
     end
   end
 

@@ -4,8 +4,10 @@
 	<%= image_tag @school.get_map_url, class: "img-rounded" %><br>
 
 <br>
+
 <h4><%= link_to "School Website", "http://#{@school.school_school_url}" %>
 </hr><br>
+
 
 <% if signed_in_user? %>
   <% if bookmarked?(@school) %>
@@ -15,7 +17,7 @@
   <% end %>
 <% end %><br>
 
-<%= link_to "See School Reviews" %>
+<%= link_to "See School Reviews", school_reviews_path(@school.id) %>
 
 
 <div id="exTab2" class="container">

@@ -1,0 +1,85 @@
+<div class="table-responsive">
+	<table class="table table-striped table-hover">
+		<tr>
+			<th>Attribute</th>
+			<% schools.each do |school| %>
+				<th><%= school.school_name %></th>
+			<% end %>
+		</tr>
+		<tr>
+			<td>Location</td>
+			<% schools.each do |school| %>
+				<td><%=school.location %></td>
+			<% end %>
+		</tr>
+
+		<tr>
+			<td>Size</td>
+			<% schools.each do |school| %>
+				<td><%= school.student.size %></td>
+			<% end %>
+		</tr>
+
+		<tr>
+			<td>Admission Rate</td>
+			<% schools.each do |school| %>
+				<td><%= school.admission.admission_rate_overall %></td>
+			<% end %>
+		</tr>
+
+		<tr>
+			<td>Avg SAT Score (Math)</td>
+			<% schools.each do |school| %>
+				<td><%= school.admission.sat_scores_midpoint_math %></td>
+			<% end %>
+		</tr>
+
+		<tr>
+			<td>Avg SAT Score (Math)</td>
+			<% schools.each do |school| %>
+				<td><%= school.admission.sat_scores_midpoint_math %></td>
+			<% end %>
+		</tr>
+		<tr>
+			<td>Avg SAT Score (Critical Reading)</td>
+			<% schools.each do |school| %>
+				<td><%= school.admission.sat_scores_midpoint_critical_reading %></td>
+			<% end %>
+		</tr>
+		<tr>
+			<td>Avg SAT Score (Writing)</td>
+			<% schools.each do |school| %>
+				<td><%= school.admission.sat_scores_midpoint_writing %></td>
+			<% end %>
+		</tr>
+		<tr>
+			<td>Avg SAT Score (Cummulative)</td>
+			<% schools.each do |school| %>
+				<td><%= school.admission.sat_scores_average_overall %></td>
+			<% end %>
+		</tr>
+
+		<tr>
+			<td>Six Year Completion Rate</td>
+			<% schools.each do |school| %>
+				<td><%= school.completion.six_yr_completion_overall%></td>
+			<% end %>
+		</tr>
+
+		<tr>
+		
+			<td>Tuition (in state)</td>
+			<% schools.each do |school| %>
+				<td><%= school.cost.tuition_in_state%></td>
+			<% end %>
+		</tr>
+
+		<tr>
+			<td>Tuition (out of state)</td>
+			<% schools.each do |school| %>
+				<td><%= school.cost.tuition_in_state%></td>
+			<% end %>
+		</tr>
+
+	</table>
+</div>
