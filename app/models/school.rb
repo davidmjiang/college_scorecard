@@ -49,6 +49,7 @@ class School < ActiveRecord::Base
 		location.gsub(" ", "+")
 	end
 
+
 	def popular_subjects
 		attribs = academic.attributes
 		attribs = attribs.delete_if { |k, v| k == "created_at" || k == "school_id" || k == "updated_at" || k == "id" }
