@@ -4,10 +4,10 @@ class BookmarksController < ApplicationController
     @school = School.find(params[:school_id])
     if current_user.schools << @school
       flash[:success] = "School added to your schools."
-      redirect_to :back
+      redirect_to @school
     else
       flash[:error] = "Error in adding school."
-      redirect_to :back
+      redirect_to @school
     end
   end
 
