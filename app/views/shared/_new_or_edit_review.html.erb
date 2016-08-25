@@ -1,15 +1,15 @@
-<div class="container">
   <div class="row">
     <div class="col-xs-12">
 
       <%= form_for [school, review] do |review_fields| %>
-      
-        <%= review_fields.label "What do you think of this school?" %>
-        <%= review_fields.text_area :body %>
+        
+        <div class="form-group">
+          <%= review_fields.label "What do you think of this school?" %>
+          <%= review_fields.text_area :body, class: "form-control", id: "edit-or-new-review-body-input" %>
+        </div>
           
-        <%= review_fields.submit %>
+        <%= review_fields.submit "Submit", class: "btn btn-success" %>
       <% end %>
 
     </div>
   </div>
-</div>

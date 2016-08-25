@@ -1,3 +1,19 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#review-show-body {
+  font-size: 18px;
+  margin: 30px 0;
+}
+
+.review-posted-date {
+  color: #999;
+  font-size: 12px;
+  position: relative;
+  top: -10px;
+}
+
+#review-index-new-review-form {
+  margin-top: 20px;
+}
