@@ -87,9 +87,6 @@ class School < ActiveRecord::Base
     query
   end
 
-  # i, i-1, i-2
-  # User.where('name ilike any ( array[?] )',['%thomas%','%james%','%martin%'])
-
   def self.where_school_locale_equals(school_locale)
     where('school_locale= any (array[?] )', school_locale)
   end
