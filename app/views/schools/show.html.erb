@@ -5,9 +5,10 @@
 
 <br>
 School Site: <a href="<%= @school.school_school_url %>"><%= @school.school_school_url %></a><br>
-<%= link_to "Bookmark", school_bookmarks_path(@school.id), method: :post %><br>
+<%= button_to "Bookmark", school_bookmarks_path(@school.id), method: "post" %><br>
 <%= link_to "See School Reviews" %>
 
+<%= pie_chart School.student %>
 
 
 
