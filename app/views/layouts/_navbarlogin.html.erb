@@ -13,7 +13,7 @@
         <div class="search-container">
           <div class="form-group pull-left form-inline">
             <%= form_tag schools_path, :method => 'get' do %>
-              <%= text_field_tag "school_name", nil, placeholder: "School Name", class: "form-control" %>
+              <%= text_field_tag "query[school_name]", nil, placeholder: "School Name", class: "form-control" %>
               <%= submit_tag "Search", class: "form-control" %>
             <% end %>
           </div>

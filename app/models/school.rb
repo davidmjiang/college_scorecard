@@ -66,7 +66,6 @@ class School < ActiveRecord::Base
     region_id = params['school_region_id'].first.to_i if params['school_region_id']
     school_locale = params['school_locale'].first.to_i if params['school_locale']
 
-<<<<<<< HEAD
     query = fuzzy_search_school(school_name) if school_name
     if query && school_locale
       query = query.where_school_locale_equals(school_locale)
@@ -95,6 +94,5 @@ class School < ActiveRecord::Base
     where("school_name ILIKE ?", query)
   end
 
-=======
->>>>>>> c73ec96fbd39bdf7a67328c39c533a062a11ed32
+
 end
