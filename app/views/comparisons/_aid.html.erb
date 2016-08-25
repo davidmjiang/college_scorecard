@@ -1,0 +1,35 @@
+<h1>Aid</h1>
+
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Attribute</th>
+      <% schools.each do |school| %>
+        <th><%= school.school_name %></th>
+      <% end %>
+    </tr>
+
+		<% get_aid_info(schools.first).each do |k, v| %>
+			<tr>
+
+				<td><%= k.gsub("_", " ").titleize %></td>
+
+				<% schools.each do |school| %>
+
+					<% get_aid_info(school).each do |x, y| %>
+
+						<% if y.nil? %>
+							<td>N/A</td>
+						<% else %>
+							<td><%= y %></td>
+						<% end %>
+
+					<% end %>
+
+				<% end %>
+				
+			</tr>
+		<% end %>
+	</table>
+</div>

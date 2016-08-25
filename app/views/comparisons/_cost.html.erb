@@ -1,0 +1,47 @@
+<h1>Net Price by Income Level</h1>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Family Income Level</th>
+      <% schools.each do |school| %>
+        <th><%= school.school_name %></th>
+      <% end %>
+    </tr>
+  
+    <tr>
+      <td>$0-30,000</td>
+      <% schools.each do |school| %>
+        <td><%= school.cost.net_price_public_by_income_level_0_30000 || school.cost.net_price_private_by_income_level_0_30000 %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>$30,001-$48,000</td>
+      <% schools.each do |school| %>
+        <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+      <% end %>
+    </tr>
+
+     <tr>
+      <td>$48,001-$75,000</td>
+      <% schools.each do |school| %>
+        <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+      <% end %>
+    </tr>
+
+     <tr>
+      <td>$75,001-$110,000</td>
+      <% schools.each do |school| %>
+        <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+      <% end %>
+    </tr>
+
+     <tr>
+      <td>$110,001+</td>
+      <% schools.each do |school| %>
+        <td><%= school.cost. net_price_public_by_income_level_30001_48000 || school.cost.net_price_private_by_income_level_30001_48000 %></td>
+      <% end %>
+    </tr>
+
+  </table>
+</div>

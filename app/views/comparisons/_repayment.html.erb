@@ -1,0 +1,60 @@
+<h1>Student Loan Repayment Statistics</h1>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Attribute</th>
+      <% schools.each do |school| %>
+        <th><%= school.school_name %></th>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>  One-year repayment rate for completers  </td>
+      <% schools.each do |school| %>
+        <td><%= school.repayment.one_yr_repayment_completers %> </td>
+      <% end %>
+    </tr>
+    <tr>
+      <td> Three-year repayment rate for completers   </td>
+      <% schools.each do |school| %>
+        <td><%= school.repayment.three_yr_repayment_completers %> </td>
+      <% end %>
+    </tr>
+    <tr>
+      <td> Three-year repayment rate by family income ($0-30,000)   </td>
+      <% schools.each do |school| %>
+        <td><%= school.repayment.three_yr_repayment_income_0_30000 %> </td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>  Three-year repayment rate by family income ($30,000-75,000)  </td>
+      <% schools.each do |school| %>  
+        <td><%= school.repayment.three_yr_repayment_income_30000_75000 %> </td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>  Three-year repayment rate by family income ($75,000+)  </td>
+      <% schools.each do |school| %>
+        <td><%= school.repayment.three_yr_repayment_income_greater_than_75000 %> </td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>   Number of students in the 5-year repayment rate of Pell students cohort </td>
+      <% schools.each do |school| %>
+        <td><%= school.repayment.five_yr_repayment_pell_grant %> </td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>  Number of students in the 7-year repayment rate cohort  </td>
+      <% schools.each do |school| %>
+        <td><%= school.repayment.seven_yr_repayment_overall %> </td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>  Number of students in the 7-year repayment rate of completers cohort  </td>
+      <% schools.each do |school| %>
+        <td><%= school.repayment.seven_yr_repayment_completers %> </td>
+      <% end %>
+    </tr>
+  </table>
+</div>

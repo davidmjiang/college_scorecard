@@ -5,6 +5,6 @@
   <td><%= bookmark_fields.input :letters, label: false %></td>
   <td><%= bookmark_fields.input :application, label: false %></td>
   <td><%= bookmark_fields.submit "Update Status", class:"btn btn-primary" %>
-  <td><%= link_to "Remove School", school_bookmark_path(school.id, bookmark.id), method: :delete, class:"btn btn-danger" %></td>
+  <td><%= button_to "Remove School", school_bookmark_path(school.id, bookmark.id), method: :delete, class:"btn btn-danger" %></td>
   <% end %>
 </tr>

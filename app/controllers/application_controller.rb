@@ -96,4 +96,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :find_user_bookmark
 
+  def bookmarked_schools(user_schools)
+    schools = []
+    user_schools.each do |school| 
+      schools << [school.school_name, school.id]
+    end
+    schools
+  end
+  helper_method :bookmarked_schools
+
+
 end
