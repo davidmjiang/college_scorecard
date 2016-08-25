@@ -1,0 +1,97 @@
+<h1>Student Body</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Attribute</th>
+      <% schools.each do |school| %>
+        <th><%= school.school_name %></th>
+      <% end %>
+    </tr>
+    
+    <tr>
+      <td>Student Body Size</td>
+      <% schools.each do |school| %>
+        <td><%= school.student.size %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>White</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.student.demographics_race_ethnicity_white) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>African American</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.student.demographics_race_ethnicity_black) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>Hispanic</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.student.demographics_race_ethnicity_hispanic) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>Asian</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.student.demographics_race_ethnicity_asian) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>American Indian and Alaska Native</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.student.demographics_race_ethnicity_aian) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>Asian Pacific Islander</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.student.demographics_race_ethnicity_asian_pacific_islander) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>First Time Full Time</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.student.share_first_time_full_time) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>Older than 25</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.student.share_25_older) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>First Generation</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.student.share_firstgeneration) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>Independent Students</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.student.share_independent_students) %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td>Family Income Overall</td>
+      <% schools.each do |school| %>
+        <td><%= school.student.family_income_overall %></td>
+      <% end %>
+    </tr>
+
+  </table>
+</div>
