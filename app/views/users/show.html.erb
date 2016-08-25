@@ -28,9 +28,11 @@
       <div class="info-box">
         <h3>Compare Your Schools</h3>
         <h5>Choose up to 5 of your schools for in-depth comparison:</h5>
-        <form action="/comparisons" method="get">
-          <%= collection_select(@user, :schools, @user.schools, :id, :school_name) %>
-        </form>
+        <%= form_tag comparisons_path, :method => 'get' do %>
+          <%= label_tag "schools", "Select Schools To Compare:"%>
+          <%= select_tag("schools", options_for_select(@user.schools), multiple: true) %>
+          <%= submit_tag "See Comparison" %>
+        <% end %>
       </div>
     </div>
 
