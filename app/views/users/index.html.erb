@@ -1,9 +1,11 @@
 <div class="container front-page">
   <div class="row">
     <div class="col-sm-12">
-      <h1>Welcome to College Scorecard Thing</h1>
-      <%= link_to "Create New User", new_user_path, class: "btn btn-primary btn-lg" %>
+      <h1 id="welcome">Welcome to College Scorecard Thing</h1>
+      <%= link_to "Sign Up!", new_user_path, class: "btn btn-success btn-lg", id: "create-user-button" unless signed_in_user? %>
     </div>
   </div>
-  <%= render "search_bar" %>
+  <div class="row">
+    <%= render "search_bar" %>
+  </div>
 </div>
