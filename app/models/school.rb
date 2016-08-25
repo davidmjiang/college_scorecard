@@ -58,7 +58,7 @@ class School < ActiveRecord::Base
 	def popular_subjects
 		attribs = academic.attributes
 		attribs = attribs.delete_if { |k, v| k == "created_at" || k == "school_id" || k == "updated_at" || k == "id" }
-  	attribs = attribs.sort_by { |subject, percent| percent }.reverse[0..4].to_h
+  	attribs = attribs.sort_by { |subject, percent| percent }.reverse[0..9].to_h
    attrib_keys = attribs.map do |k, v|
       k.gsub("program_percentage_", "")
       k.gsub("_", " ")
@@ -70,15 +70,7 @@ class School < ActiveRecord::Base
 	end
 
 
-  # def self.search(queries)
-  #   results = self.where("")
-  #   if queries
-  #     queries.each do |col, term|
-  #       results = results.where("#{col} LIKE ?", "%#{term}%") if term.present?
-  #     end
-  #   end
-  #   results
-  # end
+
 
 
 
