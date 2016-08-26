@@ -2,24 +2,37 @@
 
 
 <table class="table table-striped">
-	<tr>
-
-		<th>Subject</th>
-		<th>Percent of Total</th>
-
-
-	</tr>
-	<% get_aid_info(school).each do |k, v| %>
-		<tr>
-
-			<td><%= k.gsub("_", " ").titleize %></td>
-
-			<% if v.nil? %>
-				<td>N/A</td>
-			<% else %>
-				<td><%= v %></td>
-			<% end %>
-			
-		</tr>
-	<% end %>
+<tr>
+	<td>Percent of undergraduates receiving Pell Grants</td>
+	<td><%= school.aid.pell_grant_rate %></td>
+</tr>
+<tr>
+	<td>Percent of undergraduates receiving a federal student loan</td>
+	<td><%= school.aid.federal_loan_rate %></td>
+</tr>
+<tr>
+	<td>Cumulative Median Debt upon leaving school</td>
+	<td><%= school.aid.median_debt_completers_overall %></td>
+</tr>
+<tr>
+	<td>Median Loan Debt upon leaving school</td>
+	<td><%= school.aid.median_debt_completers_overall %></td>
+</tr>
 </table>
+
+<table class="table table-striped">
+<caption>Median Loan Debt by family income</caption>
+<tr>
+	<td>$0-30,000</td>
+	<td><%= school.aid.median_debt_income_0_30000 %></td>
+</tr>
+<tr>
+	<td>$30,001-75,000</td>
+	<td><%= school.aid.median_debt_income_30001_75000 %></td>
+</tr>
+<tr>
+	<td>$75,000+</td>
+	<td><%= school.aid.median_debt_income_greater_than_75000 %></td>
+</tr>
+</table>
+

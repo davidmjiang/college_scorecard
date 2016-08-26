@@ -1,34 +1,42 @@
 class ReviewsController < ApplicationController
-
-
   def create
     @review = current_user.reviews.new(whitelisted_params)
     @school = School.find(params[:school_id])
     @review.school = @school
-    if @review.save 
-      flash[:success] = "Thank you for sharing your opinion."
+    if @review.save
+      flash[:success] = 'Thank you for sharing your opinion.'
       redirect_to school_review_path(@school, @review)
     else
-      flash[:danger] = @review.errors.full_messages.join(", ")
+      flash[:danger] = @review.errors.full_messages.join(', ')
       render :new
     end
   end
 
   def edit
     @user = current_user
-    @review = Review.find(params[:id])
-    @school = @review.school
+    if @user.reviews.exists?(params[:id])
+      @review = @user.reviews.find(params[:id])
+      @school = @review.school
+    else
+      flash[:danger] = "You can't do that"
+      redirect_to @user
+    end
   end
 
   def update
-    @review = current_user.reviews.find(params[:id])
-    @school = @review.school
-    if @review.update(whitelisted_params)
-      flash[:success] = "Changes have been made to reflect your wavering opinion."
-      redirect_to school_review_path(@school, @review)
-    else  
-      flash[:danger] = @review.errors.full_messages.join(', ')
-      render :edit
+    if current_user.reviews.exists?(params[:id])
+      @review = current_user.reviews.find(params[:id])
+      @school = @review.school
+      if @review.update(whitelisted_params)
+        flash[:success] = 'Changes have been made to reflect your wavering opinion.'
+        redirect_to school_review_path(@school, @review)
+      else
+        flash[:danger] = @review.errors.full_messages.join(', ')
+        render :edit
+      end
+    else
+      flash[:danger] = "You can't do that"
+      redirect_to current_user
     end
   end
 
@@ -55,8 +63,6 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
   end
-
-
 
   private
 

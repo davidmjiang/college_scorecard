@@ -13,25 +13,31 @@ class BookmarksController < ApplicationController
   end
 
   def update
-    @bookmark = Bookmark.find(params[:id])
-    if @bookmark.update(bookmark_params)
-      flash[:success] = "Status updated"
-      redirect_to current_user
+    if current_user.bookmarks.exists?(params[:id])
+      @bookmark = current_user.bookmarks.find(params[:id])
+      if @bookmark.update(bookmark_params)
+        flash[:success] = "Status updated"
+      else
+        flash[:danger] = "Update failed"
+      end
     else
-      flash[:danger]
-      redirect_to current_user
+      flash[:danger] = "Not your bookmark"
     end
+    redirect_to current_user
   end
 
   def destroy
-    @bookmark = Bookmark.find(params[:id])
-    if @bookmark.destroy
-      flash[:success] = "School removed from your schools."
-      redirect_to :back
+    if current_user.bookmarks.exists?(params[:id])
+      @bookmark = current_user.bookmarks.find(params[:id])
+      if @bookmark.destroy
+        flash[:success] = "School removed from your schools."
+      else
+        flash[:danger] = "Error in removing school."
+      end
     else
-      flash[:danger] = "Error in removing school."
-      redirect_to :back
+      flash[:danger] = "Not your bookmark"
     end
+      redirect_to :back
   end
 
   private

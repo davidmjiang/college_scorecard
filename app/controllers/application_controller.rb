@@ -36,10 +36,10 @@ class ApplicationController < ActionController::Base
 
   def require_current_user
     unless params[:id] == current_user.id.to_s
-      flash[:error] = "You're not authorized to view this"
+      flash[:danger] = "You're not authorized to view this"
       redirect_to root_url
     end
-  end 
+  end
 
 
   REGIONS = { "U.S. Service Schools": 0,
@@ -98,7 +98,7 @@ class ApplicationController < ActionController::Base
 
   def bookmarked_schools(user_schools)
     schools = []
-    user_schools.each do |school| 
+    user_schools.each do |school|
       schools << [school.school_name, school.id]
     end
     schools
