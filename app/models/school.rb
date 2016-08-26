@@ -70,7 +70,7 @@ class School < ActiveRecord::Base
     end
     if params['school_locale']
       school_locales = params['school_locale'].map(&:to_i)
-      school_locales.map { |l| [l, l-1, l-2]}.flatten
+      school_locales.map! { |l| [l, l-1, l-2]}.flatten!
     end
 
     query = fuzzy_search_school(school_name) if school_name
@@ -87,12 +87,12 @@ class School < ActiveRecord::Base
     query
   end
 
-  def self.where_school_locale_equals(school_locale)
-    where('school_locale= any (array[?] )', school_locale)
+  def self.where_school_locale_equals(school_locales)
+    where(school_locale: school_locales)
   end
 
   def self.where_region_id_equals(region_ids)
-    where('school_region_id= any (array[?] )', region_ids)
+    where(school_region_id: region_ids)
   end
 
   def self.fuzzy_search_school(query)
@@ -100,3 +100,16 @@ class School < ActiveRecord::Base
     where("school_name ILIKE ?", query)
   end
 end
+
+
+
+# queries = query.split(' ').map { |q| '%' + q + '%' }
+# result = nil
+# queries.each do |q|
+#   if result.nil?
+#     where("school_name ILIKE ?", q)
+#   else
+#     result.where("school_name ILIKE ?", q)
+#   end
+# end
+# result
