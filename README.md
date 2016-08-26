@@ -1,6 +1,6 @@
 # App.ly
 
-Check it out [here!](https://college-sc.herokuapp.com)
+Check it out [here!](https://apply-.herokuapp.com)
 
 ## Overview
 
