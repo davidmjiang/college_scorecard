@@ -1,13 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-11">
       <h1>Login</h1>
         <%= form_tag("/session", method: "post") do %>
+          <div class="form-group">
           <%= label_tag(:email) %>
-          <%= text_field_tag(:email) %><br>
+          <%= text_field_tag(:email, "", class: "form-control") %><br>
+          </div>
+          <div class="form-group">
           <%= label_tag(:password) %>
-          <%= password_field_tag(:password) %><br>
-          <%= submit_tag("Login") %>
+          <%= password_field_tag(:password, "", class: "form-control") %><br>
+          </div>
+          <%= submit_tag("Login", class: "btn btn-success margin-bottom") %>
         <% end %>
     </div>
   </div>
