@@ -1,6 +1,6 @@
 # App.ly
 
-Check it out [here!](https://apply-.herokuapp.com)
+Check it out [here!](https://applyapp.herokuapp.com)
 
 ## Overview
 
