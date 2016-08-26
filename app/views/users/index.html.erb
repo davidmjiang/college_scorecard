@@ -7,12 +7,11 @@
       <br>
       <h3>Find A School!</h3>
       <% unless current_user %>
-      	<%= link_to "Create New User", new_user_path, class: "btn btn-primary btn-lg" %>
+      	<%= link_to "Create New User", new_user_path, class: "btn btn-primary btn-lg", id: "new-user-button" %>
       <% end %>
 
     </div>
-  </div>
-  <div class="row">
     <%= render "search_bar" %>
   </div>
+
 </div>
