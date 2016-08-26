@@ -92,7 +92,6 @@ module SchoolsHelper
 
   def get_median_debt_data(school)
     data = []
-
     data << [20000, school.aid.median_debt_income_0_30000 ]
     data << [50000, school.aid.median_debt_income_30001_75000]
     data << [75000, school.aid.median_debt_income_greater_than_75000]
