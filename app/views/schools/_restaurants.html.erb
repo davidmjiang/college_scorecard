@@ -10,8 +10,10 @@
       <div class="col-xs-9" id="restaurant-info">
         <%= link_to restaurant.name, restaurant.url, :target => "_blank" %><br>
         Yelp Rating: <%= image_tag restaurant.rating_img_url %><br>
-        <% restaurant.categories.each_with_index do |category, index| %>
-          <%= category[0] %><%= "," unless index == restaurant.categories.length - 1 %>
+        <% if restaurant.categories != nil %>
+          <% restaurant.categories.each_with_index do |category, index| %>
+            <%= category[0] %><%= "," unless index == restaurant.categories.length - 1 %>
+          <% end %>
         <% end %>
       </div>
     </div>
