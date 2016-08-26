@@ -20,12 +20,12 @@
   }
 
   .search-container{
-    margin-top: 8px;
+    margin-top: 12px;
   }
 
   .name-container{
     font-size: 16px;
-    margin-top: 14px;
+    margin-top: 24px;
     .pull-right{
       a{
       color: black;
@@ -37,6 +37,7 @@
 .navbar-brand{
   color: white;
   font-size: 48px;
+  margin-bottom: 12px;
 }
 
 .title-name{
@@ -125,4 +126,9 @@ html{
 
 #find-school {
   display: inline;
+}
+
+#navbar{
+  margin-top: 4px;
+  margin-right: 4px;
 }

@@ -17,58 +17,51 @@
 		<tr>
 			<td>Size</td>
 			<% schools.each do |school| %>
-				<td><%= school.student.size %></td>
+				<td><%= number_with_delimiter(school.student.size) %></td>
 			<% end %>
 		</tr>
 
 		<tr>
 			<td>Admission Rate</td>
 			<% schools.each do |school| %>
-				<td><%= school.admission.admission_rate_overall %></td>
+				<td><%= to_percent(school.admission.admission_rate_overall) %></td>
 			<% end %>
 		</tr>
 
 		<tr>
 			<td>Avg SAT Score (Math)</td>
 			<% schools.each do |school| %>
-				<td><%= school.admission.sat_scores_midpoint_math %></td>
+				<td><%= float_to_int(school.admission.sat_scores_midpoint_math) %></td>
 			<% end %>
 		</tr>
 
 		<tr>
 			<td>Avg SAT Score (Math)</td>
 			<% schools.each do |school| %>
-				<td><%= school.admission.sat_scores_midpoint_math %></td>
+				<td><%= float_to_int(school.admission.sat_scores_midpoint_math) %></td>
 			<% end %>
 		</tr>
 		<tr>
 			<td>Avg SAT Score (Critical Reading)</td>
 			<% schools.each do |school| %>
-				<td><%= school.admission.sat_scores_midpoint_critical_reading %></td>
+				<td><%= float_to_int(school.admission.sat_scores_midpoint_critical_reading) %></td>
 			<% end %>
 		</tr>
 		<tr>
 			<td>Avg SAT Score (Writing)</td>
 			<% schools.each do |school| %>
-				<td><%= school.admission.sat_scores_midpoint_writing %></td>
+				<td><%= float_to_int(school.admission.sat_scores_midpoint_writing) %></td>
 			<% end %>
 		</tr>
 		<tr>
 			<td>Avg SAT Score (Cummulative)</td>
 			<% schools.each do |school| %>
-				<td><%= school.admission.sat_scores_average_overall %></td>
+				<td><%= float_to_int(school.admission.sat_scores_average_overall) %></td>
 			<% end %>
 		</tr>
 
 		<tr>
-			<td>Six Year Completion Rate</td>
-			<% schools.each do |school| %>
-				<td><%= school.completion.six_yr_completion_overall%></td>
-			<% end %>
-		</tr>
-
-		<tr>
-      <td>Completion rate for first-time, full-time students (150% of expected time to completion/6 years) </td>
+      <td>6-year completion rate for first-time, full-time students </td>
       <% schools.each do |school| %>
         <td><%= (school.completion.completion_rate_4yr_150nt * 100).to_s + "%" if school.completion.completion_rate_4yr_150nt %> <%= (school.completion.completion_rate_less_than_4yr_150nt * 100).to_s + "%" if school.completion.completion_rate_less_than_4yr_150nt %></td>
       <% end %>

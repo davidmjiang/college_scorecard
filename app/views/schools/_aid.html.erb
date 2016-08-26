@@ -4,35 +4,31 @@
 <table class="table table-striped">
 <tr>
 	<td>Percent of undergraduates receiving Pell Grants</td>
-	<td><%= school.aid.pell_grant_rate %></td>
+	<td><%= to_percent(school.aid.pell_grant_rate) %></td>
 </tr>
 <tr>
 	<td>Percent of undergraduates receiving a federal student loan</td>
-	<td><%= school.aid.federal_loan_rate %></td>
-</tr>
-<tr>
-	<td>Cumulative Median Debt upon leaving school</td>
-	<td><%= school.aid.median_debt_completers_overall %></td>
-</tr>
-<tr>
-	<td>Median Loan Debt upon leaving school</td>
-	<td><%= school.aid.median_debt_completers_overall %></td>
+	<td><%= to_percent(school.aid.federal_loan_rate) %></td>
 </tr>
 </table>
 
 <table class="table table-striped">
 <caption>Median Loan Debt by family income</caption>
+	<tr>
+		<th>Family Income</th>
+		<th>Median Loan Debt</th>
+	</tr>
 <tr>
 	<td>$0-30,000</td>
-	<td><%= school.aid.median_debt_income_0_30000 %></td>
+	<td><%= number_to_currency(school.aid.median_debt_income_0_30000, precision: 0) %></td>
 </tr>
 <tr>
 	<td>$30,001-75,000</td>
-	<td><%= school.aid.median_debt_income_30001_75000 %></td>
+	<td><%= number_to_currency(school.aid.median_debt_income_30001_75000, precision: 0) %></td>
 </tr>
 <tr>
 	<td>$75,000+</td>
-	<td><%= school.aid.median_debt_income_greater_than_75000 %></td>
+	<td><%= number_to_currency(school.aid.median_debt_income_greater_than_75000, precision: 0) %></td>
 </tr>
 </table>
 
