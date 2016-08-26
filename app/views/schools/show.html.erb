@@ -1,24 +1,30 @@
 <h1><%= @school.school_name %></h1>
+
+<h4><%= link_to "School Website", "http://#{@school.school_school_url}", id: "school-site-link" %>
+</hr><br>
+
+  <div>
+
+  <% if signed_in_user? %>
+    <% if bookmarked?(@school) %>
+       <%= button_to "Remove from MySchools", school_bookmark_path(@school.id, find_user_bookmark(@school).id), method: :delete, class: "btn btn-success", id: "bookmark-button" %> 
+    <% else %>
+     <%= button_to "Add to MySchools", school_bookmarks_path(@school.id), method: :post, class: "btn btn-success", id: "bookmark-button" %>
+    <% end %>
+
+    <%= link_to "See School Reviews", school_reviews_path(@school.id), class: "btn btn-primary", id: "see-reviews-button" %>
+
+  <% end %>
+
+ </div>
+
+  <br>
+
 	<%= image_tag @school.get_street_view, class: "img-rounded" %>
 
 	<%= image_tag @school.get_map_url, class: "img-rounded" %><br>
 
 <br>
-
-<h4><%= link_to "School Website", "http://#{@school.school_school_url}", id: "school-site-link" %>
-</hr><br>
-
-
-<% if signed_in_user? %>
-  <% if bookmarked?(@school) %>
-     <%= button_to "Unbookmark", school_bookmark_path(@school.id, find_user_bookmark(@school).id), method: :delete, class: "btn btn-success", id: "bookmark-button" %>
-  <% else %>
-   <%= button_to "Bookmark", school_bookmarks_path(@school.id), method: :post, class: "btn btn-success", id: "bookmark-button" %>
-  <% end %>
-<% end %><br>
-
-<%= link_to "See School Reviews", school_reviews_path(@school.id), class: "btn btn-primary", id: "see-reviews-button" %>
-
 
 <div id="exTab2">
 <ul class="nav nav-tabs">

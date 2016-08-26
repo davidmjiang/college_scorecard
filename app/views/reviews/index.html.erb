@@ -14,7 +14,7 @@
       <% else %>
         <% @reviews.each do |review| %>
           <% if @school %>
-            <h3> <%= link_to review.author.username, user_path(review.author) %>'s review of <%= review.school.school_name %> </h3>
+            <h3> <%= review.author.username %>'s review of <%= review.school.school_name %> </h3>
             <p> <%= review.body %> </p>
           <% elsif @user %>
             <h3> <%= review.author.username %>'s review of <%= link_to review.school.school_name, school_path(review.school) %> </h3>
