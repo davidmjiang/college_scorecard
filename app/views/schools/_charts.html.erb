@@ -6,25 +6,26 @@
 
 <div class="chart">
 	<h3>Midpoint SAT Scores</h3>
-  <%= bar_chart get_sat_data(@school), colors: [ "green", "#78AB46"],  max: 800 %>
+  <%= bar_chart( get_sat_data(@school), {library: { hMax: 800, colors: [ "green", "#78AB46"] , hAxis: {title: "Score"}, vAxis: {title: "Subject"}}} ) %>
 </div>
 
 <hr>
 
 <div class="chart">
 	<h3>Midpoint ACT Scores</h3>
-  <%= bar_chart get_act_data(@school), colors: [ "#ffa500", "#ffc966"], max: 36 %>
+  <%= bar_chart get_act_data(@school), {library: { hMax: 36, colors: [ "#ffa500", "#ffc966"], hAxis: {title: "Score"}, vAxis: {title: "Subject"}}} %>
 </div>
 
 <hr>
  
 <div class="chart">
 	<h3>Average Cost Per Year By Income</h3>
-  <%= column_chart get_cost_data(@school) %>
+  <%= column_chart get_cost_data(@school), {library: { hAxis: {title: "Income Bracket"}, vAxis: {title: "Average Attendance Cost Per Year"}}} %>
 </div>
 <hr>
 <div class="chart">
 	<h3>Median Debt By Income</h3>
-  <%= line_chart get_median_debt_data(@school) %>
+  <%= line_chart get_median_debt_data(@school), {library: { hAxis: {title: "Income ($)"}, vAxis: {title: "Average Amount of Debt Immediatley after Graduation ($)"}}} %>
 </div>
 
+ 
