@@ -12,6 +12,7 @@ class SchoolsController < ApplicationController
 
   def show
     @school = School.find(params[:id])
+    @restaurants = YelpAPI.new.get_top_ten(@school).businesses
   end
 
   private
