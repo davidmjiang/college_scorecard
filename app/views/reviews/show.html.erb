@@ -5,7 +5,7 @@
       <p id="review-show-body"> <%= @review.body %> </p>
     </div>
     <div class="col-xs-12">
-      <%= link_to "Edit", edit_school_review_path(@review.school, @review), class: "btn btn-primary" if @review.author == current_user %>
+      <%= link_to "Edit", edit_school_review_path(@review.school, @review), class: "btn btn-primary", id: "submit-review-edits-btn" if @review.author == current_user %>
     </div>
   </div>
 </div>
