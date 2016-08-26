@@ -10,18 +10,46 @@
       <% end %>
     </tr>
 
-		<% get_aid_keys(schools.first).each do |key| %>
-			<tr>
+    <tr>
+      <td>Percent of undergraduates receiving Pell Grants</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.aid.pell_grant_rate) %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>Percent of undergraduates receiving a federal student loan</td>
+      <% schools.each do |school| %>
+        <td><%= to_percent(school.aid.federal_loan_rate) %></td>
+      <% end %>
+    </tr>
+    </table>
 
-				<td><%= key.gsub("_", " ").titleize %></td>
+    <h3>Median Loan Debt by Family Income</h3>
+    <table class="table table-striped">
+      <tr>
+        <th></th>
+        <% schools.each do |school| %>
+          <th><%= link_to school.school_name, school_path(school) %></th>
+        <% end %>
+      </tr>
+    <tr>
+      <td>$0-30,000</td>
+      <% schools.each do |school| %>
+        <td><%= number_to_currency(school.aid.median_debt_income_0_30000, precision: 0) %></td>
+      <% end %>  
+    </tr>
+    <tr>
+      <td>$30,001-75,000</td>
+      <% schools.each do |school| %>
+        <td><%= number_to_currency(school.aid.median_debt_income_30001_75000, precision: 0) %></td>
+      <% end %> 
+    </tr>
+    <tr>
+      <td>$75,000+</td>
+      <% schools.each do |school| %>
+        <td><%= number_to_currency(school.aid.median_debt_income_greater_than_75000, precision: 0) %></td>
+      <% end %>
+    </tr>
 
-				<% schools.each do |school| %>
-
-					<td><%= school.aid.send("#{key}") %></td>
-
-				<% end %>
-				
-			</tr>
-		<% end %>
 	</table>
 </div>
