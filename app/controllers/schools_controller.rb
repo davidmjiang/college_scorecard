@@ -14,13 +14,6 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
   end
 
-  # private
-
-  # def school_params
-  # 	params.require(:school).permit()
-
-  # end
-
   private
 
   def query_params
