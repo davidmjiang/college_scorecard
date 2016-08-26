@@ -63,6 +63,7 @@
   }
 }
 
+
 .nav-logout{
   a{
   color: white;
@@ -70,13 +71,17 @@
 }
 
 .school-list{
+  table{
+    background-color: #ecf0f1;
+  }
   th{
     text-align: center;
   }
   text-align: center;
   p{
-  text-align: center;
-  font-size: 18px;
+    text-align: center;
+    font-size: 18px;
+    font-color: black;
   }
 }
 
