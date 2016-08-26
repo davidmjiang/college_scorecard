@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   skip_before_action :require_login, :only => [:index, :new, :create]
-  before_action :require_current_user, :only => [:edit, :update, :destroy]
+  before_action :require_current_user, :only => [:edit, :update, :destroy, :show]
 
   def index
   end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def destroy
