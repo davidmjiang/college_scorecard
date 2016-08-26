@@ -35,11 +35,6 @@
   </tr>
 
   <tr>
-    <td>Asian Pacific Islander</td>
-    <td><%= to_percent(school.student.demographics_race_ethnicity_asian_pacific_islander) %></td>
-  </tr>
-
-  <tr>
     <td>First Time Full Time</td>
     <td><%= to_percent(school.student.share_first_time_full_time) %></td>
   </tr>
@@ -54,10 +49,12 @@
     <td><%= to_percent(school.student.share_firstgeneration) %></td>
   </tr>
 
+  <% unless school.student.share_independent_students == 0.0  %>
   <tr>
     <td>Independent Students</td>
     <td><%= to_percent(school.student.share_independent_students) %></td>
   </tr>
+  <% end %>
 
 </table>
 
