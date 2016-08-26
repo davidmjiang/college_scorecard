@@ -1,40 +1,46 @@
-<h1><%= @school.school_name %></h1>
-	<%= image_tag @school.get_street_view, class: "img-rounded" %>
+<div class="container">  
+  <div class="row">
+    <h1><%= @school.school_name %></h1>
+    	<%= image_tag @school.get_street_view, class: "img-rounded" %>
 
-	<%= image_tag @school.get_map_url, class: "img-rounded" %><br>
+    	<%= image_tag @school.get_map_url, class: "img-rounded" %><br>
 
-<br>
+    <br>
 
-<h4><%= link_to "School Website", "http://#{@school.school_school_url}", id: "school-site-link" %>
-</hr><br>
-
-
-<% if signed_in_user? %>
-  <% if bookmarked?(@school) %>
-     <%= button_to "Unbookmark", school_bookmark_path(@school.id, find_user_bookmark(@school).id), method: :delete, class: "btn btn-success", id: "bookmark-button" %>
-  <% else %>
-   <%= button_to "Bookmark", school_bookmarks_path(@school.id), method: :post, class: "btn btn-success", id: "bookmark-button" %>
-  <% end %>
-<% end %><br>
-
-<%= link_to "See School Reviews", school_reviews_path(@school.id), class: "btn btn-primary", id: "see-reviews-button" %>
+    <h4><%= link_to "School Website", "http://#{@school.school_school_url}", id: "school-site-link" %>
+    </h4><br>
 
 
-<div id="exTab2" class="container">
-<ul class="nav nav-tabs">
-			<li class="active"><a  href="#overall" data-toggle="tab">Overall</a></li>
+    <% if signed_in_user? %>
+      <% if bookmarked?(@school) %>
+         <%= button_to "Unbookmark", school_bookmark_path(@school.id, find_user_bookmark(@school).id), method: :delete, class: "btn btn-success", id: "bookmark-button" %>
+      <% else %>
+       <%= button_to "Bookmark", school_bookmarks_path(@school.id), method: :post, class: "btn btn-success", id: "bookmark-button" %>
+      <% end %>
+    <% end %><br>
 
-			<li><a href="#academics" data-toggle="tab">Academics</a></li>
+    <%= link_to "See School Reviews", school_reviews_path(@school.id), class: "btn btn-primary", id: "see-reviews-button" %>
+  </div>
 
-			<li><a href="#admissions" data-toggle="tab">Admissions</a></li>
-      <li><a href="#students" data-toggle="tab">Students</a></li>
-			<li><a href="#aid" data-toggle="tab">Aid</a></li>
-			<!-- <li><a href="#completion" data-toggle="tab">Completion</a></li> -->
-			<li><a href="#cost" data-toggle="tab">Cost</a></li>
-			<!-- <li><a href="#earnings" data-toggle="tab">Earnings</a></li> -->
-			<li><a href="#repayment" data-toggle="tab">Repayment</a></li>
 
-		</ul>
+  <div id="exTab2" class="row">
+    <div class="col-xs-12">
+      <ul class="nav nav-tabs">
+  			<li class="active"><a  href="#overall" data-toggle="tab">Overall</a></li>
+
+  			<li><a href="#academics" data-toggle="tab">Academics</a></li>
+
+  			<li><a href="#admissions" data-toggle="tab">Admissions</a></li>
+        <li><a href="#students" data-toggle="tab">Students</a></li>
+  			<li><a href="#aid" data-toggle="tab">Aid</a></li>
+  			<!-- <li><a href="#completion" data-toggle="tab">Completion</a></li> -->
+  			<li><a href="#cost" data-toggle="tab">Cost</a></li>
+  			<!-- <li><a href="#earnings" data-toggle="tab">Earnings</a></li> -->
+  			<li><a href="#repayment" data-toggle="tab">Repayment</a></li>
+
+  		</ul>
+    </div>
+    <div class="col-xs-12">
 
 			<div class="tab-content ">
 			  <div class="tab-pane active" id="overall">
@@ -69,5 +75,6 @@
 
 
 			</div>
+    </div>
   </div>
-
+</div>
