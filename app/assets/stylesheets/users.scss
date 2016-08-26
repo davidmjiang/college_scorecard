@@ -56,6 +56,9 @@
   .comparison-box{
     form{
       text-align: center;
+      .btn-primary{
+        margin-top: 5px;
+      }
     }
   }
 }
@@ -96,6 +99,7 @@ html{
 .top-margin {
   margin-top: 20px;
 }
+
 
 .app-body{
   background: rgba(255, 255, 255, 0.9)
