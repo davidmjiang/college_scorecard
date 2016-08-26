@@ -56,9 +56,13 @@
   .comparison-box{
     form{
       text-align: center;
+      .btn-primary{
+        margin-top: 5px;
+      }
     }
   }
 }
+
 
 .nav-logout{
   a{
@@ -67,13 +71,17 @@
 }
 
 .school-list{
+  table{
+    background-color: #ecf0f1;
+  }
   th{
     text-align: center;
   }
   text-align: center;
   p{
-  text-align: center;
-  font-size: 18px;
+    text-align: center;
+    font-size: 18px;
+    font-color: black;
   }
 }
 
@@ -82,9 +90,39 @@ html{
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; 
 }
+
+#welcome {
+  display: inline-block;
+}
+
+#create-user-button {
+  margin-left: 100px;
+}
+
+.top-margin {
+  margin-top: 20px;
+}
+
 
 .app-body{
   background: rgba(255, 255, 255, 0.9)
+}
+
+.inline-block {
+  display: inline;
+}
+
+#search-button {
+  margin-top: 30px;
+}
+
+#new-user-button {
+  float: right;
+
+}
+
+#find-school {
+  display: inline;
 }

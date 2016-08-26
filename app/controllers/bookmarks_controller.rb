@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
       flash[:success] = "School added to your schools."
       redirect_to @school
     else
-      flash[:error] = "Error in adding school."
+      flash[:danger] = "Error in adding school."
       redirect_to @school
     end
   end
@@ -18,7 +18,7 @@ class BookmarksController < ApplicationController
       flash[:success] = "Status updated"
       redirect_to current_user
     else
-      flash[:error]
+      flash[:danger]
       redirect_to current_user
     end
   end
@@ -29,7 +29,7 @@ class BookmarksController < ApplicationController
       flash[:success] = "School removed from your schools."
       redirect_to :back
     else
-      flash[:error] = "Error in removing school."
+      flash[:danger] = "Error in removing school."
       redirect_to :back
     end
   end

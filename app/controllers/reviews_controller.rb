@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
       flash[:success] = "Thank you for sharing your opinion."
       redirect_to school_review_path(@school, @review)
     else
-      flash[:error] = @review.errors.full_messages.join(", ")
+      flash[:danger] = @review.errors.full_messages.join(", ")
       render :new
     end
   end
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
       flash[:success] = "Changes have been made to reflect your wavering opinion."
       redirect_to school_review_path(@school, @review)
     else  
-      flash[:error] = @review.errors.full_messages.join(', ')
+      flash[:danger] = @review.errors.full_messages.join(', ')
       render :edit
     end
   end
