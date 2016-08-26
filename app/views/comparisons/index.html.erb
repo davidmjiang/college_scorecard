@@ -1,3 +1,5 @@
+<%= link_to "Back To Your Page", user_path(current_user), class:"btn btn-primary" %>
+
 <h2>Comparison for:</h2>
 <ul>
 <% @schools.each do |school| %>
@@ -6,7 +8,7 @@
 </ul>
 
 
-<div id="exTab2" class="container"> 
+<div id="exTab2"> 
 <ul class="nav nav-tabs">
       <li class="active"><a  href="#overall" data-toggle="tab">Overall</a></li>
 

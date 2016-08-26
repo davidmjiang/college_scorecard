@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   validates :username,
             :presence => true
 
-  validates :password, 
-            :length => { :in => 8..24 }, 
+  validates :password,
+            :length => { :in => 8..24 },
             :allow_nil => true
 
   validates :email,

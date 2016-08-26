@@ -67,23 +67,26 @@ module SchoolsHelper
   end
 
   def get_sat_data(school)
-    data = {}
-    data["Critical Reading"] = school.admission.sat_scores_midpoint_critical_reading
+    school_data = {}
+    school_data["Critical Reading"] = school.admission.sat_scores_midpoint_critical_reading
     
-    data["Critical Reading"] = Admission.average(:sat_scores_midpoint_critical_reading)
+    school_data["Critical Reading"] = Admission.average(:sat_scores_midpoint_critical_reading)
 
-    data["Math"] = school.admission.sat_scores_midpoint_math
-    data["Writing"] = school.admission.sat_scores_midpoint_writing
-    data
+    school_data["Math"] = school.admission.sat_scores_midpoint_math
+    school_data["Writing"] = school.admission.sat_scores_midpoint_writing
+    avg_data = {"Critical Reading" => 495, "Math" => 511, "Writing" => 484 }
+    [{name: "#{school.school_name}", data: school_data},{ name: "National Avg", data: avg_data}]
   end
 
   def get_act_data(school)
-    data = {}
-    data["Cummulative"] = school.admission.act_scores_midpoint_cumulative
-    data["Math"] = school.admission.act_scores_midpoint_math
-    data["Writing"] = school.admission.act_scores_midpoint_writing
-    data["English"] = school.admission.act_scores_midpoint_english
-    data
+    school_data = {}
+    school_data["Cummulative"] = school.admission.act_scores_midpoint_cumulative
+    school_data["Math"] = school.admission.act_scores_midpoint_math
+    school_data["Writing"] = school.admission.act_scores_midpoint_writing
+    school_data["English"] = school.admission.act_scores_midpoint_english
+    
+    avg_data = {"Cummulative" => 21, "Writing" => 21.3, "English" => 20.3, "Math" => 20.9 }
+    [{name: "#{school.school_name}", data: school_data},{ name: "National Avg", data: avg_data}]
   end
 
 

@@ -6,18 +6,18 @@
 
 <div class="chart">
 	<h3>Midpoint SAT Scores</h3>
-  <%= bar_chart get_sat_data(@school), colors: [ "green"],  max: 800 %>
+  <%= bar_chart get_sat_data(@school), colors: [ "green", "#78AB46"],  max: 800 %>
 </div>
 
 <hr>
 
 <div class="chart">
 	<h3>Midpoint ACT Scores</h3>
-  <%= bar_chart get_act_data(@school), colors: [ "orange"], max: 36 %>
+  <%= bar_chart get_act_data(@school), colors: [ "#ffa500", "#ffc966"], max: 36 %>
 </div>
 
 <hr>
-
+ 
 <div class="chart">
 	<h3>Average Cost Per Year By Income</h3>
   <%= column_chart get_cost_data(@school) %>
