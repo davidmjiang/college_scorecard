@@ -12,7 +12,7 @@
     <tr>
       <td>Student Body Size</td>
       <% schools.each do |school| %>
-        <td><%= school.student.size %></td>
+        <td><%= number_with_delimiter(school.student.size) %></td>
       <% end %>
     </tr>
 
@@ -51,12 +51,6 @@
       <% end %>
     </tr>
 
-    <tr>
-      <td>Asian Pacific Islander</td>
-      <% schools.each do |school| %>
-        <td><%= to_percent(school.student.demographics_race_ethnicity_asian_pacific_islander) %></td>
-      <% end %>
-    </tr>
 
     <tr>
       <td>First Time Full Time</td>
@@ -85,13 +79,6 @@
         <td><%= to_percent(school.student.share_independent_students) %></td>
       <% end %>
     </tr>
-
-    <tr>
-      <td>Family Income Overall</td>
-      <% schools.each do |school| %>
-        <td><%= school.student.family_income_overall %></td>
-      <% end %>
-    </tr>
-
+   
   </table>
 </div>
