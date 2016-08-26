@@ -2,6 +2,15 @@
   <h4><%= link_to school.school_name, school_path(school.id) %></h4>
   <%= school.location %>
 
+<% if signed_in_user? %>
+  <% if bookmarked?(school) %>
+
+     <%= button_to "Remove from Schools", school_bookmark_path(school.id, find_user_bookmark(school).id), method: :delete, class: "btn btn-success", id: "bookmark-button-index" %>
+
+  <% else %>
+   <%= button_to "Add To Schools", school_bookmarks_path(school.id), method: :post, class: "btn btn-success", id: "bookmark-button-index" %>
+  <% end %>
+<% end %>
 
 </div>
 <hr>

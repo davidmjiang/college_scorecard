@@ -69,9 +69,7 @@ module SchoolsHelper
   def get_sat_data(school)
     school_data = {}
     school_data["Critical Reading"] = school.admission.sat_scores_midpoint_critical_reading
-    
     school_data["Critical Reading"] = Admission.average(:sat_scores_midpoint_critical_reading)
-
     school_data["Math"] = school.admission.sat_scores_midpoint_math
     school_data["Writing"] = school.admission.sat_scores_midpoint_writing
     avg_data = {"Critical Reading" => 495, "Math" => 511, "Writing" => 484 }
