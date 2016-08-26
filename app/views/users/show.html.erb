@@ -1,6 +1,5 @@
 <%= render partial: "header", locals: {user: @user} %>
 
-<div class="container">
   <div class="row">
     <!-- sidebar -->
     <div class="col-sm-4">
@@ -10,76 +9,75 @@
       </div>
     </div>
 
+
     <div class="col-sm-8">
-      <div class="col-sm-12">
-        <div class="info-box school-list">
-          <h3>Your Schools and Application Checklist</h3>
-          <div class="table-responsive">
-            <table class="table table-striped table-hover table-condensed"
-              <tr>
-                <th>School</th>
-                <th>Essay Written?</th>
-                <th>Letters of Recommendation Written?</th>
-                <th>Application Sent?</th>
-                <th></th>
-                <th></th>
-              </tr>
-              <% @user.schools.each do |school| %>
-                <%= render partial: "checklist", locals: {school: school, bookmark: Bookmark.where("user_id = ? AND school_id = ?", @user.id, school.id).first} %>
-              <% end %>
-            </table>
+      <% if @user.schools.empty? %>
+        <div class="col-sm-12 info-box">
+            <h3>You have no schools saved to your list</h3>
+            <h5>Start your list by searching for schools</h5>
+            <%= render "search_bar" %>
+            
+        </div>
+      <% else %>
+        <div class="col-sm-12 info-box">
+          <div class="school-list">
+            <h3>Your Schools and Application Checklist</h3>
+            <div class="table-responsive">
+              <table class="table table-striped table-hover table-condensed"
+                <tr>
+                  <th>School</th>
+                  <th>Essay Written?</th>
+                  <th>Letters of Recommendation Written?</th>
+                  <th>Application Sent?</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <% @user.schools.each do |school| %>
+                  <%= render partial: "checklist", locals: {school: school, bookmark: Bookmark.where("user_id = ? AND school_id = ?", @user.id, school.id).first} %>
+                <% end %>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-sm-12">
-        <ul class="nav nav-tabs">
-          <li class="active"><a  href="#compare" data-toggle="tab">Compare</a></li>
-          <li><a href="#reviews" data-toggle="tab">Your Reviews</a></li>
-        </ul>
+        <div class="col-sm-12">
+          <ul class="nav nav-tabs">
+            <li class="active"><a  href="#compare" data-toggle="tab">Compare Schools</a></li>
+            <li><a href="#reviews" data-toggle="tab">Your Reviews</a></li>
+          </ul>
 
-        <div class="tab-content ">
-          <div class="tab-pane active" id="compare">
-            <div class="info-box">
-              <h3>Compare Your Schools</h3>
-              <h5>Choose up to 5 of your schools for in-depth comparison:</h5>
-              <div class="comparison-box">
-                <%= form_tag comparisons_path, :method => 'get' do %>
-                  <%= select_tag("schools", options_for_select(bookmarked_schools(@user.schools)), multiple: true) %><br>
-                  <%= submit_tag "See Comparison", class:"btn btn-primary" %>
+          <div class="tab-content ">
+            <div class="tab-pane active" id="compare">
+              <div class="info-box">
+                <h3>Compare Your Schools</h3>
+                <h5>Choose up to 5 of your schools for in-depth comparison:</h5>
+                <div class="comparison-box">
+                  <%= form_tag comparisons_path, :method => 'get' do %>
+                    <%= select_tag("schools", options_for_select(bookmarked_schools(@user.schools)), multiple: true) %><br>
+                    <%= submit_tag "See Comparison", class:"btn btn-primary" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane" id="reviews">
+              <div class="info-box">
+                <h3>Your Reviews</h3>
+                <ul>
+                <% @user.reviews.each do |review| %>
+                  <li> <span><%= link_to review.school.school_name, school_path(review.school) %></span> | 
+                             <%= review.body %> 
+                             <%= link_to "Edit", edit_school_review_path(review.school, review) %> </li>
                 <% end %>
+                </ul>
               </div>
             </div>
           </div>
-
-          <div class="tab-pane" id="reviews">
-            <div class="info-box">
-              <h3>Your Reviews</h3>
-              <ul>
-              <% @user.reviews.each do |review| %>
-                <li> <span><%= link_to review.school.school_name, school_path(review.school) %></span> | 
-                           <%= review.body %> 
-                           <%= link_to "Edit", edit_school_review_path(review.school, review) %> </li>
-              <% end %>
-              </ul>
-            </div>
+          <div class='info-box'>
+            <h3>Application Timeline</h3>
+            <%= render "timeline_chart" %>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
-</div>
-
-<%= timeline [
-  ["Register For SAT", "2016-09-01", "2016-10-31"],
-  ["Prepare and/or revise application essays", "2016-09-01", "2016-10-31"],
-  ["Ask for letters of recommendation", "2016-09-01", "2016-10-31"],
-  ["Submit early decision or early action applications, if desired", "2016-10-15", "2016-11-31"],
-  ["Submit regular decision applications", "2016-10-31", "2016-12-31"],
-  ["Send your SAT and/or ACT scores to schools where you are applying.", "2016-10-31", "2016-11-30"],
-  ["Send transcripts to schools where you are applying.", "2016-10-31", "2016-12-31"],
-  ["Submit the CSS profile.", "2016-11-30", "2016-12-31"],
-  ["Complete the FAFSA", "2016-12-15", "2017-01-31"],
-  ["Compare award letters.", "2016-12-15", "2017-02-20"],
-  ["Get Acceptances!", "2017-02-15", "2017-04-30"]
-] , height: "1000px" %>
