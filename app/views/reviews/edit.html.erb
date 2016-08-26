@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-8 col-sm-offset-2">
-      <h1>Edit Review</h1>
+    <div class="col-sm-8 col-sm-offset-2">
+      <h1>Edit Your Review of <%= @school.school_name %> </h1>
       <%= render partial: 'shared/new_or_edit_review', locals: { school: @school, review: @review } %>
+      <%= button_to "Delete Review", school_review_path(@school, @review), method: :delete, class: "btn btn-danger", id: "delete-review-btn" %>
     </div>
   </div>
 </div>

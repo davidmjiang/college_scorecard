@@ -47,7 +47,7 @@
 .info-box{
   border: solid black 1px;
   padding: 10px;
-  margin: 10px;
+  margin-bottom: 10px;
   h3{
   text-align: center;
   }
@@ -63,6 +63,7 @@
     }
   }
 }
+
 
 
 .nav-logout{
@@ -121,6 +122,8 @@ html{
 
 #new-user-button {
   float: right;
+  position: relative;
+  top: -50px;
 
 }
 
