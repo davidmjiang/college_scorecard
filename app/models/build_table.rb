@@ -2,7 +2,7 @@ class BuildTable
   class << self
     def build_table
       School.destroy_all
-      results = aquire_api_data(1)
+      results = aquire_api_data(5)
       results['school']['results'].each_with_index do |school_fields, index|
         school = create_new_school(school_fields)
         populate_secondary_tables(school, results, index)
