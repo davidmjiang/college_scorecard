@@ -19,58 +19,58 @@
     <tr>
       <td>SAT - Average Overall</td>
       <% schools.each do |school| %>
-        <td><%= school.admission.sat_scores_average_overall %></td>
+        <td><%= float_to_int(school.admission.sat_scores_average_overall) %></td>
       <% end %>
     </tr>
 
     <tr>
       <td>SAT - Critical Reading (25th - 75th Percentile)</td>
       <% schools.each do |school| %>
-        <td><%= school.admission.sat_scores_25th_percentile_critical_reading %> - 
-        <%= school.admission.sat_scores_75th_percentile_critical_reading %></td>
+        <td><%= float_to_int(school.admission.sat_scores_25th_percentile_critical_reading) %> - 
+        <%= float_to_int(school.admission.sat_scores_75th_percentile_critical_reading) %></td>
       <% end %>
     </tr>
 
     <tr>
       <td>SAT - Math (25th - 75th Percentile)</td>
       <% schools.each do |school| %>
-        <td><%= school.admission.sat_scores_25th_percentile_math %> - <%= school.admission.sat_scores_75th_percentile_math %></td>
+        <td><%= float_to_int(school.admission.sat_scores_25th_percentile_math) %> - <%= float_to_int(school.admission.sat_scores_75th_percentile_math) %></td>
       <% end %>
     </tr>
 
     <tr>
       <td>SAT - Writing (25th - 75th Percentile)</td>
       <% schools.each do |school| %>
-        <td><%= school.admission.sat_scores_25th_percentile_writing %> - <%= school.admission.sat_scores_75th_percentile_writing %></td>
+        <td><%= float_to_int(school.admission.sat_scores_25th_percentile_writing) %> - <%= float_to_int(school.admission.sat_scores_75th_percentile_writing) %></td>
       <% end %>
     </tr>
 
     <tr>
       <td>ACT - Cumulative (25th - 75th Percentile)</td>
       <% schools.each do |school| %>
-        <td><%= school.admission.act_scores_25th_percentile_cumulative %> - <%= school.admission.act_scores_75th_percentile_cumulative %></td>
+        <td><%= float_to_int(school.admission.act_scores_25th_percentile_cumulative) %> - <%= float_to_int(school.admission.act_scores_75th_percentile_cumulative) %></td>
       <% end %>
     </tr>
 
     <tr>
       <td>ACT - English (25th - 75th Percentile)</td>
       <% schools.each do |school| %>
-        <td><%= school.admission.act_scores_25th_percentile_english %> - 
-      <%= school.admission.act_scores_75th_percentile_english %></td>
+        <td><%= float_to_int(school.admission.act_scores_25th_percentile_english) %> - 
+      <%= float_to_int(school.admission.act_scores_75th_percentile_english) %></td>
       <% end %>
     </tr>
 
     <tr>
       <td>ACT - Math (25th - 75th Percentile)</td>
       <% schools.each do |school| %>
-        <td><%= school.admission.act_scores_25th_percentile_math %> - <%= school.admission.act_scores_75th_percentile_math %></td>
+        <td><%= float_to_int(school.admission.act_scores_25th_percentile_math) %> - <%= float_to_int(school.admission.act_scores_75th_percentile_math) %></td>
       <% end %>
     </tr>
 
     <tr>
       <td>ACT - Writing (25th - 75th Percentile)</td>
       <% schools.each do |school| %>
-        <td><%= school.admission.act_scores_25th_percentile_writing %> - <%= school.admission.act_scores_75th_percentile_writing %></td>
+        <td><%= float_to_int(school.admission.act_scores_25th_percentile_writing) %> - <%= float_to_int(school.admission.act_scores_75th_percentile_writing) %></td>
       <% end %>
     </tr>
 

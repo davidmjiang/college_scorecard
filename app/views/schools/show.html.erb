@@ -32,7 +32,7 @@
 			<!-- <li><a href="#completion" data-toggle="tab">Completion</a></li> -->
 			<li><a href="#cost" data-toggle="tab">Cost</a></li>
 			<!-- <li><a href="#earnings" data-toggle="tab">Earnings</a></li> -->
-			<li><a href="#repayment" data-toggle="tab">Repayment</a></li>
+			<!--<li><a href="#repayment" data-toggle="tab">Repayment</a></li>-->
       <li><a href="#restaurants" data-toggle="tab">Nearby Restaurants</a></li>
 
 		</ul>
@@ -60,9 +60,9 @@
           <%= render "cost", school: @school %>
 				</div>
 
-				<div class="tab-pane" id="repayment">
-          <%= render "repayment", school: @school %>
-				</div>
+				<!--<div class="tab-pane" id="repayment">
+          <%#= render "repayment", school: @school %>
+				</div>-->
 
 				<div class="tab-pane" id="students">
           <%= render "student_table", school: @school %>
@@ -75,4 +75,4 @@
 
 			</div>
   </div>
-
+<%= render "shared/footer" %>
