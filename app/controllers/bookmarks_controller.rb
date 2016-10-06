@@ -5,10 +5,10 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(user_id: current_user.id, school_id: @school.id)
     if @bookmark.save
       flash[:success] = "School added to your schools."
-      redirect_to @school
+      redirect_to request.referrer
     else
       flash[:danger] = "Error in adding school."
-      redirect_to @school
+      redirect_to request.referrer
     end
   end
 
