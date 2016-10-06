@@ -1,5 +1,7 @@
 # App.ly
 
+![Home Page](screenshot.png "Home page")
+
 Check it out [here!](https://college-sc.herokuapp.com)
 
 ## Overview

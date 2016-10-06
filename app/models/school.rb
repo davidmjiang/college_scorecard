@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'bundler/setup'
+require 'mechanize'
 class School < ActiveRecord::Base
   has_one :academic, dependent: :destroy
   has_one :admission, dependent: :destroy

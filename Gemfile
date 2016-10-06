@@ -26,6 +26,7 @@ gem 'faker'
 gem 'simple_form'
 gem 'twitter-typeahead-rails'
 gem 'progress_bar'
+gem 'mechanize', '~>2.7.2', '<2.7.3'
 gem 'yelp', require: 'yelp'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
