@@ -2,7 +2,7 @@
 
 ![Home Page](screenshot.png "Home page")
 
-Check it out [here!](https://college-sc.herokuapp.com)
+Check it out [here!](https://applyapp.herokuapp.com/)
 
 ## Overview
 
